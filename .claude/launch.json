@@ -4,13 +4,21 @@
     {
       "name": "current-site",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8080", "-d", "current-site"],
+      "runtimeArgs": [
+        "tools/serve.py",
+        "current-site",
+        "8080"
+      ],
       "port": 8080
     },
     {
       "name": "redesign",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "8081", "-d", "redesign"],
+      "runtimeArgs": [
+        "tools/serve.py",
+        "redesign",
+        "8081"
+      ],
       "port": 8081
     }
   ]

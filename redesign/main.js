@@ -1,15 +1,3 @@
-// PREVIEW ONLY: compare headline options with ?h=1 … ?h=5 in the address bar.
-// Remove this block once a headline is chosen.
-const HEADLINES = {
-  1: ['Get licensed.', 'Open sooner.'],
-  2: ['Your licence,', 'approved.'],
-  3: ['Approved.', 'No runaround.'],
-  4: ['Licensing,', 'made simple.'],
-  5: ['317,388 cases', 'approved.'],
-};
-const pick = HEADLINES[new URLSearchParams(location.search).get('h')];
-if (pick) document.querySelectorAll('.hero-title [data-line]').forEach((el, i) => { el.textContent = pick[i]; });
-
 // Phone menu toggle. The page works without this script (links show inline).
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('menu');
