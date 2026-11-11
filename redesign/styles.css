@@ -1,6 +1,6 @@
 /* Hallmark · shape: Index-First (draw be1443) · genre: editorial · theme: brand · redesign: full · job: hire
- * paper: oklch(97.4% 0.006 258) · accent: oklch(84.1% 0.138 75) · display: Instrument Serif · body: Epilogue · hero: Ledge · nav: masthead · footer: mast · signature: the licence index with its finder, every row one tap from WhatsApp
- * axes: light/roman-serif/chromatic-amber · posture: full palette (field navy, signal amber, ink) · contrast: pass · fold: pass · v2.0.0 */
+ * paper: oklch(97.4% 0.006 258) · accent: oklch(84.1% 0.138 75) · display: Plus Jakarta Sans 600 · body: Plus Jakarta Sans · hero: Ledge · nav: masthead · footer: mast · signature: the licence index with its finder, every row one tap from WhatsApp
+ * axes: light/geometric-sans/chromatic-amber · posture: full palette (field navy, signal amber, ink) · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: S, a licensing firm reads like any consultancy; led with the firm's own licence list and finder and its real client logos instead of a generic services grid */
 /* Hallmark · dropped .services-intro, .why-row, .band and the Kuala Lumpur photo band below services · the full redesign moves the photo into the hero field and rebuilds each section */
 @import url("./tokens.css");
@@ -89,7 +89,7 @@ h2 { font-size: var(--text-section); }
 .hero-base { background: var(--color-field); color: var(--color-on-field); padding-block: var(--space-2xl); }
 .hero-grid { display: grid; gap: var(--space-xl); align-items: end; }
 .hero-title {
-  max-width: 14ch; font-size: clamp(3.25rem, 7.4vw, 7.25rem); line-height: 0.95; letter-spacing: -0.02em; color: var(--color-on-field);
+  max-width: 14ch; font-size: clamp(2.75rem, 6.2vw, 6rem); line-height: 1.02; letter-spacing: -0.035em; color: var(--color-on-field);
 }
 .hero-lead { color: var(--color-on-field-2); max-width: 34ch; }
 .hero-side { display: grid; gap: var(--space-lg); }
@@ -148,7 +148,7 @@ h2 { font-size: var(--text-section); }
   border-top: 1px solid var(--color-rule);
   transition: background-color var(--dur-short) var(--ease-out);
 }
-.licence-name { font-size: var(--text-section); line-height: 1.05; max-width: none; }
+.licence-name { font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.5rem); line-height: 1.1; max-width: none; }
 .licence-covers { max-width: 52ch; }
 .licence-ask {
   justify-self: start; display: inline-flex; align-items: center; min-height: 48px;
@@ -175,7 +175,7 @@ h2 { font-size: var(--text-section); }
 .figure-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-xl) var(--gap-columns); margin: 0; }
 .figure-item { display: flex; flex-direction: column-reverse; gap: var(--space-xs); }
 .figure-item dt { font-size: var(--text-sm); color: var(--color-on-field-2); }
-.figure-item dd { margin: 0; font-variant-numeric: tabular-nums; font-family: var(--font-display); font-size: var(--text-display-s); line-height: 1; white-space: nowrap; }
+.figure-item dd { margin: 0; font-variant-numeric: tabular-nums; font-family: var(--font-display); font-weight: 500; letter-spacing: var(--tracking-display); font-size: var(--text-display-s); line-height: 1; white-space: nowrap; }
 @media (min-width: 60rem) {
   .figure-row { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
   .figure-item { padding-inline: var(--space-lg); border-left: 1px solid var(--color-field-2); }
@@ -189,7 +189,7 @@ h2 { font-size: var(--text-section); }
 .why-head { display: grid; gap: var(--space-md); margin-bottom: var(--space-2xl); }
 .why-grid { display: grid; gap: var(--space-xl) var(--gap-columns); margin: 0; }
 .why-item { display: grid; gap: var(--space-xs); padding-top: var(--space-lg); border-top: 1px solid var(--color-rule); }
-.why-item dt { font-family: var(--font-display); font-size: var(--text-xl); line-height: 1.15; }
+.why-item dt { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; font-size: var(--text-xl); line-height: 1.2; }
 .why-item dd { margin: 0; max-width: 40ch; }
 .why-cta { margin-top: var(--space-2xl); }
 @media (min-width: 40rem) { .why-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -230,7 +230,7 @@ h2 { font-size: var(--text-section); }
 .contact-lines { list-style: none; margin: var(--space-lg) 0 0; padding: 0; display: grid; gap: var(--space-xs); }
 .contact-lines a {
   display: inline-flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--space-sm); min-height: 48px;
-  font-family: var(--font-display); font-size: var(--text-display-s); line-height: 1.1; text-decoration: none;
+  font-family: var(--font-display); font-weight: 500; letter-spacing: var(--tracking-display); font-size: var(--text-display-s); line-height: 1.1; text-decoration: none;
   overflow-wrap: break-word; min-width: 0;
 }
 .contact-lines a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.12em; }

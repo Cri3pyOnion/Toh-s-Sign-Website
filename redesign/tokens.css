@@ -15,7 +15,7 @@
   --color-field: oklch(34.5% 0.128 258); --color-field-2: oklch(40% 0.13 258); --color-on-field: oklch(97.4% 0.006 258); --color-on-field-2: oklch(86% 0.04 258);
   --color-accent: oklch(84.1% 0.138 75); --color-accent-2: oklch(80% 0.15 72); --color-accent-ink: oklch(20.7% 0.054 264);
   --color-focus: oklch(48% 0.19 258); --color-focus-on-field: oklch(84.1% 0.138 75);
-  --font-display: "Instrument Serif", ui-serif, Georgia, serif; --font-body: "Epilogue", ui-sans-serif, system-ui, sans-serif; --font-outlier: var(--font-body);
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif; --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif; --font-outlier: var(--font-body);
   --radius-card: 0px; --radius-pill: 999px; --rule-hair: 1px; --shadow-card: none;
-  --tracking-display: -0.015em; --display-weight: 400;
+  --tracking-display: -0.03em; --display-weight: 600;
 }
