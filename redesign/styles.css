@@ -443,3 +443,48 @@ html[data-lang-pending] body { visibility: hidden; }
   .art-lg { width: min(100%, 320px); }
 }
 :lang(zh) .licence.is-match .licence-name::after { content: "通常需要"; }
+
+/* ---------- Hero scene: an illustrated KL street that draws itself, then lives ---------- */
+.hero-field { position: relative; overflow: hidden; background: oklch(93.5% 0.03 255); }
+.hero-art { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-art .layer-back .s, .hero-art .layer-back { stroke-width: 2.5; }
+.hero-art .plane, .hero-art .car { opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-art.is-live .plane { opacity: 1; animation: hero-fly 17s linear infinite; }
+  .hero-art.is-live .car { opacity: 1; animation: hero-drive 13s linear infinite; }
+  .hero-art.is-live .cloud { animation: hero-drift 22s var(--ease-in-out) infinite alternate; }
+  .hero-art.is-live .cloud.c2 { animation-duration: 28s; animation-delay: -9s; }
+  .hero-art.is-live .cloud.c3 { animation-duration: 34s; animation-delay: -4s; }
+  .hero-art.is-live .sun-rays { animation: art-spin 24s linear infinite; transform-box: view-box; transform-origin: 1176px 120px; }
+  .hero-art.is-live .sign-dot { animation: art-blink 1.6s steps(2, jump-none) infinite; }
+  .hero-art.is-live .sign-dot:nth-of-type(2n) { animation-delay: -0.8s; }
+  .hero-art.is-live .sign-dot:nth-of-type(3n) { animation-duration: 2.3s; }
+  .hero-art.is-live .led { animation: hero-led 6s steps(1, end) infinite; }
+  .hero-art.is-live .neon { animation: hero-neon 3.4s linear infinite; }
+  .hero-art.is-live .sway-tree { animation: art-sway 4s var(--ease-in-out) infinite alternate; transform-box: fill-box; transform-origin: 50% 100%; }
+  .hero-art.is-live .float-stamp { animation-duration: 3.4s; animation-delay: -1.2s; }
+
+  /* The big word arrives letter by letter; each letter lifts under the pointer. */
+  .js .hero-title-main[data-letters] { animation: none; }
+  .hero-title-main .ch { display: inline-block; animation: hero-letter 900ms var(--ease-out) both; animation-delay: calc(var(--i) * 70ms + 200ms); transition: transform var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+  .hero-title-main .ch:hover { transform: translateY(-0.12em) rotate(-4deg); color: var(--color-accent); }
+}
+@keyframes hero-fly { from { translate: -120px 230px; rotate: -6deg; } 50% { translate: 700px 120px; rotate: 4deg; } to { translate: 1560px 30px; rotate: -4deg; } }
+@keyframes hero-drive { from { translate: -140px 0; } to { translate: 1580px 0; } }
+@keyframes hero-drift { from { translate: -40px 0; } to { translate: 140px 0; } }
+@keyframes hero-led { 0% { fill: var(--art-blue); } 33% { fill: var(--art-amber); } 66% { fill: oklch(70% 0.14 25); } }
+@keyframes hero-neon { 0%, 18%, 22%, 60%, 100% { opacity: 1; } 20%, 62% { opacity: 0.25; } }
+@keyframes hero-letter { from { opacity: 0; transform: translateY(0.6em) rotate(10deg); } to { opacity: 1; transform: none; } }
+
+/* ---------- Ticker: every licence and approval, scrolling past ---------- */
+.ticker { background: var(--color-accent); color: var(--color-accent-ink); overflow: hidden; padding-block: var(--space-md); }
+.ticker-track { display: flex; width: max-content; }
+.ticker-row { display: flex; list-style: none; margin: 0; padding: 0; }
+.ticker-row li { display: flex; align-items: center; gap: var(--space-lg); padding-right: var(--space-lg); font-weight: 600; font-size: var(--text-lg); white-space: nowrap; }
+.ticker-row li::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--color-field); }
+@media (prefers-reduced-motion: no-preference) {
+  .ticker-track { animation: ticker 48s linear infinite; }
+  .ticker:hover .ticker-track { animation-play-state: paused; }
+}
+@media (prefers-reduced-motion: reduce) { .ticker-row[aria-hidden] { display: none; } .ticker-row { flex-wrap: wrap; row-gap: var(--space-xs); padding-inline: var(--gutter); } }
+@keyframes ticker { to { transform: translateX(-50%); } }

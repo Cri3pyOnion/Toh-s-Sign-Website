@@ -2,6 +2,29 @@
 const t = (key, fallback) => (window.i18n ? window.i18n.t(key) : '') || fallback;
 const isZh = () => window.i18n?.lang === 'zh';
 
+// Hero headline: the big word rises in letter by letter (re-split whenever the language changes).
+const splitLetters = () => {
+  document.querySelectorAll('[data-letters]').forEach((el) => {
+    const text = el.textContent;
+    const vis = document.createElement('span');
+    vis.className = 'visually-hidden';
+    vis.textContent = text;
+    const shown = document.createElement('span');
+    shown.className = 'letters';
+    shown.setAttribute('aria-hidden', 'true');
+    [...text].forEach((c, i) => {
+      const ch = document.createElement('span');
+      ch.className = 'ch';
+      ch.style.setProperty('--i', i);
+      ch.textContent = c === ' ' ? '\u00a0' : c;
+      shown.append(ch);
+    });
+    el.replaceChildren(vis, shown);
+  });
+};
+splitLetters();
+document.addEventListener('langchange', splitLetters);
+
 // Phone menu toggle. Without this script the links show inline.
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('menu');
@@ -80,7 +103,9 @@ const motionOK = window.matchMedia('(prefers-reduced-motion: no-preference)').ma
 
 // Sticky masthead: hides while scrolling down, returns on scroll up; a hairline tracks progress.
 const mast = document.querySelector('.mast');
-const heroImg = document.querySelector('.hero-field > img');
+const heroLayers = [['.layer-back', 0.12], ['.layer-mid', 0.06], ['.sun-rays', 0.2]]
+  .map(([sel, k]) => [document.querySelector('.hero-art ' + sel), k]).filter(([el]) => el);
+const heroField = document.querySelector('.hero-field');
 let lastY = window.scrollY;
 let ticking = false;
 const onScroll = () => {
@@ -91,10 +116,9 @@ const onScroll = () => {
     const menuOpen = toggle?.getAttribute('aria-expanded') === 'true';
     mast.classList.toggle('is-hidden', motionOK && !menuOpen && y > lastY && y > 160);
   }
-  // Parallax: the city drifts slower than the page, capped inside the image's zoom margin.
-  if (motionOK && heroImg) {
-    const h = heroImg.parentElement.offsetHeight;
-    if (y < h * 1.5) heroImg.style.translate = `0 ${Math.min(y * 0.3, h * 0.06).toFixed(1)}px`;
+  // Parallax: the far buildings and the sun sink slower than the street as the page scrolls.
+  if (motionOK && heroField && y < heroField.offsetHeight * 1.5) {
+    heroLayers.forEach(([el, k]) => { el.style.translate = `0 ${(y * k).toFixed(1)}px`; });
   }
   lastY = y;
   ticking = false;
