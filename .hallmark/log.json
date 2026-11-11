@@ -1,0 +1,29 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "page",
+  "shape": "Index-First",
+  "theme": "brand",
+  "axes": "light/roman-serif/chromatic-amber",
+  "hero": "Ledge",
+  "nav": "masthead",
+  "footer": "mast",
+  "imagery": "photographs, own 1 (Kuala Lumpur) in the hero field; client logos 12",
+  "photos": [],
+  "entry": "settle",
+  "sections": [
+   "hero:Ledge",
+   "index:Rows+finder",
+   "figures:Figures band",
+   "why:Grid",
+   "clients:logo well",
+   "about:split dl",
+   "contact:close"
+  ],
+  "signature": "the licence index with its finder, every row one tap from WhatsApp",
+  "waived": [],
+  "prompt": "Kuala Lumpur business licensing consultancy, premium minimal, conversion to WhatsApp consultation",
+  "date": "2026-11-11"
+ }
+]
