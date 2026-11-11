@@ -488,3 +488,103 @@ html[data-lang-pending] body { visibility: hidden; }
 }
 @media (prefers-reduced-motion: reduce) { .ticker-row[aria-hidden] { display: none; } .ticker-row { flex-wrap: wrap; row-gap: var(--space-xs); padding-inline: var(--gutter); } }
 @keyframes ticker { to { transform: translateX(-50%); } }
+
+/* =====================================================================
+   Design system pass: one rhythm, one head, one card, one badge.
+   Grounds alternate white → pale blue → white → navy → white → pale blue → navy,
+   and every card takes the colour that contrasts with its ground.
+   ===================================================================== */
+:root {
+  --color-paper: oklch(99.3% 0.003 258);
+  --color-paper-2: oklch(95.6% 0.022 255);
+  --color-paper-3: oklch(92% 0.034 255);
+  --radius: 22px;
+  --sec-pad: clamp(72px, 6vw + 32px, 128px);
+}
+body { background: var(--color-paper); }
+.ground-white, .ground-tint { color: var(--color-ink); }
+.ground-white { background: var(--color-paper); --card: var(--color-paper-2); --card-hover: var(--color-paper-3); --badge: var(--color-paper-2); }
+.ground-tint  { background: var(--color-paper-2); --card: var(--color-paper); --card-hover: #fff; --badge: var(--color-paper-2); }
+.ground-navy  { background: var(--color-field); color: var(--color-on-field); --card: #fff; --badge: var(--color-field-2); }
+.ground-navy h2, .ground-navy .lead { color: var(--color-on-field); }
+.ground-navy .lead { color: var(--color-on-field-2); }
+
+/* Every section: same padding, same head. */
+.figures, .index, .why, .clients, .about, .contact { padding-block: var(--sec-pad); }
+.sec-head { display: grid; gap: var(--space-xl); align-items: center; margin-bottom: var(--space-2xl); }
+.sec-head-text { display: grid; gap: var(--space-md); }
+.sec-head-text .lead { max-width: 46ch; }
+.sec-head > .art { width: min(100%, 300px); justify-self: start; }
+@media (min-width: 48rem) {
+  .sec-head { grid-template-columns: minmax(0, 1fr) 300px; gap: var(--space-2xl); }
+  .sec-head > .art { justify-self: end; }
+}
+.sec-head > .art-lg { width: min(100%, 300px); }
+
+/* Cards: one radius, one padding, colour from the ground. */
+.license, .why-item, .about-facts > div, .contact-card, .contact-side, .figure-item {
+  background: var(--card); border-radius: var(--radius);
+}
+.license:hover, .contact-card:hover { background: var(--card-hover); }
+.license.is-match { background: var(--card-hover); box-shadow: inset 0 0 0 2px var(--color-accent); }
+
+/* Badges: every icon sits in the same circle. */
+.figure-item > .icon, .why-item > .icon { width: 60px; height: 60px; padding: 12px; border-radius: 50%; background: var(--badge); box-sizing: border-box; }
+.contact-icon { background: var(--badge); }
+.ground-white .figure-item > .icon, .ground-white .why-item > .icon { background: var(--color-paper); }
+
+/* Figures: four cards with the number large. */
+.figures h2 { color: var(--color-ink); }
+.figure-row { gap: var(--space-sm); }
+.figure-item { padding: var(--space-xl) var(--space-lg); gap: var(--space-sm); }
+.figure-item dd { color: var(--color-field); }
+.figure-item dt { color: var(--color-ink-2); font-size: var(--text-md); }
+@media (min-width: 60rem) { .figure-row { gap: var(--space-md); } .figure-item, .figure-item:first-child, .figure-item:last-child { padding: var(--space-xl) var(--space-lg); } }
+
+/* Why: six cards. */
+.why-grid { gap: var(--space-md); }
+@media (min-width: 60rem) { .why-grid { row-gap: var(--space-md); } }
+.why-item { padding: var(--space-xl) var(--space-lg); gap: var(--space-sm); align-content: start; }
+.why-item::before { display: none; }
+.why-item > .icon { margin-bottom: var(--space-xs); }
+.why-cta { margin-top: var(--space-xl); }
+
+/* Clients: logos on white tiles across the navy band. */
+.logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-sm); }
+@media (min-width: 40rem) { .logos { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (min-width: 60rem) { .logos { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-md); } }
+.logos li { background: #fff; border-radius: var(--radius); min-height: 104px; padding: var(--space-md); }
+.logos img { opacity: 1; mix-blend-mode: normal; filter: none; height: 60px; }
+
+/* About: story beside the facts. */
+.about-grid { display: grid; gap: var(--space-xl); }
+.about-text { gap: var(--space-md); }
+.about-facts { gap: var(--space-sm); }
+@media (min-width: 60rem) { .about-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--space-2xl); } }
+
+/* Contact: cards beside the office panel, both white on the pale ground. */
+.contact-grid { display: grid; gap: var(--space-md); align-items: stretch; }
+@media (min-width: 60rem) { .contact-grid { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--space-md); align-items: stretch; } }
+.contact-lines { margin: 0; }
+.contact-side { padding: var(--space-xl); border-radius: var(--radius); }
+
+/* Licenses: the finder chips and cards on the pale ground. */
+.chip { background: var(--color-paper); border-color: transparent; }
+.chip:hover { background: #fff; border-color: var(--color-field); }
+
+/* Buttons: amber for the main action, navy for the second; both solid pills. */
+.btn-navy { background: var(--color-field); border-color: var(--color-field); color: var(--color-on-field); }
+.btn-navy:hover { background: var(--color-field-2); border-color: var(--color-field-2); }
+
+/* Footer: navy close with the logo on a white plate. */
+.foot { padding-block: var(--space-3xl) var(--space-xl); }
+.foot-logo { background: #fff; padding: var(--space-md) var(--space-lg); border-radius: var(--radius); box-sizing: content-box; width: min(calc(100% - 48px), 560px); }
+.foot-links a { color: var(--color-on-field); }
+.foot-legal { color: var(--color-on-field-2); }
+.foot :focus-visible { outline-color: var(--color-focus-on-field); }
+@media (max-width: 40rem) {
+  .sec-head { gap: var(--space-lg); margin-bottom: var(--space-xl); }
+  .sec-head > .art, .sec-head > .art-lg { width: 200px; }
+  .figure-item { padding: var(--space-lg) var(--space-md); }
+  .figure-item dd { font-size: clamp(1.6rem, 7.5vw, 2.25rem); }
+}

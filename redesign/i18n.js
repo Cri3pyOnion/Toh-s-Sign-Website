@@ -78,6 +78,7 @@
     'lic.other.ask': '咨询<span class="visually-hidden">监管与行业合规</span>',
 
     'figures.title': '我们的成绩',
+    'figures.lead': '二十八年执照咨询经验，用数据说话。',
     'fig.years': '多年执照咨询经验',
     'fig.cases': '成功获批案例',
     'fig.brands': '合作品牌',
@@ -100,6 +101,7 @@
     'why.cta': '申请可行性评估',
 
     'clients.title': '部分客户',
+    'clients.lead': '超过200个零售、餐饮、金融及制造业品牌，信赖我们办理执照。',
 
     'about.title': '关于 Toh’s Sign',
     'about.lead': 'Toh’s Sign 由 CK Toh 于1997年创办，凭借数十年的经验，高效解决各类执照申请难题，确保企业运营顺畅。',
