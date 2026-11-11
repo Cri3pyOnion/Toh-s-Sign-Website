@@ -102,6 +102,28 @@ const onScroll = () => {
 window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
 
+// Line illustrations: each outline traces in as its drawing enters the screen, the fills follow,
+// then the small loops start. Without IntersectionObserver or under reduced motion they show finished.
+const arts = [...document.querySelectorAll('svg.art')];
+if (motionOK && 'IntersectionObserver' in window && arts.length) {
+  arts.forEach((svg) => {
+    svg.querySelectorAll('.s').forEach((el, i) => {
+      el.setAttribute('pathLength', '1');
+      el.style.setProperty('--d', `${Math.min(i * 70, 1400)}ms`);
+    });
+  });
+  document.documentElement.classList.add('art-armed');
+  const artIO = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    const svg = e.target;
+    svg.classList.add('is-drawn');
+    const n = svg.querySelectorAll('.s').length;
+    setTimeout(() => svg.classList.add('is-live'), Math.min(n * 70, 1400) + 1500);
+    artIO.unobserve(svg);
+  }), { rootMargin: '0px 0px -10% 0px', threshold: 0.25 });
+  arts.forEach((svg) => artIO.observe(svg));
+}
+
 if (motionOK && 'IntersectionObserver' in window) {
   // Scroll reveals, staggered within each group.
   const groups = [
