@@ -90,9 +90,9 @@ h2 { font-size: var(--text-section); }
 .hero-grid { display: grid; gap: var(--space-xl); align-items: end; }
 /* Two lines at two sizes: the subject very large, what the firm is beneath it. */
 .hero-title { max-width: none; color: var(--color-on-field); display: grid; gap: var(--space-sm); }
-.hero-title-main { display: block; font-size: clamp(3.5rem, 17vw, 9rem); line-height: 0.95; letter-spacing: -0.045em; }
+.hero-title-main { display: block; font-size: clamp(3.25rem, 15vw, 8rem); line-height: 0.95; letter-spacing: -0.045em; }
 .hero-title-sub { display: block; font-size: clamp(1.5rem, 1rem + 2vw, 2.75rem); line-height: 1.1; letter-spacing: -0.025em; }
-@media (min-width: 60rem) { .hero-title-main { font-size: clamp(5rem, 9.5vw, 9rem); } }
+@media (min-width: 60rem) { .hero-title-main { font-size: clamp(4.5rem, 8.25vw, 7.75rem); } }
 .hero-lead { color: var(--color-on-field-2); max-width: 34ch; }
 .hero-side { display: grid; gap: var(--space-lg); }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-md) var(--space-lg); }
