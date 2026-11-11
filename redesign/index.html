@@ -52,7 +52,71 @@
       </div>
     </section>
 
-    <!-- Next sections are built one at a time: services, why us, figures, about, brands, contact, footer. -->
+    <!-- ============ Section 2: services ============ -->
+    <section id="services" class="services" aria-labelledby="services-title">
+      <div class="services-intro">
+        <h2 id="services-title" class="services-title" data-reveal>What we license</h2>
+        <p class="services-lead" data-reveal style="--d:1">Five kinds of licence and approval, one consultant from the first call to the day it’s granted.</p>
+      </div>
+
+      <!-- Licence finder: enhances the list below; without JS the list simply shows in full. -->
+      <div class="finder" data-finder data-reveal style="--d:2" hidden>
+        <p id="finder-q" class="finder-q">What are you opening or changing?</p>
+        <div class="chips" role="group" aria-labelledby="finder-q">
+          <button type="button" class="chip" aria-pressed="false" data-need="business advertisement">Shop or office</button>
+          <button type="button" class="chip" aria-pressed="false" data-need="business advertisement">Restaurant or café</button>
+          <button type="button" class="chip" aria-pressed="false" data-need="business advertisement entertainment">Bar or entertainment outlet</button>
+          <button type="button" class="chip" aria-pressed="false" data-need="business other engineering">Factory</button>
+          <button type="button" class="chip" aria-pressed="false" data-need="business other">Clinic or health business</button>
+          <button type="button" class="chip" aria-pressed="false" data-need="advertisement">Signboard or LED screen</button>
+          <button type="button" class="chip" aria-pressed="false" data-need="entertainment advertisement">Event or road closure</button>
+          <button type="button" class="chip" aria-pressed="false" data-need="engineering">Renovation or mezzanine</button>
+          <button type="button" class="chip" aria-pressed="false" data-need="other">Import or export</button>
+        </div>
+        <div class="finder-result" aria-live="polite">
+          <p class="finder-answer" data-finder-answer>Pick one and we’ll mark the licences you’re likely to need.</p>
+          <a class="btn btn-primary finder-cta" data-finder-cta rel="noopener" target="_blank"
+             href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20to%20ask%20which%20licences%20I%20need.">Ask us on WhatsApp</a>
+        </div>
+      </div>
+
+      <ul class="licences">
+        <li class="licence" data-licence="business" data-reveal style="--d:0">
+          <h3 class="licence-name">Business licence</h3>
+          <p class="licence-covers">Shop units, offices, retail stores and industrial factory operations.</p>
+          <a class="licence-ask" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20business%20licence.">Ask about this<span class="visually-hidden"> business licence</span></a>
+        </li>
+        <li class="licence" data-licence="advertisement" data-reveal style="--d:1">
+          <h3 class="licence-name">Advertisement licence</h3>
+          <p class="licence-covers">Signboards, billboards, LED screens, pylon signs and road closures.</p>
+          <a class="licence-ask" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20an%20advertisement%20licence.">Ask about this<span class="visually-hidden"> advertisement licence</span></a>
+        </li>
+        <li class="licence" data-licence="entertainment" data-reveal style="--d:2">
+          <h3 class="licence-name">Entertainment licence</h3>
+          <p class="licence-covers">Liquor, music, public entertainment and event proposals.</p>
+          <a class="licence-ask" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20an%20entertainment%20licence.">Ask about this<span class="visually-hidden"> entertainment licence</span></a>
+        </li>
+        <li class="licence" data-licence="engineering" data-reveal style="--d:3">
+          <h3 class="licence-name">Engineering drawings</h3>
+          <p class="licence-covers">Renovation, extension, mezzanine floor, partition and awning approvals.</p>
+          <a class="licence-ask" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20engineering%20drawing%20approval.">Ask about this<span class="visually-hidden"> engineering drawings</span></a>
+        </li>
+        <li class="licence" data-licence="other" data-reveal style="--d:4">
+          <h3 class="licence-name">Agency approvals</h3>
+          <p class="licence-covers">MITI, MIDA, MOH (KKM), DOE, DOSH, and import and export permits.</p>
+          <a class="licence-ask" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20agency%20approvals%20(MIDA%2C%20DOE%2C%20DOSH%2C%20KKM).">Ask about this<span class="visually-hidden"> agency approval</span></a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Photo band: the company's own Kuala Lumpur photograph, as relief after the type sections. -->
+    <figure class="band">
+      <img src="assets/images/kuala-lumpur.jpg" width="1366" height="768" loading="lazy" decoding="async"
+           alt="Kuala Lumpur city centre at dusk, with the Petronas Twin Towers and surrounding office towers">
+      <figcaption>Kuala Lumpur, home to Toh’s Sign.</figcaption>
+    </figure>
+
+    <!-- Next sections: why us, figures, about, brands, contact, footer. -->
   </main>
 
   <script src="main.js" defer></script>

@@ -190,3 +190,98 @@ img { max-width: 100%; height: auto; display: block; }
 }
 @keyframes line-up { to { transform: none; } }
 @keyframes fade-up { to { opacity: 1; transform: none; } }
+
+/* ---------- Utility ---------- */
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ---------- Section 2: services (navy field, phone first) ---------- */
+.services {
+  --field-2: #0b4592;           /* one tone step up from navy */
+  --field-ink: var(--on-navy);
+  --field-muted: #c9d6ea;       /* about 9:1 on navy */
+  background: var(--navy);
+  color: var(--field-ink);
+  padding: 96px var(--margin) 104px;
+}
+.services :focus-visible { outline-color: var(--amber); }
+
+.services-intro { display: grid; gap: 16px; margin-bottom: 48px; }
+.services-title { font-size: var(--step-head); font-weight: 500; letter-spacing: -0.04em; line-height: 0.95; }
+.services-lead { font-size: var(--step-lead); line-height: 1.35; max-width: 30ch; }
+
+/* Finder */
+.finder { margin-bottom: 56px; }
+.finder[hidden] { display: none; }
+.finder-q { font-size: var(--step-body); font-weight: 500; margin-bottom: 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  min-height: var(--tap); padding: 0 18px;
+  border: 0; border-radius: 999px;
+  background: var(--field-2); color: var(--field-ink);
+  font: 400 var(--step-small)/1.2 var(--font); cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms var(--ease-out);
+}
+.chip:hover { background: #135199; }
+.chip:active { transform: scale(0.97); }
+.chip[aria-pressed="true"] { background: var(--field-ink); color: var(--navy); font-weight: 500; }
+.finder-result { display: grid; gap: 16px; margin-top: 24px; align-items: center; }
+.finder-answer { font-size: var(--step-body); max-width: 46ch; }
+.finder-answer strong { font-weight: 500; }
+
+/* Licence list: one type size per row, the columns do the organising */
+.licence { display: grid; gap: 6px; padding: 20px 0 22px; transition: background-color 200ms ease; }
+.licence-name { font-size: 1.375rem; font-weight: 500; letter-spacing: -0.02em; line-height: 1.15; }
+.licence-covers { font-size: 1rem; color: var(--field-muted); max-width: 44ch; }
+.licence-ask {
+  justify-self: start; display: inline-flex; align-items: center; min-height: var(--tap);
+  font-size: var(--step-small); font-weight: 500; text-underline-offset: 0.25em; text-decoration-thickness: 2px;
+}
+.licence-ask::after { content: "→"; display: inline-block; margin-left: 0.4em; transition: transform 160ms var(--ease-out); }
+.licence-ask:hover::after { transform: translateX(4px); }
+
+.licence.is-match {
+  background: var(--field-2);
+  margin-inline: calc(var(--margin) * -1); padding-inline: var(--margin);
+}
+.licence.is-match .licence-name::after {
+  content: "Likely needed"; display: inline-block; margin-left: 0.6em;
+  font-size: var(--step-small); font-weight: 500; letter-spacing: 0; color: var(--amber);
+  vertical-align: 0.2em;
+}
+
+@media (min-width: 768px) {
+  .services { padding: 136px var(--margin) 144px; }
+  .services-intro { grid-template-columns: 1fr 1fr; align-items: end; gap: 32px; margin-bottom: 64px; }
+  .finder-result { grid-template-columns: 1fr auto; }
+  .licence { grid-template-columns: 34% 1fr auto; align-items: baseline; column-gap: 24px; padding: 24px 0; }
+  .licence-name, .licence-covers { font-size: clamp(1.25rem, 2.1vw, 1.875rem); line-height: 1.25; }
+  .licence-covers { color: var(--field-ink); max-width: 34ch; }
+  .licence-ask { font-size: var(--step-body); }
+  .licence.is-match .licence-name::after { display: block; margin: 6px 0 0; vertical-align: 0; }
+}
+@media (min-width: 1100px) {
+  .services { padding: 168px var(--margin) 176px; }
+  .services-intro { grid-template-columns: calc(var(--axis) - var(--margin)) 1fr; gap: 0; }
+  .licence { grid-template-columns: calc(var(--axis) - var(--margin)) 1fr auto; column-gap: 0; }
+  .licence-ask { padding-left: 24px; }
+}
+
+/* ---------- Photo band ---------- */
+.band { margin: 0; overflow: clip; background: var(--ink); }
+.band img { width: 100%; height: clamp(320px, 62vw, 86vh); object-fit: cover; }
+.band figcaption { padding: 14px var(--margin); font-size: var(--step-small); color: var(--muted); background: var(--ground); }
+
+/* ---------- Section entrances (content stays visible without JS) ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+    transition-delay: calc(var(--d, 0) * 80ms);
+  }
+  .js [data-reveal].is-in { opacity: 1; transform: none; }
+  .js .band img { transform: scale(1.06); transition: transform 1600ms var(--ease-out); }
+  .js .band.is-in img { transform: none; }
+}
