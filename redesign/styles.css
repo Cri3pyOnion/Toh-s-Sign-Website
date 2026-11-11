@@ -1,7 +1,7 @@
 /* Hallmark · shape: Index-First (draw be1443) · genre: editorial · theme: brand · redesign: full · job: hire
- * paper: oklch(97.4% 0.006 258) · accent: oklch(84.1% 0.138 75) · display: Plus Jakarta Sans 600 · body: Plus Jakarta Sans · hero: Ledge · nav: masthead · footer: mast · signature: the licence index with its finder, every row one tap from WhatsApp
+ * paper: oklch(97.4% 0.006 258) · accent: oklch(84.1% 0.138 75) · display: Plus Jakarta Sans 600 · body: Plus Jakarta Sans · hero: Ledge · nav: masthead · footer: mast · signature: the license index with its finder, every row one tap from WhatsApp
  * axes: light/geometric-sans/chromatic-amber · posture: full palette (field navy, signal amber, ink) · contrast: pass · fold: pass · v2.0.0 */
-/* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: S, a licensing firm reads like any consultancy; led with the firm's own licence list and finder and its real client logos instead of a generic services grid */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: S, a licensing firm reads like any consultancy; led with the firm's own license list and finder and its real client logos instead of a generic services grid */
 /* Hallmark · dropped .services-intro, .why-row, .band and the Kuala Lumpur photo band below services · the full redesign moves the photo into the hero field and rebuilds each section */
 /* Hallmark · motion by request: hero load sequence and parallax, sticky masthead with progress, staggered scroll reveals, figure count-up, hover states · transform and opacity only, all off under reduced motion, everything visible without script */
 @import url("./tokens.css");
@@ -159,7 +159,7 @@ html[data-lang-pending] body { visibility: hidden; }
 @keyframes hero-zoom { from { scale: 1.26; opacity: 0.6; } to { scale: 1.12; opacity: 1; } }
 @keyframes rise { from { opacity: 0; transform: translateY(var(--rise, 20px)); } to { opacity: 1; transform: none; } }
 
-/* ---------- Index of licences ---------- */
+/* ---------- Index of licenses ---------- */
 .index { padding-block: var(--section-gap) var(--section-gap-s); }
 .index-head { display: grid; gap: var(--space-xl); margin-bottom: var(--space-2xl); align-items: center; }
 .index-head-text { display: grid; gap: var(--space-md); }
@@ -187,32 +187,32 @@ html[data-lang-pending] body { visibility: hidden; }
 .finder-answer strong { font-weight: 500; }
 @media (min-width: 60rem) { .finder-result { grid-template-columns: minmax(0, 1fr) auto; } }
 
-.licences { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-sm); }
-.licence {
+.licenses { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-sm); }
+.license {
   display: grid; gap: var(--space-2xs) var(--space-lg); padding: var(--space-lg); align-items: center;
   grid-template-columns: 96px minmax(0, 1fr); grid-template-areas: "art name" "art covers" "art ask";
   background: var(--color-paper-2); border-radius: 20px;
   transition: background-color var(--dur-short) var(--ease-out);
 }
-.licence > .art { grid-area: art; width: 100%; align-self: center; }
-.licence-name { grid-area: name; font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem); line-height: 1.15; max-width: none; }
-.licence-covers { grid-area: covers; max-width: 56ch; }
-.licence-ask {
+.license > .art { grid-area: art; width: 100%; align-self: center; }
+.license-name { grid-area: name; font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem); line-height: 1.15; max-width: none; }
+.license-covers { grid-area: covers; max-width: 56ch; }
+.license-ask {
   grid-area: ask; justify-self: start; display: inline-flex; align-items: center; min-height: 48px;
   font-weight: 500; text-decoration: underline; text-underline-offset: 0.3em; white-space: nowrap;
 }
-.licence-ask:hover { text-decoration-thickness: 2px; }
-.licence.is-match { background: var(--color-paper-3); }
-.licence.is-match .licence-name::after {
+.license-ask:hover { text-decoration-thickness: 2px; }
+.license.is-match { background: var(--color-paper-3); }
+.license.is-match .license-name::after {
   content: "Typically required"; display: block; margin-top: var(--space-xs);
   font: 500 var(--text-sm)/1.3 var(--font-body); letter-spacing: 0; color: var(--color-focus);
 }
 @media (min-width: 60rem) {
-  .licence {
+  .license {
     grid-template-columns: 150px minmax(0, 5fr) minmax(0, 6fr) auto; grid-template-areas: "art name covers ask";
     column-gap: var(--gap-columns); padding: var(--space-lg) var(--space-xl) var(--space-lg) var(--space-lg);
   }
-  .licence-ask { justify-self: end; }
+  .license-ask { justify-self: end; }
 }
 
 /* ---------- Figures (navy band) ---------- */
@@ -352,14 +352,14 @@ html[data-lang-pending] body { visibility: hidden; }
   .btn:active { transform: translateY(0); }
 }
 
-/* Licence rows: the name leans in on hover; picking a business type dims the rows it does not need. */
-.licence-name { transition: transform var(--dur-long) var(--ease-out); }
+/* License rows: the name leans in on hover; picking a business type dims the rows it does not need. */
+.license-name { transition: transform var(--dur-long) var(--ease-out); }
 @media (hover: hover) {
-  .licence:hover .licence-name { transform: translateX(var(--space-xs)); }
+  .license:hover .license-name { transform: translateX(var(--space-xs)); }
 }
-.licences.has-filter .licence:not(.is-match) { opacity: 0.45; }
-.licences.has-filter .licence { transition: opacity var(--dur-long) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
-.licence.is-match .licence-name::after { animation: rise 500ms var(--ease-out) both; }
+.licenses.has-filter .license:not(.is-match) { opacity: 0.45; }
+.licenses.has-filter .license { transition: opacity var(--dur-long) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
+.license.is-match .license-name::after { animation: rise 500ms var(--ease-out) both; }
 
 /* Client logos come up to full strength and grow slightly on hover. */
 .logos img { opacity: 0.8; transition: opacity var(--dur-short) var(--ease-out); }
@@ -421,9 +421,9 @@ html[data-lang-pending] body { visibility: hidden; }
   .art.is-live .pulse { stroke-dasharray: 0.35 0.65; animation: art-trace 2s linear infinite; }
 
   /* Hovering a row or an item gives its drawing a nudge. */
-  .licence > .art, .why-item > .icon, .figure-item > .icon, .contact-icon .icon { transition: transform var(--dur-long) var(--ease-out); }
+  .license > .art, .why-item > .icon, .figure-item > .icon, .contact-icon .icon { transition: transform var(--dur-long) var(--ease-out); }
   @media (hover: hover) {
-    .licence:hover > .art { transform: rotate(-4deg) scale(1.06); }
+    .license:hover > .art { transform: rotate(-4deg) scale(1.06); }
     .why-item:hover > .icon, .figure-item:hover > .icon { transform: translateY(-4px) rotate(-6deg); }
     .contact-card:hover .contact-icon .icon { transform: rotate(-12deg) scale(1.1); }
   }
@@ -438,11 +438,11 @@ html[data-lang-pending] body { visibility: hidden; }
 @keyframes art-grow { from { scale: 1 0.55; } to { scale: 1 1; } }
 @keyframes art-trace { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 @media (max-width: 40rem) {
-  .licence { grid-template-columns: 72px minmax(0, 1fr); padding: var(--space-md); column-gap: var(--space-md); }
-  .licence-name { font-size: 1.3rem; }
+  .license { grid-template-columns: 72px minmax(0, 1fr); padding: var(--space-md); column-gap: var(--space-md); }
+  .license-name { font-size: 1.3rem; }
   .art-lg { width: min(100%, 320px); }
 }
-:lang(zh) .licence.is-match .licence-name::after { content: "通常需要"; }
+:lang(zh) .license.is-match .license-name::after { content: "通常需要"; }
 
 /* ---------- Hero scene: an illustrated KL street that draws itself, then lives ---------- */
 .hero-field { position: relative; overflow: hidden; background: oklch(93.5% 0.03 255); }
@@ -476,7 +476,7 @@ html[data-lang-pending] body { visibility: hidden; }
 @keyframes hero-neon { 0%, 18%, 22%, 60%, 100% { opacity: 1; } 20%, 62% { opacity: 0.25; } }
 @keyframes hero-letter { from { opacity: 0; transform: translateY(0.6em) rotate(10deg); } to { opacity: 1; transform: none; } }
 
-/* ---------- Ticker: every licence and approval, scrolling past ---------- */
+/* ---------- Ticker: every license and approval, scrolling past ---------- */
 .ticker { background: var(--color-accent); color: var(--color-accent-ink); overflow: hidden; padding-block: var(--space-md); }
 .ticker-track { display: flex; width: max-content; }
 .ticker-row { display: flex; list-style: none; margin: 0; padding: 0; }

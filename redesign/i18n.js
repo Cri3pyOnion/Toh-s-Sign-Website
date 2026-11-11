@@ -141,8 +141,8 @@
   const en = {
     'menu.open': 'Menu',
     'menu.close': 'Close',
-    'finder.prompt': 'Select a business type to see the licences typically required.',
-    'wa.which': 'Hi Toh’s Sign, I’d like to ask which licences I need.',
+    'finder.prompt': 'Select a business type to see the licenses typically required.',
+    'wa.which': 'Hi Toh’s Sign, I’d like to ask which licenses I need.',
   };
 
   const root = document.documentElement;

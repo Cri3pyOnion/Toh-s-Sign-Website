@@ -45,7 +45,7 @@ if (toggle && menu) {
   });
 }
 
-// Licence finder: marks the licences a business type is likely to need and
+// License finder: marks the licenses a business type is likely to need and
 // pre-fills the WhatsApp message with them. Without JS the full list still shows.
 const finder = document.querySelector('[data-finder]');
 if (finder) {
@@ -53,19 +53,19 @@ if (finder) {
   const chips = [...finder.querySelectorAll('.chip')];
   const answer = finder.querySelector('[data-finder-answer]');
   const cta = finder.querySelector('[data-finder-cta]');
-  const rows = [...document.querySelectorAll('[data-licence]')];
-  const nameOf = (key) => rows.find((r) => r.dataset.licence === key)?.querySelector('.licence-name')?.textContent.trim();
+  const rows = [...document.querySelectorAll('[data-license]')];
+  const nameOf = (key) => rows.find((r) => r.dataset.license === key)?.querySelector('.license-name')?.textContent.trim();
   const wa = 'https://wa.me/60164397178?text=';
 
   const render = () => {
     const chip = chips.find((c) => c.getAttribute('aria-pressed') === 'true');
     const needs = chip ? chip.dataset.need.split(' ') : [];
-    rows.forEach((r) => r.classList.toggle('is-match', needs.includes(r.dataset.licence)));
+    rows.forEach((r) => r.classList.toggle('is-match', needs.includes(r.dataset.license)));
     rows[0]?.parentElement.classList.toggle('has-filter', Boolean(chip));
 
     if (!chip) {
-      answer.textContent = t('finder.prompt', 'Select a business type to see the licences typically required.');
-      cta.href = wa + encodeURIComponent(t('wa.which', 'Hi Toh’s Sign, I’d like to ask which licences I need.'));
+      answer.textContent = t('finder.prompt', 'Select a business type to see the licenses typically required.');
+      cta.href = wa + encodeURIComponent(t('wa.which', 'Hi Toh’s Sign, I’d like to ask which licenses I need.'));
       return;
     }
     const names = needs.map(nameOf).filter(Boolean);
@@ -151,7 +151,7 @@ if (motionOK && 'IntersectionObserver' in window && arts.length) {
 if (motionOK && 'IntersectionObserver' in window) {
   // Scroll reveals, staggered within each group.
   const groups = [
-    ['.index-head', '.finder:not([hidden])'], ['.licence'],
+    ['.index-head', '.finder:not([hidden])'], ['.license'],
     ['.figures h2'], ['.figure-item'],
     ['.why-head'], ['.why-item'], ['.why-cta'],
     ['.clients h2'], ['.logos li'],
