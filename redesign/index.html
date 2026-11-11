@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -39,25 +39,11 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-main">
       <h1 id="hero-title" class="hero-title lines">
-        <span class="line"><span data-line style="--i:0">Get licensed.</span></span>
-        <span class="line"><span data-line style="--i:1">Open sooner.</span></span>
+        <span class="line"><span data-line style="--i:0">Licensing,</span></span>
+        <span class="line"><span data-line style="--i:1">made simple.</span></span>
       </h1>
-      <script>
-        /* PREVIEW ONLY: compare headlines with ?h=1 … ?h=5. Remove once one is chosen. */
-        (function () {
-          var options = {
-            1: ['Get licensed.', 'Open sooner.'],
-            2: ['Your licence,', 'approved.'],
-            3: ['Approved.', 'No runaround.'],
-            4: ['Licensing,', 'made simple.'],
-            5: ['317,388 cases', 'approved.']
-          };
-          var pick = options[new URLSearchParams(location.search).get('h')];
-          if (!pick) return;
-          var lines = document.querySelectorAll('#hero-title [data-line]');
-          for (var i = 0; i < lines.length; i++) lines[i].textContent = pick[i];
-        })();
-      </script>
+
+      <p class="hero-proof"><span class="hero-proof-figure">317,388+</span> successful cases and counting.</p>
 
       <p class="hero-lead">
         Licensing consultancy in Kuala Lumpur since 1997. Business, signboard and entertainment
@@ -74,7 +60,6 @@
 
       <dl class="hero-stats" aria-label="Toh’s Sign in figures">
         <div class="stat"><dt>Years of expertise</dt><dd>28+</dd></div>
-        <div class="stat"><dt>Successful cases</dt><dd>317,388+</dd></div>
         <div class="stat"><dt>Leading brands served</dt><dd>200+</dd></div>
         <div class="stat"><dt>Approval success rate</dt><dd>89%</dd></div>
       </dl>
@@ -189,6 +174,6 @@
     <!-- Next sections: figures, about, brands, contact, footer. -->
   </main>
 
-  <script src="main.js?v=6" defer></script>
+  <script src="main.js?v=7" defer></script>
 </body>
 </html>
