@@ -33,7 +33,7 @@
   :root { --margin: 32px; }
 }
 @media (min-width: 1100px) {
-  :root { --margin: 48px; --axis: 42vw; --step-display: clamp(5rem, 9.5vw, 10.5rem); }
+  :root { --margin: 48px; --axis: 42vw; --step-display: clamp(4.5rem, 7.2vw, 9rem); }
 }
 
 /* ---------- Base ---------- */
@@ -94,10 +94,12 @@ img { max-width: 100%; height: auto; display: block; }
   font-weight: 700; font-size: 1.25rem; letter-spacing: -0.03em;
   text-decoration: none; min-height: var(--tap); display: inline-flex; align-items: center;
 }
-.logo { display: inline-flex; align-items: center; min-height: var(--tap); }
-.logo img { height: 40px; width: auto; }
-@media (min-width: 1100px) { .logo img { height: 46px; } }
+/* Full dual logo at every width: it shrinks to the space left beside the menu on phones. */
+.logo { display: inline-flex; align-items: center; min-height: var(--tap); flex: 1 1 auto; min-width: 0; }
+.logo img { width: 100%; max-width: 330px; height: auto; }
+@media (min-width: 1100px) { .logo { flex: none; } .logo img { width: auto; max-width: none; height: 46px; } }
 .top-call { display: none; }
+.top-nav { flex: none; }
 
 .menu-toggle {
   min-height: var(--tap); padding: 0 4px; border: 0; background: none; color: var(--ink);
@@ -155,6 +157,7 @@ img { max-width: 100%; height: auto; display: block; }
   line-height: 0.95;
 }
 .hero-lead { font-size: 1.125rem; max-width: 34ch; }
+.hero-main { display: grid; gap: 24px; }
 .hero-actions { display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
 
 /* Figures: the label is first in the markup (dt), the number shows on top. */
@@ -181,17 +184,21 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 @media (min-width: 1100px) {
-  /* Headline across the full width; sentence on the left, actions on the 42% axis. */
+  /* Two columns: headline, sentence and actions on the left; the four figures as a
+     panel on the right, both resting on the same bottom line. */
   .hero {
-    min-height: calc(100svh - 100px); align-content: end;
-    grid-template-columns: calc(var(--axis) - var(--margin)) 1fr;
-    column-gap: 0; row-gap: 40px;
-    padding: 8vh var(--margin) 0;
+    min-height: calc(100svh - 100px);
+    grid-template-columns: 7fr 5fr; column-gap: clamp(48px, 5vw, 96px);
+    align-content: center; align-items: end;
+    padding: 4vh var(--margin) 8vh;
   }
-  .hero-title { grid-column: 1 / -1; }
-  .hero-lead { grid-column: 1; align-self: center; max-width: 34ch; padding-right: 32px; }
-  .hero-actions { grid-column: 2; align-self: center; }
-  .hero-stats { grid-column: 1 / -1; margin-top: 24px; grid-template-columns: repeat(4, 1fr); }
+  .hero-main { display: grid; gap: 36px; }
+  .hero-lead { max-width: 44ch; }
+  .hero-stats {
+    margin: 0; padding: clamp(32px, 3vw, 48px);
+    grid-template-columns: 1fr 1fr; gap: 40px 32px;
+  }
+  .stat dd { font-size: clamp(2.25rem, 3.4vw, 4rem); }
 }
 
 /* ---------- Motion: masked headline (content stays visible without JS) ---------- */
