@@ -1,13 +1,20 @@
+// Strings from the language switch (i18n.js); falls back to English if it did not load.
+const t = (key, fallback) => (window.i18n ? window.i18n.t(key) : '') || fallback;
+const isZh = () => window.i18n?.lang === 'zh';
+
 // Phone menu toggle. Without this script the links show inline.
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('menu');
 
 if (toggle && menu) {
+  const label = () => { toggle.textContent = toggle.getAttribute('aria-expanded') === 'true' ? t('menu.close', 'Close') : t('menu.open', 'Menu'); };
   const setOpen = (open) => {
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? 'Close' : 'Menu';
     menu.classList.toggle('is-open', open);
+    label();
   };
+  label();
+  document.addEventListener('langchange', label);
   toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
   document.addEventListener('keydown', (e) => {
@@ -26,30 +33,45 @@ if (finder) {
   const rows = [...document.querySelectorAll('[data-licence]')];
   const nameOf = (key) => rows.find((r) => r.dataset.licence === key)?.querySelector('.licence-name')?.textContent.trim();
   const wa = 'https://wa.me/60164397178?text=';
-  const prompt = 'Select a business type to see the licences typically required.';
+
+  const render = () => {
+    const chip = chips.find((c) => c.getAttribute('aria-pressed') === 'true');
+    const needs = chip ? chip.dataset.need.split(' ') : [];
+    rows.forEach((r) => r.classList.toggle('is-match', needs.includes(r.dataset.licence)));
+    rows[0]?.parentElement.classList.toggle('has-filter', Boolean(chip));
+
+    if (!chip) {
+      answer.textContent = t('finder.prompt', 'Select a business type to see the licences typically required.');
+      cta.href = wa + encodeURIComponent(t('wa.which', 'Hi Toh’s Sign, I’d like to ask which licences I need.'));
+      return;
+    }
+    const names = needs.map(nameOf).filter(Boolean);
+    const what = chip.textContent.trim();
+    const strong = document.createElement('strong');
+
+    if (isZh()) {
+      const list = names.length > 1 ? names.slice(0, -1).join('、') + '及' + names.at(-1) : names[0];
+      strong.textContent = list;
+      answer.replaceChildren(`${what}通常需要：`, strong, '。我们会在免费咨询中为您确认具体要求。');
+      cta.href = wa + encodeURIComponent(`您好 Toh’s Sign，我的项目是${what}，想咨询${list}的申请。`);
+      return;
+    }
+    const list = names.length > 1 ? names.slice(0, -1).join(', ') + ' and ' + names.at(-1) : names[0];
+    const lower = what.toLowerCase();
+    const a = /^[aeiou]/.test(lower) ? 'an' : 'a';
+    strong.textContent = list;
+    answer.replaceChildren(`Typically required for ${a} ${lower}: `, strong, '. We confirm the exact requirements during a free consultation.');
+    cta.href = wa + encodeURIComponent(`Hi Toh’s Sign, I’m planning ${a} ${lower}. Can you help with the ${list.toLowerCase()}?`);
+  };
 
   chips.forEach((chip) => chip.addEventListener('click', () => {
     const on = chip.getAttribute('aria-pressed') !== 'true';
     chips.forEach((c) => c.setAttribute('aria-pressed', 'false'));
     chip.setAttribute('aria-pressed', String(on));
-    const needs = on ? chip.dataset.need.split(' ') : [];
-    rows.forEach((r) => r.classList.toggle('is-match', needs.includes(r.dataset.licence)));
-    rows[0]?.parentElement.classList.toggle('has-filter', on);
-
-    if (!on) {
-      answer.textContent = prompt;
-      cta.href = wa + encodeURIComponent('Hi Toh’s Sign, I’d like to ask which licences I need.');
-      return;
-    }
-    const names = needs.map(nameOf).filter(Boolean);
-    const list = names.length > 1 ? names.slice(0, -1).join(', ') + ' and ' + names.at(-1) : names[0];
-    const what = chip.textContent.trim().toLowerCase();
-    const a = /^[aeiou]/.test(what) ? 'an' : 'a';
-    const strong = document.createElement('strong');
-    strong.textContent = list;
-    answer.replaceChildren(`Typically required for ${a} ${what}: `, strong, '. We confirm the exact requirements during a free consultation.');
-    cta.href = wa + encodeURIComponent(`Hi Toh’s Sign, I’m planning ${a} ${what}. Can you help with the ${list.toLowerCase()}?`);
+    render();
   }));
+  render();
+  document.addEventListener('langchange', render);
 }
 
 // ---------- Motion ----------
