@@ -26,7 +26,7 @@ if (finder) {
   const rows = [...document.querySelectorAll('[data-licence]')];
   const nameOf = (key) => rows.find((r) => r.dataset.licence === key)?.querySelector('.licence-name')?.textContent.trim();
   const wa = 'https://wa.me/60164397178?text=';
-  const prompt = 'Pick one and we will mark the licences you are likely to need.';
+  const prompt = 'Select a business type to see the licences typically required.';
 
   chips.forEach((chip) => chip.addEventListener('click', () => {
     const on = chip.getAttribute('aria-pressed') !== 'true';
@@ -46,7 +46,7 @@ if (finder) {
     const a = /^[aeiou]/.test(what) ? 'an' : 'a';
     const strong = document.createElement('strong');
     strong.textContent = list;
-    answer.replaceChildren(`For ${a} ${what}, you will likely need: `, strong, '. We confirm the exact list on a free call.');
+    answer.replaceChildren(`Typically required for ${a} ${what}: `, strong, '. We confirm the exact requirements during a free consultation.');
     cta.href = wa + encodeURIComponent(`Hi Toh’s Sign, I’m planning ${a} ${what}. Can you help with the ${list.toLowerCase()}?`);
   }));
 }
