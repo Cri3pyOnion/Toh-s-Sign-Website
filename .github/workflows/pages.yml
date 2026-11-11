@@ -1,4 +1,7 @@
 # Publishes the static redesign/ folder to GitHub Pages as a temporary preview.
+# main goes to the site root; every branch named try/<name> goes to /try/<name>/
+# so a change can be tried before it reaches main. Only main may deploy to Pages,
+# so after pushing a try/ branch, re-run this workflow on main (Actions > Run workflow).
 # The WordPress theme/ is not deployed here (Pages cannot run PHP).
 name: Deploy redesign preview to Pages
 
@@ -25,9 +28,21 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build site (main at root, try/* branches under /try/)
+        run: |
+          mkdir -p _site
+          cp -r redesign/. _site/
+          for ref in $(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/try/'); do
+            name="${ref#try/}"
+            mkdir -p "_site/try/$name"
+            git archive "origin/$ref" redesign | tar -x -C "_site/try/$name" --strip-components=1
+            echo "Preview: /try/$name/"
+          done
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: redesign
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
