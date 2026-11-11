@@ -1,0 +1,192 @@
+/* Toh's Sign — redesign prototype. Mobile-first: base styles are the phone layout,
+   min-width queries add the larger layouts. Every colour and size comes from these tokens. */
+
+:root {
+  /* Colour: one ground, one ink, brand navy as the field colour, brand amber only on the main action. */
+  --ground: #f4f5f7;
+  --ground-2: #e9ecf1;          /* one tone step for bands */
+  --ink: #0b1630;
+  --muted: #47516a;             /* 7.6:1 on ground */
+  --navy: #00357a;              /* brand */
+  --on-navy: #ffffff;
+  --amber: #ffbd59;             /* brand, action only */
+  --on-amber: #0b1630;
+
+  /* Type: Epilogue only. Five steps. */
+  --font: "Epilogue", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --step-small: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.5rem, 1.2rem + 5vw, 5.5rem);
+  --step-display: clamp(3.5rem, 17vw, 8rem);
+
+  /* Space and frame */
+  --margin: 20px;
+  --axis: 0px;                  /* the hero's vertical axis; moves to 42% on wide screens */
+  --tap: 48px;
+  --radius: 0;                  /* square corners everywhere */
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 768px) {
+  :root { --margin: 32px; }
+}
+@media (min-width: 1100px) {
+  :root { --margin: 48px; --axis: 42vw; --step-display: clamp(5rem, 8.4vw, 9.5rem); }
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--step-body);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+
+:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
+::selection { background: var(--navy); color: var(--on-navy); }
+
+.skip {
+  position: absolute; left: var(--margin); top: -100px; z-index: 10;
+  background: var(--ink); color: var(--ground); padding: 12px 16px; text-decoration: none;
+}
+.skip:focus { top: 12px; }
+
+/* ---------- Buttons and links ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 56px; padding: 0 28px;
+  font: 500 var(--step-body)/1 var(--font);
+  text-decoration: none; border-radius: var(--radius);
+  transition: transform 160ms var(--ease-out), background-color 160ms ease;
+}
+.btn-primary { background: var(--amber); color: var(--on-amber); }
+.btn-primary:hover { background: #ffb23b; }
+.btn:active { transform: translateY(1px) scale(0.99); }
+
+.link-arrow {
+  display: inline-flex; align-items: center; min-height: var(--tap);
+  font-weight: 500; text-decoration: underline; text-underline-offset: 0.25em;
+  text-decoration-thickness: 2px; text-decoration-color: var(--ink);
+}
+.link-arrow::after { content: "→"; display: inline-block; margin-left: 0.4em; transition: transform 160ms var(--ease-out); }
+.link-arrow:hover::after { transform: translateX(4px); }
+
+/* ---------- Top bar (phone first) ---------- */
+.top {
+  position: relative; z-index: 5;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 16px var(--margin) 0;
+}
+.wordmark {
+  font-weight: 700; font-size: 1.25rem; letter-spacing: -0.03em;
+  text-decoration: none; min-height: var(--tap); display: inline-flex; align-items: center;
+}
+.top-call { display: none; }
+
+.menu-toggle {
+  min-height: var(--tap); padding: 0 4px; border: 0; background: none; color: var(--ink);
+  font: 500 var(--step-body)/1 var(--font); cursor: pointer;
+  text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 2px;
+}
+.menu {
+  position: absolute; left: 0; right: 0; top: 100%;
+  background: var(--ground); padding: 8px var(--margin) 24px;
+  display: none;
+}
+.menu.is-open { display: block; }
+.menu a {
+  display: flex; align-items: center; min-height: 56px;
+  font-size: var(--step-lead); font-weight: 500; text-decoration: none;
+}
+.no-js .menu-toggle { display: none; }
+.no-js .menu { position: static; display: flex; gap: 16px; padding: 0; background: none; }
+.no-js .menu a { font-size: var(--step-body); }
+
+@media (min-width: 768px) {
+  .menu-toggle { display: none; }
+  .menu, .no-js .menu {
+    position: static; display: flex; gap: 32px; padding: 0; background: none;
+  }
+  .menu a { font-size: var(--step-body); min-height: var(--tap); }
+  .menu a:hover { text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 2px; }
+}
+@media (min-width: 1100px) {
+  .top { padding-top: 28px; }
+  /* Links start exactly on the 42% axis; call link at the right margin. */
+  .top-nav { position: absolute; left: var(--axis); top: 28px; }
+  .menu-contact { display: none; }
+  .top-call {
+    display: inline-flex; align-items: center; min-height: var(--tap); font-weight: 500;
+    text-decoration: none; font-variant-numeric: tabular-nums;
+  }
+  .top-call:hover { text-decoration: underline; text-underline-offset: 0.25em; text-decoration-thickness: 2px; }
+}
+
+/* ---------- Hero (phone first) ----------
+   The upper part of the screen is a composed void; the statement, sentence and action
+   sit together in the lower part on one left edge. */
+.hero {
+  min-height: calc(100svh - 64px);
+  display: grid;
+  align-content: end;
+  gap: 24px;
+  padding: 40vh var(--margin) 28px;
+}
+.hero-title {
+  font-size: var(--step-display);
+  font-weight: 500;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+.hero-lead { font-size: 1.125rem; max-width: 34ch; }
+.hero-actions { display: flex; flex-direction: column; align-items: stretch; gap: 8px; }
+
+@media (min-width: 768px) {
+  .hero { padding-top: 34vh; padding-bottom: 56px; }
+  .hero-actions { flex-direction: row; align-items: center; gap: 28px; }
+  .hero-lead { font-size: var(--step-body); }
+}
+
+@media (min-width: 1100px) {
+  /* Axis layout: statement hangs from 42%; sentence bottom-left, aligned to the last baseline. */
+  .hero {
+    min-height: calc(100svh - 76px);
+    grid-template-columns: calc(var(--axis) - var(--margin)) 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 0; row-gap: 40px;
+    padding: 0 var(--margin) 72px;
+  }
+  .hero-title { grid-column: 2; grid-row: 1; align-self: end; }
+  .hero-lead { grid-column: 1; grid-row: 1; align-self: end; max-width: 32ch; padding-right: 32px; }
+  .hero-actions { grid-column: 2; grid-row: 2; }
+}
+
+/* ---------- Motion: masked headline (content stays visible without JS) ---------- */
+.lines .line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.lines [data-line] { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .js .lines [data-line] {
+    transform: translateY(105%);
+    animation: line-up 900ms var(--ease-out) forwards;
+    animation-delay: calc(var(--i) * 110ms + 150ms);
+  }
+  .js .hero-lead, .js .hero-actions {
+    opacity: 0; transform: translateY(16px);
+    animation: fade-up 700ms var(--ease-out) 520ms forwards;
+  }
+}
+@keyframes line-up { to { transform: none; } }
+@keyframes fade-up { to { opacity: 1; transform: none; } }

@@ -5,3 +5,6 @@ node_modules/
 .idea/
 *.log
 .claude/settings.local.json
+.taste-skill/inspect/
+.taste-skill/before/
+.taste-skill/after/
