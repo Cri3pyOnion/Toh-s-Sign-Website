@@ -12,6 +12,8 @@
   <meta name="robots" content="noindex, nofollow">
   <script>
     document.documentElement.classList.replace('no-js', 'js');
+    // The logo intro plays once per visit.
+    try { if (sessionStorage.getItem('tohs-intro')) document.documentElement.classList.add('intro-seen'); else sessionStorage.setItem('tohs-intro', '1'); } catch (e) {}
     // Set the saved or requested language before first paint so Chinese readers never see English flash.
     (function () {
       var lang = new URLSearchParams(location.search).get('lang');
@@ -25,9 +27,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=21">
+  <link rel="stylesheet" href="styles.css?v=22">
 </head>
 <body>
+  <div class="splash" aria-hidden="true"><div class="splash-plate"><img src="assets/images/logo.png" width="1283" height="146" alt=""><span class="splash-line"></span></div></div>
   <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
   <!-- Top bar: the company's credentials, scrolls away above the sticky masthead. -->
@@ -38,7 +41,7 @@
         <li class="topbar-ssm num">SSM 713854-H · 1563660-H</li>
         <li data-i18n="top.free">Free first consultation</li>
       </ul>
-      <p class="topbar-hours num" data-i18n="top.hours">Mon to Fri, 8:30 am to 6:00 pm</p>
+      <div class="topbar-right"><a href="careers.html" data-i18n="nav.careers">Careers</a><a href="#contact" data-i18n="nav.contact">Contact</a><p class="topbar-hours num" data-i18n="top.hours">Mon to Fri, 8:30 am to 6:00 pm</p></div>
     </div>
   </div>
 
@@ -48,9 +51,27 @@
       <nav class="mast-nav" aria-label="Main">
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
         <ul id="menu" class="menu">
-          <li><a href="#services" data-i18n="nav.services">Services</a></li>
+          <li class="has-sub"><button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-services"><span data-i18n="nav.services">Services</span><svg class="caret" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+            <ul id="sub-services" class="submenu">
+              <li><a href="#lic-business" data-i18n="lic.business.name">Business and factory license</a></li>
+              <li><a href="#lic-entertainment" data-i18n="lic.entertainment.name">Entertainment and liquor license</a></li>
+              <li><a href="#lic-advertisement" data-i18n="lic.advertisement.name">Advertisement and outdoor license</a></li>
+              <li><a href="#lic-engineering" data-i18n="lic.engineering.name">Engineering and architectural drawings</a></li>
+              <li><a href="#lic-other" data-i18n="lic.other.name">Regulatory and industry compliance</a></li>
+              <li><a href="#services" data-i18n="nav.allservices">All services</a></li>
+            </ul></li>
+          <li class="has-sub"><button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-tools"><span data-i18n="nav.tools">Free tools</span><svg class="caret" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+            <ul id="sub-tools" class="submenu">
+              <li><a href="#finder" data-i18n="tool.finder">License finder</a></li>
+              <li><a href="#renewal" data-i18n="tool.renewal">Renewal reminder</a></li>
+            </ul></li>
           <li><a href="#why" data-i18n="nav.why">Why us</a></li>
-          <li><a href="#about" data-i18n="nav.about">About</a></li>
+          <li class="has-sub"><button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-about"><span data-i18n="nav.about">About</span><svg class="caret" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+            <ul id="sub-about" class="submenu">
+              <li><a href="#about" data-i18n="about.title">About Toh’s Sign</a></li>
+              <li><a href="#team" data-i18n="nav.team">Our team</a></li>
+              <li><a href="careers.html" data-i18n="nav.careers">Careers</a></li>
+            </ul></li>
           <li class="menu-contact"><a href="#contact" data-i18n="nav.contact">Contact</a></li>
         </ul>
       </nav>
@@ -60,7 +81,7 @@
       </a>
       <div class="mast-actions">
         <a class="mast-call num" href="tel:+60391082871">03-9108 2871</a>
-        <a class="mast-contact" href="#contact" data-i18n="nav.contact">Contact</a>
+        <a class="btn btn-primary btn-sm mast-wa" data-wa="wa.consult" href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20a%20free%20licensing%20consultation." rel="noopener" target="_blank" data-i18n="cta.whatsapp">WhatsApp us</a>
         <div class="lang" role="group" aria-label="Language 语言" hidden>
           <button type="button" data-lang="en" lang="en" aria-pressed="true">EN</button>
           <button type="button" data-lang="zh" lang="zh-Hans" aria-pressed="false">中文</button>
@@ -130,7 +151,7 @@
           <svg class="art art-lg" viewBox="0 0 360 300" aria-hidden="true" focusable="false"><path class="blob" d="M58 96C52 40 128 14 196 22c70 8 128 52 136 116 8 66-36 132-110 146-74 14-150-10-172-70-14-38 12-74 8-118z"/><rect class="s fw" x="104" y="48" width="150" height="196" rx="12"/><rect class="s fa" x="146" y="34" width="66" height="26" rx="8"/><circle class="s fp" cx="132" cy="102" r="11"/><path class="s" d="M126 102l5 5 9-10"/><path class="s" d="M154 98h72M154 110h44"/><circle class="s fp" cx="132" cy="148" r="11"/><path class="s" d="M126 148l5 5 9-10"/><path class="s" d="M154 144h72M154 156h52"/><circle class="s fp" cx="132" cy="194" r="11"/><path class="s" d="M154 190h60M154 202h36"/><g class="pop"><circle class="s fa" cx="262" cy="222" r="38"/><circle class="s" cx="262" cy="222" r="27"/><path class="s" d="M248 222l10 10 18-20"/></g><path class="s fb" d="M300 70l16 16-80 80-22 6 6-22z"/><path class="s" d="M290 80l16 16"/><path class="s fl" d="M58 52l12 12M70 52l-12 12"/><circle class="s fl" cx="322" cy="150" r="7"/><rect class="s fl fp" x="40" y="206" width="20" height="20" rx="3" transform="rotate(18 50 216)"/><path class="s fl" d="M308 200l12-6M310 220h14M308 240l12 6"/></svg>
         </div>
 
-        <div class="finder" data-finder hidden>
+        <div class="finder" id="finder" data-finder hidden>
           <p id="finder-q" class="finder-q" data-i18n="finder.q">Select your business type</p>
           <div class="chips" role="group" aria-labelledby="finder-q">
             <button type="button" class="chip" aria-pressed="false" data-need="business advertisement" data-i18n="chip.shop">Shop or office</button>
@@ -151,37 +172,64 @@
         </div>
 
         <ul class="licenses">
-          <li class="license" data-license="business">
+          <li class="license" id="lic-business" data-license="business">
             <svg class="art art-sm" viewBox="0 0 160 140" aria-hidden="true" focusable="false"><path class="blob" d="M18 70C14 34 52 12 88 14c38 2 62 30 60 66-2 38-34 58-70 56-36-2-58-28-60-66z"/><path class="s" d="M14 122h132"/><rect class="s fw" x="32" y="44" width="96" height="78" rx="4"/><rect class="s fn" x="50" y="24" width="60" height="18" rx="4"/><path class="s fa" d="M28 52h104l-4 14c-3 6-13 6-16 0c-3 6-13 6-16 0c-3 6-13 6-16 0c-3 6-13 6-16 0c-3 6-13 6-16 0c-3 6-13 6-16 0z"/><rect class="s fp" x="44" y="84" width="24" height="38"/><rect class="s fb" x="80" y="82" width="36" height="24" rx="2"/><path class="s" d="M98 82v24"/><path class="s fl" d="M136 18l8 8M144 18l-8 8"/><circle class="s fl" cx="16" cy="38" r="4"/></svg>
             <h3 class="license-name" data-i18n="lic.business.name">Business and factory license</h3>
             <p class="license-covers" data-i18n="lic.business.covers">For shop units, offices, retail stores and industrial factory operations.</p>
             <a class="license-ask" rel="noopener" target="_blank" data-wa="wa.business" data-i18n="lic.business.ask" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20business%20license.">Enquire<span class="visually-hidden"> about a business license</span></a>
           </li>
-          <li class="license" data-license="entertainment">
+          <li class="license" id="lic-entertainment" data-license="entertainment">
             <svg class="art art-sm" viewBox="0 0 160 140" aria-hidden="true" focusable="false"><path class="blob" d="M18 70C14 34 52 12 88 14c38 2 62 30 60 66-2 38-34 58-70 56-36-2-58-28-60-66z"/><path class="s" d="M14 122h132"/><path class="s fw" d="M44 40h60l-30 38z"/><path class="s fa" d="M52 47h44l-22 27z"/><path class="s" d="M74 78v36M58 116h32"/><circle class="s fb" cx="94" cy="40" r="6"/><g class="sway"><path class="s" d="M116 48l22-8v34M116 48v36"/><ellipse class="s fn" cx="110" cy="86" rx="7" ry="5"/><ellipse class="s fn" cx="132" cy="76" rx="7" ry="5"/></g><path class="s fl" d="M28 26v12M22 32h12"/><circle class="s fl" cx="144" cy="108" r="4"/></svg>
             <h3 class="license-name" data-i18n="lic.entertainment.name">Entertainment and liquor license</h3>
             <p class="license-covers" data-i18n="lic.entertainment.covers">For liquor sales, live music, public entertainment and event proposals.</p>
             <a class="license-ask" rel="noopener" target="_blank" data-wa="wa.entertainment" data-i18n="lic.entertainment.ask" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20an%20entertainment%20license.">Enquire<span class="visually-hidden"> about an entertainment license</span></a>
           </li>
-          <li class="license" data-license="advertisement">
+          <li class="license" id="lic-advertisement" data-license="advertisement">
             <svg class="art art-sm" viewBox="0 0 160 140" aria-hidden="true" focusable="false"><path class="blob" d="M18 70C14 34 52 12 88 14c38 2 62 30 60 66-2 38-34 58-70 56-36-2-58-28-60-66z"/><path class="s" d="M14 122h132"/><path class="s" d="M54 88v34M106 88v34M54 106h52"/><rect class="s fw" x="22" y="24" width="116" height="64" rx="4"/><rect class="s fb" x="32" y="34" width="58" height="44" rx="2"/><circle class="s fa blink" cx="50" cy="50" r="7"/><path class="s" d="M34 74l14-12 10 8 12-10 18 14"/><path class="s" d="M102 44h26M102 56h20M102 68h24"/><circle class="s fl fa" cx="148" cy="26" r="4"/><path class="s fl" d="M12 96l8 8M20 96l-8 8"/></svg>
             <h3 class="license-name" data-i18n="lic.advertisement.name">Advertisement and outdoor license</h3>
             <p class="license-covers" data-i18n="lic.advertisement.covers">For signboards, billboards, LED screens, pylon signs and road closures.</p>
             <a class="license-ask" rel="noopener" target="_blank" data-wa="wa.advertisement" data-i18n="lic.advertisement.ask" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20an%20advertisement%20license.">Enquire<span class="visually-hidden"> about an advertisement license</span></a>
           </li>
-          <li class="license" data-license="engineering">
+          <li class="license" id="lic-engineering" data-license="engineering">
             <svg class="art art-sm" viewBox="0 0 160 140" aria-hidden="true" focusable="false"><path class="blob" d="M18 70C14 34 52 12 88 14c38 2 62 30 60 66-2 38-34 58-70 56-36-2-58-28-60-66z"/><path class="s" d="M14 122h132"/><rect class="s fn" x="22" y="28" width="98" height="84" rx="4" transform="rotate(-5 70 70)"/><path class="s sw" d="M40 98V70l26-18 26 18v28zM58 98V82h16v16M36 106h60"/><path class="s fa" d="M98 120h44l-44-48z"/><path class="s" d="M108 110h18l-18-20z"/><path class="s fw" d="M130 22l10 10-48 48-14 4 4-14z"/><path class="s fl" d="M16 18l8 8M24 18l-8 8"/></svg>
             <h3 class="license-name" data-i18n="lic.engineering.name">Engineering and architectural drawings</h3>
             <p class="license-covers" data-i18n="lic.engineering.covers">Plans for renovations, extensions, mezzanine floors, partitions, awnings, ramps and exhaust systems; structure drawings for signboards, billboards and LED screens; and land title conversion.</p>
             <a class="license-ask" rel="noopener" target="_blank" data-wa="wa.engineering" data-i18n="lic.engineering.ask" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20engineering%20drawing%20approval.">Enquire<span class="visually-hidden"> about engineering drawings</span></a>
           </li>
-          <li class="license" data-license="other">
+          <li class="license" id="lic-other" data-license="other">
             <svg class="art art-sm" viewBox="0 0 160 140" aria-hidden="true" focusable="false"><path class="blob" d="M18 70C14 34 52 12 88 14c38 2 62 30 60 66-2 38-34 58-70 56-36-2-58-28-60-66z"/><path class="s" d="M14 122h132"/><rect class="s fw" x="22" y="28" width="104" height="76" rx="4"/><path class="s" d="M38 48h72M38 60h52M38 72h34"/><path class="s fa" d="M96 106l-6 22 8-4 6 8 2-20M112 106l6 22-8-4-6 8-2-20"/><circle class="s fa" cx="104" cy="98" r="15"/><circle class="s" cx="104" cy="98" r="7"/><g class="pop"><path class="s fb" d="M136 36l14 6v12c0 10-6 16-14 20-8-4-14-10-14-20V42z"/><path class="s" d="M130 54l5 5 8-9"/></g><circle class="s fl" cx="14" cy="112" r="4"/></svg>
             <h3 class="license-name" data-i18n="lic.other.name">Regulatory and industry compliance</h3>
             <p class="license-covers" data-i18n="lic.other.covers">SSM company registration; MITI, MIDA, MOH (KKM), DOE and DOSH approvals; import and export permits; trademark registration; and HALAL, HACCP, GMP and MESTI certification.</p>
             <a class="license-ask" rel="noopener" target="_blank" data-wa="wa.other" data-i18n="lic.other.ask" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20agency%20approvals%20(MIDA%2C%20DOE%2C%20DOSH%2C%20KKM).">Enquire<span class="visually-hidden"> about regulatory compliance</span></a>
           </li>
         </ul>
+        <div id="renewal" class="tool" data-renewal>
+          <div class="tool-text">
+            <h3 data-i18n="renew.title">Renewal reminder</h3>
+            <p data-i18n="renew.lead">Enter your license’s expiry date and we’ll tell you when to start the renewal, with a reminder for your calendar.</p>
+          </div>
+          <form class="tool-form" data-renewal-form>
+            <label class="field"><span data-i18n="renew.license">License</span>
+              <select name="license" required>
+                <option value="business" data-i18n="lic.business.name">Business and factory license</option>
+                <option value="entertainment" data-i18n="lic.entertainment.name">Entertainment and liquor license</option>
+                <option value="advertisement" data-i18n="lic.advertisement.name">Advertisement and outdoor license</option>
+                <option value="engineering" data-i18n="lic.engineering.name">Engineering and architectural drawings</option>
+                <option value="other" data-i18n="lic.other.name">Regulatory and industry compliance</option>
+              </select></label>
+            <label class="field"><span data-i18n="renew.expiry">Expiry date</span>
+              <input type="date" name="expiry" required></label>
+            <button type="submit" class="btn btn-navy" data-i18n="renew.go">Plan my renewal</button>
+          </form>
+          <div class="tool-result" data-renewal-result aria-live="polite" hidden>
+            <p class="tool-answer" data-renewal-answer></p>
+            <div class="tool-actions">
+              <a class="btn btn-primary" data-renewal-ics download="license-renewal.ics" href="#" data-i18n="renew.ics">Add to calendar</a>
+              <a class="btn btn-navy" data-renewal-gcal href="#" rel="noopener" target="_blank" data-i18n="renew.gcal">Google Calendar</a>
+              <a class="link-quiet" data-renewal-wa href="#" rel="noopener" target="_blank" data-i18n="renew.wa">Ask us to handle it</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -276,9 +324,66 @@
           <div><dt data-i18n="about.mission.t">Mission</dt><dd data-i18n="about.mission.d">One-stop solutions from consultation to license delivery, with responsive, customer-focused, high-quality service.</dd></div>
           <div><dt data-i18n="about.promise.t">Promise</dt><dd data-i18n="about.promise.d">We commit only to what we can deliver: direct, fast, reliable and hassle-free.</dd></div>
           <div><dt data-i18n="about.csr.t">Social responsibility</dt><dd data-i18n="about.csr.d">We help businesses operate compliantly, care for our community and invest in our people, with integrity at every step.</dd></div>
-          <div><dt data-i18n="about.companies.t">Companies</dt><dd>Toh’s Sign Informatic Sdn Bhd (713854-H)<br>Toh’s Sign Consultancy Sdn Bhd (1563660-H)</dd></div>
         </dl>
         </div>
+      </div>
+    </section>
+
+
+    <!-- Group and leadership: the two companies, then the six people who lead them. -->
+    <section id="team" class="team ground-navy" aria-labelledby="team-title">
+      <div class="container">
+        <div class="sec-head">
+          <div class="sec-head-text">
+            <h2 id="team-title" data-i18n="team.title">Group and leadership</h2>
+            <p class="lead" data-i18n="team.lead">Two companies, one team. Meet the people who lead it.</p>
+          </div>
+          <svg class="art art-md on-field" viewBox="0 0 320 240" aria-hidden="true" focusable="false"><path class="blob" d="M28 124C22 62 82 24 156 24c76 0 136 42 134 104-2 60-60 98-134 96C88 222 34 184 28 124z"/><path class="s" d="M20 208h280"/><rect class="s fw" x="52" y="92" width="80" height="116" rx="4"/><path class="s" d="M68 112h48M68 132h48M68 152h48M68 172h48"/><rect class="s fp" x="188" y="60" width="80" height="148" rx="4"/><path class="s" d="M204 84h48M204 106h48M204 128h48M204 150h48M204 172h48"/><g class="bob"><path class="s fa" d="M132 120c20-26 36-26 56 0"/><circle class="s fa" cx="160" cy="98" r="10"/></g><circle class="s fl" cx="38" cy="58" r="6"/><path class="s fl" d="M286 50l10 10M296 50l-10 10"/></svg>
+        </div>
+        <ul class="group">
+          <li class="group-co">
+            <p class="group-name">Toh’s Sign Informatic Sdn Bhd <span class="num">(713854-H)</span></p>
+            <p class="group-role" data-i18n="group.informatic">Founded in 1997 by CK Toh. Business, advertisement and entertainment licensing.</p>
+          </li>
+          <li class="group-co">
+            <p class="group-name">Toh’s Sign Consultancy Sdn Bhd <span class="num">(1563660-H)</span></p>
+            <p class="group-role" data-i18n="group.consultancy">Subsidiary for complex matters: engineering and building plan approvals, KKM, MOTAC, MIDA and industry certifications.</p>
+          </li>
+        </ul>
+        <h3 class="team-sub" data-i18n="team.leaders">Leadership</h3>
+        <ul class="people">
+          <li class="person">
+            <img src="assets/team/ck-toh.jpg" width="480" height="797" alt="CK Toh" loading="lazy">
+            <p class="person-name">CK Toh</p>
+            <p class="person-role" data-i18n="team.ceo">CEO and HR</p>
+          </li>
+          <li class="person">
+            <img src="assets/team/may-lee.jpg" width="480" height="797" alt="May Lee" loading="lazy">
+            <p class="person-name">May Lee</p>
+            <p class="person-role" data-i18n="team.gm">General Manager</p>
+          </li>
+          <li class="person">
+            <img src="assets/team/chloe.jpg" width="480" height="797" alt="Chloe" loading="lazy">
+            <p class="person-name">Chloe</p>
+            <p class="person-role" data-i18n="team.am">Account Manager</p>
+          </li>
+          <li class="person">
+            <img src="assets/team/pecky.jpg" width="480" height="797" alt="Pecky" loading="lazy">
+            <p class="person-name">Pecky</p>
+            <p class="person-role" data-i18n="team.ac">Admin Consultant</p>
+          </li>
+          <li class="person">
+            <img src="assets/team/mahe-v.jpg" width="480" height="797" alt="Mahe.V" loading="lazy">
+            <p class="person-name">Mahe.V</p>
+            <p class="person-role" data-i18n="team.aom">Admin Operations Manager</p>
+          </li>
+          <li class="person">
+            <img src="assets/team/azir.jpg" width="480" height="797" alt="Azir" loading="lazy">
+            <p class="person-name">Azir</p>
+            <p class="person-role" data-i18n="team.lm">Liaison Manager</p>
+          </li>
+        </ul>
+        <p class="team-more"><a class="btn btn-primary" href="careers.html" data-i18n="team.join">Join our team</a></p>
       </div>
     </section>
 
@@ -323,6 +428,35 @@
           </table>
         </div>
         </div>
+        <form class="inquiry" data-inquiry action="mailto:info@tohssign.my" method="post" enctype="text/plain" aria-labelledby="inquiry-title">
+          <div class="inquiry-head">
+            <h3 id="inquiry-title" data-i18n="form.title">Send us an enquiry</h3>
+            <p data-i18n="form.lead">Tell us about your business and a consultant will get back to you.</p>
+          </div>
+          <div class="inquiry-grid">
+            <label class="field"><span data-i18n="form.name">Your name</span><input name="name" autocomplete="name" required></label>
+            <label class="field"><span data-i18n="form.company">Company (optional)</span><input name="company" autocomplete="organization"></label>
+            <label class="field"><span data-i18n="form.phone">Phone</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
+            <label class="field"><span data-i18n="form.email">Email (optional)</span><input name="email" type="email" autocomplete="email"></label>
+            <label class="field field-wide"><span data-i18n="form.service">What do you need help with?</span>
+              <select name="service" required>
+                <option value="" data-i18n="form.pick">Choose one</option>
+                <option value="business" data-i18n="lic.business.name">Business and factory license</option>
+                <option value="entertainment" data-i18n="lic.entertainment.name">Entertainment and liquor license</option>
+                <option value="advertisement" data-i18n="lic.advertisement.name">Advertisement and outdoor license</option>
+                <option value="engineering" data-i18n="lic.engineering.name">Engineering and architectural drawings</option>
+                <option value="other" data-i18n="lic.other.name">Regulatory and industry compliance</option>
+                <option value="renewal" data-i18n="path.renew">Renewing a license</option>
+                <option value="unsure" data-i18n="form.unsure">Not sure yet</option>
+              </select></label>
+            <label class="field field-wide"><span data-i18n="form.message">Tell us about your business</span><textarea name="message" rows="4" required></textarea></label>
+          </div>
+          <div class="inquiry-actions">
+            <button type="submit" class="btn btn-primary" data-i18n="form.wa">Send on WhatsApp</button>
+            <button type="button" class="btn btn-navy" data-inquiry-email data-i18n="form.mail">Send by email</button>
+          </div>
+          <p class="inquiry-note"><span data-i18n="form.note">We only use these details to reply to you.</span> <a href="privacy.html" data-i18n="foot.privacy">Privacy policy</a></p>
+        </form>
       </div>
     </section>
   </main>
@@ -330,15 +464,35 @@
   <!-- Footer, mast: the logo large over the links and the legal line. -->
   <footer class="foot ground-navy">
     <div class="container">
-      <img class="foot-logo" src="assets/images/logo.png" width="1283" height="146" alt="Toh’s Sign" loading="lazy">
-      <ul class="foot-links">
-        <li><a href="#services" data-i18n="nav.services">Services</a></li>
-        <li><a href="#why" data-i18n="nav.why">Why us</a></li>
-        <li><a href="#about" data-i18n="nav.about">About</a></li>
-        <li><a href="https://www.facebook.com/tohssignlicense.my" rel="noopener" target="_blank">Facebook</a></li>
-        <li><button type="button" class="foot-cookies" data-consent-open hidden data-i18n="consent.settings">Cookie settings</button></li>
-      </ul>
-      <p class="foot-legal">© 2026 Toh’s Sign Informatic Sdn Bhd</p>
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <img class="foot-logo" src="assets/images/logo.png" width="1283" height="146" alt="Toh’s Sign" loading="lazy">
+          <p data-i18n="foot.about">Business licensing consultancy in Kuala Lumpur since 1997.</p>
+          <address class="foot-address">B-2-5, B-3-5, B-4-5 &amp; B-5-5, Centre Point Medan, Jln 3/144a, Taman Connaught, 56000 Cheras, Kuala Lumpur</address>
+          <p class="foot-contact"><a class="num" href="tel:+60391082871">03-9108 2871</a> · <a href="mailto:info@tohssign.my">info@tohssign.my</a></p>
+        </div>
+        <nav aria-labelledby="ft-services"><p id="ft-services" class="foot-title" data-i18n="nav.services">Services</p><ul class="foot-list">
+          <li><a href="#lic-business" data-i18n="lic.business.name">Business and factory license</a></li>
+          <li><a href="#lic-entertainment" data-i18n="lic.entertainment.name">Entertainment and liquor license</a></li>
+          <li><a href="#lic-advertisement" data-i18n="lic.advertisement.name">Advertisement and outdoor license</a></li>
+          <li><a href="#lic-engineering" data-i18n="lic.engineering.name">Engineering and architectural drawings</a></li>
+          <li><a href="#lic-other" data-i18n="lic.other.name">Regulatory and industry compliance</a></li>
+        </ul></nav>
+        <nav aria-labelledby="ft-company"><p id="ft-company" class="foot-title" data-i18n="foot.company">Company</p><ul class="foot-list">
+          <li><a href="#about" data-i18n="about.title">About Toh’s Sign</a></li>
+          <li><a href="#team" data-i18n="nav.team">Our team</a></li>
+          <li><a href="careers.html" data-i18n="nav.careers">Careers</a></li>
+          <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          <li><a href="https://www.facebook.com/tohssignlicense.my" rel="noopener" target="_blank">Facebook</a></li>
+        </ul></nav>
+        <nav aria-labelledby="ft-help"><p id="ft-help" class="foot-title" data-i18n="foot.help">Tools and policies</p><ul class="foot-list">
+          <li><a href="#finder" data-i18n="tool.finder">License finder</a></li>
+          <li><a href="#renewal" data-i18n="tool.renewal">Renewal reminder</a></li>
+          <li><a href="privacy.html" data-i18n="foot.privacy">Privacy policy</a></li>
+          <li><button type="button" class="foot-cookies" data-consent-open hidden data-i18n="consent.settings">Cookie settings</button></li>
+        </ul></nav>
+      </div>
+      <p class="foot-legal">© 2026 Toh’s Sign Informatic Sdn Bhd (713854-H) · Toh’s Sign Consultancy Sdn Bhd (1563660-H)</p>
     </div>
   </footer>
 
@@ -351,7 +505,8 @@
     </div>
   </div>
 
-  <script src="i18n.js?v=6" defer></script>
-  <script src="main.js?v=17" defer></script>
+  <script src="i18n.js?v=7" defer></script>
+  <script src="consent.js?v=1" defer></script>
+  <script src="main.js?v=18" defer></script>
 </body>
 </html>

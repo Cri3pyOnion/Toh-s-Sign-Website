@@ -103,46 +103,110 @@ document.querySelectorAll('[data-path]').forEach((link) => link.addEventListener
   if (chip && chip.getAttribute('aria-pressed') !== 'true') chip.click();
 }));
 
-// Cookie consent: analytics load only after "Accept analytics"; the choice is remembered
-// and can be changed from the footer. With no measurement ID set, nothing loads at all.
-(() => {
-  const KEY = 'tohs-consent';
-  const box = document.querySelector('[data-consent]');
-  const reopen = document.querySelector('[data-consent-open]');
-  if (!box) return;
-  const id = document.querySelector('meta[name="ga-id"]')?.content.trim();
-  const read = () => { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
-  let loaded = false;
-  const loadAnalytics = () => {
-    if (loaded || !id) return;
-    loaded = true;
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { dataLayer.push(arguments); };
-    gtag('js', new Date());
-    gtag('config', id, { anonymize_ip: true });
-    const sc = document.createElement('script');
-    sc.async = true;
-    sc.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
-    document.head.append(sc);
+
+
+// Dropdown menus: one open at a time; Escape or a click elsewhere closes them.
+const subs = [...document.querySelectorAll('.sub-toggle')];
+const closeSubs = (except) => subs.forEach((b) => { if (b !== except) { b.setAttribute('aria-expanded', 'false'); b.parentElement.classList.remove('is-open'); } });
+subs.forEach((b) => b.addEventListener('click', () => {
+  const open = b.getAttribute('aria-expanded') !== 'true';
+  closeSubs(b);
+  b.setAttribute('aria-expanded', String(open));
+  b.parentElement.classList.toggle('is-open', open);
+}));
+document.addEventListener('click', (e) => { if (!e.target.closest('.has-sub')) closeSubs(); });
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Escape') return;
+  const open = subs.find((b) => b.getAttribute('aria-expanded') === 'true');
+  if (open) { closeSubs(); open.focus(); }
+});
+document.querySelectorAll('.submenu a').forEach((a) => a.addEventListener('click', () => closeSubs()));
+
+// Enquiry form: WhatsApp opens with the message written out; email opens the mail app.
+const inquiry = document.querySelector('[data-inquiry]');
+if (inquiry) {
+  const compose = () => {
+    const f = new FormData(inquiry);
+    const sel = inquiry.querySelector('[name="service"]');
+    const lines = [
+      t('form.hello', 'Hi Toh’s Sign, I’d like to make an enquiry.'),
+      `${t('form.name', 'Your name')}: ${f.get('name')}`,
+      f.get('company') && `${t('form.company', 'Company (optional)').replace(/\s*[（(].*$/, '')}: ${f.get('company')}`,
+      `${t('form.phone', 'Phone')}: ${f.get('phone')}`,
+      f.get('email') && `${t('form.email', 'Email (optional)').replace(/\s*[（(].*$/, '')}: ${f.get('email')}`,
+      `${t('form.service', 'What do you need help with?')} ${sel.options[sel.selectedIndex].textContent.trim()}`,
+    ];
+    return [...lines.filter(Boolean), '', f.get('message')].join('\n');
   };
-  const choose = (v) => {
-    try { localStorage.setItem(KEY, v); } catch (e) { /* private mode: ask again next visit */ }
-    box.hidden = true;
-    if (v === 'all') loadAnalytics();
-    else if (loaded && id) window[`ga-disable-${id}`] = true;
-  };
-  box.addEventListener('click', (e) => {
-    const b = e.target.closest('[data-consent-choice]');
-    if (b) choose(b.dataset.consentChoice);
+  inquiry.addEventListener('submit', (e) => {
+    e.preventDefault();
+    window.open('https://wa.me/60164397178?text=' + encodeURIComponent(compose()), '_blank', 'noopener');
   });
-  if (reopen) {
-    reopen.hidden = false;
-    reopen.addEventListener('click', () => { box.hidden = false; box.querySelector('[data-consent-choice="all"]').focus(); });
-  }
-  const saved = read();
-  if (saved === 'all') loadAnalytics();
-  else if (!saved) box.hidden = false;
-})();
+  inquiry.querySelector('[data-inquiry-email]').addEventListener('click', () => {
+    if (!inquiry.reportValidity()) return;
+    const subject = t('form.subject', 'Enquiry from the website');
+    location.href = `mailto:info@tohssign.my?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(compose())}`;
+  });
+}
+
+// Renewal reminder: from an expiry date, suggests when to start (two months ahead)
+// and builds a calendar file with both dates.
+const renewal = document.querySelector('[data-renewal]');
+if (renewal) {
+  const form = renewal.querySelector('[data-renewal-form]');
+  const out = renewal.querySelector('[data-renewal-result]');
+  const answer = renewal.querySelector('[data-renewal-answer]');
+  const ics = renewal.querySelector('[data-renewal-ics]');
+  const gcal = renewal.querySelector('[data-renewal-gcal]');
+  const wa = renewal.querySelector('[data-renewal-wa]');
+  const ymd = (d) => `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
+  const nice = (d) => d.toLocaleDateString(isZh() ? 'zh-CN' : 'en-MY', { day: 'numeric', month: 'long', year: 'numeric' });
+  const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+  let last = null;
+  const render = () => {
+    if (!last) return;
+    const { lic, expiry } = last;
+    const start = new Date(expiry); start.setMonth(start.getMonth() - 2);
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const days = Math.round((expiry - today) / 864e5);
+    const name = renewal.querySelector(`option[value="${lic}"]`).textContent.trim();
+    const strong = document.createElement('strong');
+    if (days < 0) {
+      strong.textContent = nice(expiry);
+      answer.replaceChildren(t('renew.past', 'This license expired on '), strong, t('renew.pastEnd', '. Contact us and we’ll help you renew it.'));
+    } else if (start <= today) {
+      strong.textContent = t('renew.now', 'start now');
+      answer.replaceChildren(t('renew.soon', 'It expires on ') + nice(expiry) + t('renew.soonMid', ', so '), strong, t('renew.soonEnd', '.'));
+    } else {
+      strong.textContent = nice(start);
+      answer.replaceChildren(t('renew.start', 'Start the renewal by '), strong, t('renew.startMid', ', two months before it expires on ') + nice(expiry) + t('renew.startEnd', '.'));
+    }
+    const startEv = start > today ? start : today;
+    const sTitle = t('renew.evStart', 'Start license renewal: ') + name;
+    const eTitle = t('renew.evExpiry', 'License expires: ') + name;
+    const note = t('renew.evNote', 'Toh’s Sign can handle the renewal: 016-439 7178 (WhatsApp)');
+    const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+    const ev = (uid, d, title, alarm) => ['BEGIN:VEVENT', `UID:${uid}-${ymd(d)}@tohssign.my`, `DTSTAMP:${stamp}`,
+      `DTSTART;VALUE=DATE:${ymd(d)}`, `DTEND;VALUE=DATE:${ymd(addDays(d, 1))}`, `SUMMARY:${title}`, `DESCRIPTION:${note}`,
+      'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`, `TRIGGER:${alarm}`, 'END:VALARM', 'END:VEVENT'];
+    const cal = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Toh’s Sign//Renewal reminder//EN', 'CALSCALE:GREGORIAN',
+      ...ev('start', startEv, sTitle, 'PT9H'), ...ev('expiry', expiry, eTitle, '-P14D'), 'END:VCALENDAR'].join('\r\n');
+    ics.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(cal);
+    gcal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(sTitle)
+      + `&dates=${ymd(startEv)}/${ymd(addDays(startEv, 1))}&details=` + encodeURIComponent(note);
+    wa.href = 'https://wa.me/60164397178?text=' + encodeURIComponent(t('renew.waMsg', 'Hi Toh’s Sign, please help me renew my ') + name + t('renew.waMid', '. It expires on ') + nice(expiry) + '.');
+    out.hidden = false;
+  };
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v = form.expiry.value;
+    if (!v) return;
+    const [y, mo, d] = v.split('-').map(Number);
+    last = { lic: form.license.value, expiry: new Date(y, mo - 1, d) };
+    render();
+  });
+  document.addEventListener('langchange', render);
+}
 
 // ---------- Motion ----------
 // Everything below only adds movement; the page reads the same without it.
