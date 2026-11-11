@@ -3,6 +3,7 @@
  * axes: light/geometric-sans/chromatic-amber · posture: full palette (field navy, signal amber, ink) · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H5 E4 S4 R4 V4 · weakest: S, a licensing firm reads like any consultancy; led with the firm's own licence list and finder and its real client logos instead of a generic services grid */
 /* Hallmark · dropped .services-intro, .why-row, .band and the Kuala Lumpur photo band below services · the full redesign moves the photo into the hero field and rebuilds each section */
+/* Hallmark · motion by request: hero load sequence and parallax, sticky masthead with progress, staggered scroll reveals, figure count-up, hover states · transform and opacity only, all off under reduced motion, everything visible without script */
 @import url("./tokens.css");
 @import url("./base.css");
 
@@ -43,7 +44,18 @@ h2 { font-size: var(--text-section); }
 .link-quiet:active { opacity: 0.8; }
 
 /* ---------- Masthead ---------- */
-.mast { border-bottom: 1px solid var(--color-rule); background: var(--color-paper); position: relative; z-index: var(--z-raised); }
+/* Sticky: slides away while reading down, returns on any scroll up; a navy hairline tracks progress. */
+.mast {
+  border-bottom: 1px solid var(--color-rule); background: var(--color-paper);
+  position: sticky; top: 0; z-index: var(--z-sticky-nav);
+  transition: transform var(--dur-long) var(--ease-out);
+}
+.mast.is-hidden { transform: translateY(-100%); }
+.mast:focus-within { transform: none; }
+.mast::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px;
+  background: var(--color-field); transform: scaleX(var(--progress, 0)); transform-origin: left;
+}
 .mast-row { min-height: var(--nav-h); display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: var(--space-lg); }
 .logo { justify-self: center; display: inline-flex; min-height: 48px; align-items: center; }
 .logo img { height: 40px; width: auto; }
@@ -108,14 +120,17 @@ h2 { font-size: var(--text-section); }
   .hero-actions .btn { width: 100%; }
 }
 
-/* One settle on load: the base rises 8px and fades in; visible by default without script. */
+/* Load sequence: the city eases out of a slow zoom while the headline, the sentence and the
+   actions rise in turn. Visible by default without script; skipped under reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
-  .js .hero-grid { animation: settle 700ms var(--ease-out) both; }
+  .js .hero-field > img { scale: 1.12; animation: hero-zoom 2200ms var(--ease-out) both; will-change: translate; }
+  .js .hero-title-main { animation: rise 1000ms var(--ease-out) 120ms both; --rise: 48px; }
+  .js .hero-title-sub { animation: rise 900ms var(--ease-out) 300ms both; }
+  .js .hero-lead { animation: rise 900ms var(--ease-out) 440ms both; }
+  .js .hero-actions { animation: rise 900ms var(--ease-out) 560ms both; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .js .hero-grid { animation: none; }
-}
-@keyframes settle { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes hero-zoom { from { scale: 1.26; opacity: 0.6; } to { scale: 1.12; opacity: 1; } }
+@keyframes rise { from { opacity: 0; transform: translateY(var(--rise, 20px)); } to { opacity: 1; transform: none; } }
 
 /* ---------- Index of licences ---------- */
 .index { padding-block: var(--section-gap) var(--section-gap-s); }
@@ -190,7 +205,11 @@ h2 { font-size: var(--text-section); }
 .why { padding-block: var(--section-gap-l) var(--section-gap); }
 .why-head { display: grid; gap: var(--space-md); margin-bottom: var(--space-2xl); }
 .why-grid { display: grid; gap: var(--space-xl) var(--gap-columns); margin: 0; }
-.why-item { display: grid; gap: var(--space-xs); padding-top: var(--space-lg); border-top: 1px solid var(--color-rule); }
+.why-item { position: relative; display: grid; gap: var(--space-xs); padding-top: var(--space-lg); }
+.why-item::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--color-rule);
+  transform-origin: left; transition: transform 1100ms var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms + 150ms);
+}
 .why-item dt { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; font-size: var(--text-xl); line-height: 1.2; }
 .why-item dd { margin: 0; max-width: 40ch; }
 .why-cta { margin-top: var(--space-2xl); }
@@ -251,3 +270,50 @@ h2 { font-size: var(--text-section); }
 .foot-links a { display: inline-flex; align-items: center; min-height: 48px; text-decoration: none; white-space: nowrap; }
 .foot-links a:hover { text-decoration: underline; text-underline-offset: 0.3em; }
 .foot-legal { margin-top: var(--space-lg); font-size: var(--text-sm); color: var(--color-muted); }
+
+/* ---------- Motion and interaction ---------- */
+/* Scroll reveal: main.js sets .reveal-on on <html> only when motion is allowed and IntersectionObserver
+   exists, so without script or under reduced motion every element simply shows. */
+.js.reveal-on [data-reveal] {
+  transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.js.reveal-on [data-reveal]:not(.is-in) { opacity: 0; transform: translateY(28px); }
+.js.reveal-on .why-item:not(.is-in)::before { transform: scaleX(0); }
+
+/* Buttons lift a touch on hover. */
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+}
+
+/* Licence rows: the name leans in on hover; picking a business type dims the rows it does not need. */
+.licence-name { transition: transform var(--dur-long) var(--ease-out); }
+@media (hover: hover) {
+  .licence:hover .licence-name { transform: translateX(var(--space-xs)); }
+}
+.licences.has-filter .licence:not(.is-match) { opacity: 0.45; }
+.licences.has-filter .licence { transition: opacity var(--dur-long) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
+.licence.is-match .licence-name::after { animation: rise 500ms var(--ease-out) both; }
+
+/* Client logos come up to full strength and grow slightly on hover. */
+.logos img { opacity: 0.8; transition: opacity var(--dur-short) var(--ease-out); }
+.logos li { transition: transform var(--dur-long) var(--ease-out); }
+@media (hover: hover) {
+  .logos li:hover { transform: scale(1.06); }
+  .logos li:hover img { opacity: 1; }
+}
+
+/* Contact lines: a navy bar slides under the line on hover. */
+.contact-lines a { position: relative; }
+.contact-lines a::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; background: var(--color-field);
+  transform: scaleX(0); transform-origin: left; transition: transform var(--dur-long) var(--ease-out);
+}
+.contact-lines a:hover { text-decoration: none; }
+.contact-lines a:hover::after { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mast { transition: none; }
+  .licence:hover .licence-name, .logos li:hover, .btn:hover { transform: none; }
+}
