@@ -99,6 +99,8 @@
     'contact.title': '联系我们',
     'contact.lead': '首次咨询免费。',
     'contact.call': '致电',
+    'contact.email': '电子邮件',
+    'contact.office': '欢迎莅临我们的办公室',
     'hours.caption': '营业时间',
     'hours.weekdays': '星期一至星期五',
     'hours.weekdays.time': '上午 8:30 至下午 6:00',
