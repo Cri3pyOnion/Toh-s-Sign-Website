@@ -1,179 +1,17 @@
-// Strings from the language switch (i18n.js); falls back to English if it did not load.
-const t = (key, fallback) => (window.i18n ? window.i18n.t(key) : '') || fallback;
-const isZh = () => window.i18n?.lang === 'zh';
-
 // Phone menu toggle. Without this script the links show inline.
 const toggle = document.querySelector('.menu-toggle');
 const menu = document.getElementById('menu');
 
 if (toggle && menu) {
-  const label = () => { toggle.textContent = toggle.getAttribute('aria-expanded') === 'true' ? t('menu.close', 'Close') : t('menu.open', 'Menu'); };
   const setOpen = (open) => {
     toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? 'Close' : 'Menu';
     menu.classList.toggle('is-open', open);
-    label();
   };
-  label();
-  document.addEventListener('langchange', label);
   toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
   menu.addEventListener('click', (e) => { if (e.target.closest('a')) setOpen(false); });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setOpen(false); toggle.focus(); }
-  });
-}
-
-// License finder: step 1 picks what the visitor is setting up, step 2 lists the licenses it
-// usually needs, marks them in the list below and pre-fills the WhatsApp message.
-// Without JS the full list of licenses still shows.
-const finder = document.querySelector('[data-finder]');
-if (finder) {
-  finder.hidden = false;
-  const picks = [...finder.querySelectorAll('.pick')];
-  const title = finder.querySelector('[data-finder-title]');
-  const sub = finder.querySelector('[data-finder-sub]');
-  const empty = finder.querySelector('[data-finder-empty]');
-  const list = finder.querySelector('[data-finder-list]');
-  const note = finder.querySelector('[data-finder-note]');
-  const clear = finder.querySelector('[data-finder-clear]');
-  const cta = finder.querySelector('[data-finder-cta]');
-  const result = finder.querySelector('.finder-result');
-  const rows = [...document.querySelectorAll('[data-license]')];
-  const nameOf = (key) => rows.find((r) => r.dataset.license === key)?.querySelector('.license-name')?.textContent.trim();
-  const wa = 'https://wa.me/60164397178?text=';
-  const check = '<svg class="ico need-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-4.8"/></svg>';
-  const words = ['', 'One', 'Two', 'Three', 'Four', 'Five'];
-
-  const render = () => {
-    const pick = picks.find((c) => c.getAttribute('aria-pressed') === 'true');
-    const needs = pick ? pick.dataset.need.split(' ') : [];
-    rows.forEach((r) => r.classList.toggle('is-match', needs.includes(r.dataset.license)));
-    rows[0]?.parentElement.classList.toggle('has-filter', Boolean(pick));
-    // Matched licenses move to the top of the list, the rest follow in their usual order;
-    // clearing the pick puts everything back. Each card glides from its old spot (FLIP).
-    const parent = rows[0]?.parentElement;
-    if (parent) {
-      const before = new Map(rows.map((r) => [r, r.getBoundingClientRect().top]));
-      [...rows.filter((r) => r.classList.contains('is-match')), ...rows.filter((r) => !r.classList.contains('is-match'))]
-        .forEach((r) => parent.append(r));
-      if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-        rows.forEach((r) => {
-          const dy = before.get(r) - r.getBoundingClientRect().top;
-          if (dy) r.animate([{ transform: `translateY(${dy}px)` }, { transform: 'none' }], { duration: 420, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
-        });
-      }
-    }
-    finder.classList.toggle('has-pick', Boolean(pick));
-    empty.hidden = Boolean(pick); list.hidden = !pick; note.hidden = !pick; clear.hidden = !pick;
-
-    if (!pick) {
-      title.textContent = t('finder.resultTitle', 'Your license checklist');
-      sub.textContent = t('finder.prompt', 'Pick what you’re setting up to see the licenses it usually needs.');
-      cta.href = wa + encodeURIComponent(t('wa.which', 'Hi Toh’s Sign, I’d like to ask which licenses I need.'));
-      list.replaceChildren();
-      return;
-    }
-    const what = pick.querySelector('.pick-name').textContent.trim();
-    const names = needs.map(nameOf).filter(Boolean);
-    list.replaceChildren(...needs.map((k) => {
-      const li = document.createElement('li');
-      li.className = 'need';
-      li.innerHTML = check + '<div class="need-text"><p class="need-name"></p><p class="need-why"></p></div><a class="need-more"></a>';
-      li.querySelector('.need-name').textContent = nameOf(k) || k;
-      li.querySelector('.need-why').textContent = t('need.' + k, '');
-      const more = li.querySelector('.need-more');
-      more.href = '#lic-' + k;
-      more.textContent = t('finder.details', 'See details');
-      return li;
-    }));
-
-    if (isZh()) {
-      title.textContent = `${what}通常需要 ${needs.length} 项执照`;
-      sub.textContent = '以下是此类项目最常见的执照。';
-      const joined = names.length > 1 ? names.slice(0, -1).join('、') + '及' + names.at(-1) : names[0];
-      cta.href = wa + encodeURIComponent(`您好 Toh’s Sign，我的项目是${what}，想咨询${joined}的申请。`);
-      return;
-    }
-    const lower = what.toLowerCase();
-    const a = /^[aeiou]/.test(lower) ? 'an' : 'a';
-    const n = needs.length;
-    title.textContent = `${words[n] || n} license${n === 1 ? '' : 's'} for ${a} ${lower}`;
-    sub.textContent = 'These are the ones this kind of business usually needs.';
-    const joined = names.length > 1 ? names.slice(0, -1).join(', ') + ' and ' + names.at(-1) : names[0];
-    cta.href = wa + encodeURIComponent(`Hi Toh’s Sign, I’m planning ${a} ${lower}. Can you help with the ${joined.toLowerCase()}?`);
-  };
-
-  const choose = (pick, on = true) => {
-    picks.forEach((c) => c.setAttribute('aria-pressed', 'false'));
-    if (pick) pick.setAttribute('aria-pressed', String(on));
-    render();
-  };
-  picks.forEach((pick) => pick.addEventListener('click', () => {
-    choose(pick, pick.getAttribute('aria-pressed') !== 'true');
-    // On narrow screens the checklist sits below the options: bring it into view.
-    if (pick.getAttribute('aria-pressed') === 'true' && window.matchMedia('(max-width: 60rem)').matches) {
-      const r = result.getBoundingClientRect();
-      const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (r.top > window.innerHeight * 0.6) result.scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' });
-    }
-  }));
-  clear.addEventListener('click', () => { choose(null); picks[0].focus(); });
-  render();
-  document.addEventListener('langchange', render);
-
-  // Hero "Start here" links: land on the finder with that option already chosen.
-  document.querySelectorAll('[data-path]').forEach((link) => link.addEventListener('click', (e) => {
-    const pick = picks.find((c) => c.dataset.key === link.dataset.path);
-    if (!pick) return;
-    e.preventDefault();
-    choose(pick, true);
-    // On narrow screens the options fill the screen, so land on the checklist instead.
-    const target = window.matchMedia('(max-width: 75rem)').matches ? result : finder;
-    target.scrollIntoView({ block: 'start' });
-    history.replaceState(null, '', '#finder');
-  }));
-}
-
-// Dropdown menus: one open at a time; Escape or a click elsewhere closes them.
-const subs = [...document.querySelectorAll('.sub-toggle')];
-const closeSubs = (except) => subs.forEach((b) => { if (b !== except) { b.setAttribute('aria-expanded', 'false'); b.parentElement.classList.remove('is-open'); } });
-subs.forEach((b) => b.addEventListener('click', () => {
-  const open = b.getAttribute('aria-expanded') !== 'true';
-  closeSubs(b);
-  b.setAttribute('aria-expanded', String(open));
-  b.parentElement.classList.toggle('is-open', open);
-}));
-document.addEventListener('click', (e) => { if (!e.target.closest('.has-sub')) closeSubs(); });
-document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Escape') return;
-  const open = subs.find((b) => b.getAttribute('aria-expanded') === 'true');
-  if (open) { closeSubs(); open.focus(); }
-});
-document.querySelectorAll('.submenu a').forEach((a) => a.addEventListener('click', () => closeSubs()));
-
-// Enquiry form: WhatsApp opens with the message written out; email opens the mail app.
-const inquiry = document.querySelector('[data-inquiry]');
-if (inquiry) {
-  const compose = () => {
-    const f = new FormData(inquiry);
-    const sel = inquiry.querySelector('[name="service"]');
-    const lines = [
-      t('form.hello', 'Hi Toh’s Sign, I’d like to make an enquiry.'),
-      `${t('form.name', 'Your name')}: ${f.get('name')}`,
-      f.get('company') && `${t('form.company', 'Company (optional)').replace(/\s*[（(].*$/, '')}: ${f.get('company')}`,
-      `${t('form.phone', 'Phone')}: ${f.get('phone')}`,
-      f.get('email') && `${t('form.email', 'Email (optional)').replace(/\s*[（(].*$/, '')}: ${f.get('email')}`,
-      `${t('form.service', 'What do you need help with?')} ${sel.options[sel.selectedIndex].textContent.trim()}`,
-    ];
-    return [...lines.filter(Boolean), '', f.get('message')].join('\n');
-  };
-  inquiry.addEventListener('submit', (e) => {
-    e.preventDefault();
-    window.open('https://wa.me/60164397178?text=' + encodeURIComponent(compose()), '_blank', 'noopener');
-  });
-  inquiry.querySelector('[data-inquiry-email]').addEventListener('click', () => {
-    if (!inquiry.reportValidity()) return;
-    const subject = t('form.subject', 'Enquiry from the website');
-    location.href = `mailto:info@tohssign.my?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(compose())}`;
   });
 }
 
@@ -202,12 +40,12 @@ onScroll();
 if (motionOK && 'IntersectionObserver' in window) {
   // Scroll reveals, staggered within each group.
   const groups = [
-    ['#services .sec-head', '.finder:not([hidden])'], ['.license'],
+    ['#services .sec-head'], ['.license'],
     ['#why .sec-head'], ['.why-item'], ['#why .sec-cta'],
     ['.clients .sec-head'], ['.client-group'],
     ['#about .sec-head'], ['.about-text', '.about-facts > div'],
     ['#team .sec-head'], ['.group-co'], ['.person'],
-    ['#contact .sec-head'], ['.contact-info', '.inquiry'],
+    ['#contact .sec-head'], ['.contact-info', '.office'],
   ];
   const targets = [];
   groups.forEach((sels) => {
