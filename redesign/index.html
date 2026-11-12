@@ -5,29 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Toh’s Sign: business licensing consultancy in Kuala Lumpur since 1997</title>
   <meta name="description" content="Business, signboard and entertainment licenses, plus MIDA, DOSH and DOE approvals, handled end to end for Malaysian businesses. Free consultation.">
+  <!-- Security: only this site, Google Fonts and (after consent) Google Analytics may load anything. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#00357a">
   <!-- Google Analytics 4 measurement ID (G-XXXXXXX). Loaded only after the visitor accepts analytics cookies. -->
   <meta name="ga-id" content="">
   <!-- Temporary preview: keep search engines away. Remove when this goes live on tohssign.com. -->
   <meta name="robots" content="noindex, nofollow">
-  <script>
-    document.documentElement.classList.replace('no-js', 'js');
-    // The logo intro plays once per visit.
-    try { if (sessionStorage.getItem('tohs-intro')) document.documentElement.classList.add('intro-seen'); else sessionStorage.setItem('tohs-intro', '1'); } catch (e) {}
-    // Set the saved or requested language before first paint so Chinese readers never see English flash.
-    (function () {
-      var lang = new URLSearchParams(location.search).get('lang');
-      if (lang !== 'en' && lang !== 'zh') { try { lang = localStorage.getItem('tohs-lang'); } catch (e) { lang = null; } }
-      if (lang === 'zh') {
-        document.documentElement.setAttribute('data-lang-pending', 'zh');
-        setTimeout(function () { document.documentElement.removeAttribute('data-lang-pending'); }, 2000);
-      }
-    })();
-  </script>
+  <script src="head.js?v=1"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=30">
+  <link rel="stylesheet" href="styles.css?v=31">
 </head>
 <body>
   <div class="splash" aria-hidden="true"><div class="splash-plate"><img src="assets/images/logo.png" width="1283" height="146" alt=""><span class="splash-line"></span></div></div>
@@ -110,10 +100,10 @@
         <nav class="container hero-paths" aria-labelledby="paths-title">
           <p id="paths-title" class="paths-title" data-i18n="path.title">Start here: what are you working on?</p>
           <ul class="paths">
-            <li><a class="path" href="#finder" data-path="shop"><span data-i18n="path.shop">Opening a shop or office</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
-            <li><a class="path" href="#finder" data-path="restaurant"><span data-i18n="path.restaurant">Opening a restaurant or café</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
-            <li><a class="path" href="#finder" data-path="signboard"><span data-i18n="path.signboard">Putting up a signboard or billboard</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
-            <li><a class="path" href="#finder" data-path="renovation"><span data-i18n="path.renovation">Renovating your premises</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
+            <li><a class="path" href="#services" data-path="shop"><span data-i18n="path.shop">Opening a shop or office</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
+            <li><a class="path" href="#services" data-path="restaurant"><span data-i18n="path.restaurant">Opening a restaurant or café</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
+            <li><a class="path" href="#services" data-path="signboard"><span data-i18n="path.signboard">Putting up a signboard or billboard</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
+            <li><a class="path" href="#services" data-path="renovation"><span data-i18n="path.renovation">Renovating your premises</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
             <li><a class="path" data-wa="wa.renew" href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%20need%20help%20renewing%20my%20license." rel="noopener" target="_blank"><span data-i18n="path.renew">Renewing a license</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
           </ul>
         </nav>
@@ -230,7 +220,7 @@
                 <option value="other" data-i18n="lic.other.name">Regulatory and industry compliance</option>
               </select></label>
             <label class="field"><span data-i18n="renew.expiry">Expiry date</span>
-              <input type="date" name="expiry" required></label>
+              <input type="date" name="expiry" min="2000-01-01" max="2099-12-31" required></label>
             <button type="submit" class="btn btn-navy" data-i18n="renew.go">Plan my renewal</button>
           </form>
           <div class="empty" data-renewal-empty>
@@ -451,10 +441,10 @@
             <p data-i18n="form.lead">Tell us about your business and a consultant will get back to you.</p>
           </div>
           <div class="inquiry-grid">
-            <label class="field"><span data-i18n="form.name">Your name</span><input name="name" autocomplete="name" required></label>
-            <label class="field"><span data-i18n="form.company">Company (optional)</span><input name="company" autocomplete="organization"></label>
-            <label class="field"><span data-i18n="form.phone">Phone</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" required></label>
-            <label class="field"><span data-i18n="form.email">Email (optional)</span><input name="email" type="email" autocomplete="email"></label>
+            <label class="field"><span data-i18n="form.name">Your name</span><input name="name" autocomplete="name" maxlength="80" required></label>
+            <label class="field"><span data-i18n="form.company">Company (optional)</span><input name="company" autocomplete="organization" maxlength="120"></label>
+            <label class="field"><span data-i18n="form.phone">Phone</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" required></label>
+            <label class="field"><span data-i18n="form.email">Email (optional)</span><input name="email" type="email" autocomplete="email" maxlength="120"></label>
             <label class="field field-wide"><span data-i18n="form.service">What do you need help with?</span>
               <select name="service" required>
                 <option value="" data-i18n="form.pick">Choose one</option>
@@ -466,7 +456,7 @@
                 <option value="renewal" data-i18n="path.renew">Renewing a license</option>
                 <option value="unsure" data-i18n="form.unsure">Not sure yet</option>
               </select></label>
-            <label class="field field-wide"><span data-i18n="form.message">Tell us about your business</span><textarea name="message" rows="4" required></textarea></label>
+            <label class="field field-wide"><span data-i18n="form.message">Tell us about your business</span><textarea name="message" rows="4" maxlength="1500" required></textarea></label>
           </div>
           <div class="inquiry-actions">
             <button type="submit" class="btn btn-primary" data-i18n="form.wa">Send on WhatsApp</button>
@@ -522,8 +512,8 @@
     </div>
   </div>
 
-  <script src="i18n.js?v=9" defer></script>
-  <script src="consent.js?v=1" defer></script>
-  <script src="main.js?v=22" defer></script>
+  <script src="i18n.js?v=11" defer></script>
+  <script src="consent.js?v=2" defer></script>
+  <script src="main.js?v=23" defer></script>
 </body>
 </html>

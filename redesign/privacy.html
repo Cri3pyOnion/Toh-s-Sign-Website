@@ -1,31 +1,23 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" class="no-js" data-page="privacy">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Privacy policy · Toh’s Sign</title>
   <meta name="description" content="How Toh’s Sign handles your personal data under the PDPA 2010.">
+  <!-- Security: only this site, Google Fonts and (after consent) Google Analytics may load anything. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="theme-color" content="#00357a">
   <!-- Google Analytics 4 measurement ID (G-XXXXXXX). Loaded only after the visitor accepts analytics cookies. -->
   <meta name="ga-id" content="">
   <!-- Temporary preview: keep search engines away. Remove when this goes live on tohssign.com. -->
   <meta name="robots" content="noindex, nofollow">
-  <script>
-    document.documentElement.classList.replace('no-js', 'js');
-    // Set the saved or requested language before first paint so Chinese readers never see English flash.
-    (function () {
-      var lang = new URLSearchParams(location.search).get('lang');
-      if (lang !== 'en' && lang !== 'zh') { try { lang = localStorage.getItem('tohs-lang'); } catch (e) { lang = null; } }
-      if (lang === 'zh') {
-        document.documentElement.setAttribute('data-lang-pending', 'zh');
-        setTimeout(function () { document.documentElement.removeAttribute('data-lang-pending'); }, 2000);
-      }
-    })();
-  </script>
+  <script src="head.js?v=1"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=30">
+  <link rel="stylesheet" href="styles.css?v=31">
 </head>
 <body class="page">
   <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
@@ -151,7 +143,7 @@
     </div>
   </div>
 
-  <script src="i18n.js?v=9" defer></script>
-  <script src="consent.js?v=1" defer></script>
+  <script src="i18n.js?v=11" defer></script>
+  <script src="consent.js?v=2" defer></script>
 </body>
 </html>

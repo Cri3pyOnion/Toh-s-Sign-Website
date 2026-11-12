@@ -133,13 +133,12 @@ if (finder) {
   document.querySelectorAll('[data-path]').forEach((link) => link.addEventListener('click', (e) => {
     const pick = picks.find((c) => c.dataset.key === link.dataset.path);
     if (!pick) return;
+    e.preventDefault();
     choose(pick, true);
     // On narrow screens the options fill the screen, so land on the checklist instead.
-    if (window.matchMedia('(max-width: 75rem)').matches) {
-      e.preventDefault();
-      result.scrollIntoView({ block: 'start' });
-      history.replaceState(null, '', '#finder');
-    }
+    const target = window.matchMedia('(max-width: 75rem)').matches ? result : finder;
+    target.scrollIntoView({ block: 'start' });
+    history.replaceState(null, '', '#finder');
   }));
 }
 
@@ -205,7 +204,9 @@ if (renewal) {
   const render = () => {
     if (!last) return;
     const { lic, expiry } = last;
-    const start = new Date(expiry); start.setMonth(start.getMonth() - 2);
+    // Two calendar months earlier, clamped to the last day of that month (30 April -> 28/29 February).
+    const start = new Date(expiry.getFullYear(), expiry.getMonth() - 2, 1);
+    start.setDate(Math.min(expiry.getDate(), new Date(start.getFullYear(), start.getMonth() + 1, 0).getDate()));
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const days = Math.round((expiry - today) / 864e5);
     const name = renewal.querySelector(`option[value="${lic}"]`).textContent.trim();
@@ -225,11 +226,14 @@ if (renewal) {
     const eTitle = t('renew.evExpiry', 'License expires: ') + name;
     const note = t('renew.evNote', 'Toh’s Sign can handle the renewal: 016-439 7178 (WhatsApp)');
     const stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+/, '');
+    // iCalendar text: escape \ ; , and newlines, and fold lines longer than 75 octets.
+    const esc = (v) => String(v).replace(/[\\;,]/g, (c) => '\\' + c).replace(/\r?\n/g, '\\n');
+    const fold = (line) => { const out = []; let cur = ''; let n = 0; for (const ch of line) { const b = new TextEncoder().encode(ch).length; if (n + b > 74) { out.push(cur); cur = ' '; n = 1; } cur += ch; n += b; } out.push(cur); return out.join('\r\n'); };
     const ev = (uid, d, title, alarm) => ['BEGIN:VEVENT', `UID:${uid}-${ymd(d)}@tohssign.my`, `DTSTAMP:${stamp}`,
-      `DTSTART;VALUE=DATE:${ymd(d)}`, `DTEND;VALUE=DATE:${ymd(addDays(d, 1))}`, `SUMMARY:${title}`, `DESCRIPTION:${note}`,
-      'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${title}`, `TRIGGER:${alarm}`, 'END:VALARM', 'END:VEVENT'];
+      `DTSTART;VALUE=DATE:${ymd(d)}`, `DTEND;VALUE=DATE:${ymd(addDays(d, 1))}`, `SUMMARY:${esc(title)}`, `DESCRIPTION:${esc(note)}`,
+      'BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${esc(title)}`, `TRIGGER:${alarm}`, 'END:VALARM', 'END:VEVENT'];
     const cal = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Toh’s Sign//Renewal reminder//EN', 'CALSCALE:GREGORIAN',
-      ...ev('start', startEv, sTitle, 'PT9H'), ...ev('expiry', expiry, eTitle, '-P14D'), 'END:VCALENDAR'].join('\r\n');
+      ...ev('start', startEv, sTitle, 'PT9H'), ...ev('expiry', expiry, eTitle, '-P14D'), 'END:VCALENDAR'].map(fold).join('\r\n');
     ics.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(cal);
     gcal.href = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(sTitle)
       + `&dates=${ymd(startEv)}/${ymd(addDays(startEv, 1))}&details=` + encodeURIComponent(note);
@@ -242,6 +246,7 @@ if (renewal) {
     const v = form.expiry.value;
     if (!v) return;
     const [y, mo, d] = v.split('-').map(Number);
+    if (!(y >= 2000 && y <= 2099) || !mo || !d) { form.expiry.setCustomValidity(t('renew.badDate', 'Enter a date between 2000 and 2099.')); form.reportValidity(); form.expiry.setCustomValidity(''); return; }
     last = { lic: form.license.value, expiry: new Date(y, mo - 1, d) };
     render();
   });

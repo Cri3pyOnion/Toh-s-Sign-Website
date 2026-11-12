@@ -9,6 +9,10 @@
   const STORE = 'tohs-lang';
 
   const zh = {
+    'meta.title.privacy': '隐私政策 · Toh’s Sign',
+    'meta.description.privacy': 'Toh’s Sign 如何依据 2010 年个人资料保护法（PDPA）处理您的个人资料。',
+    'meta.title.careers': '加入我们 · Toh’s Sign',
+    'meta.description.careers': '加入 Toh’s Sign，一家自 1997 年起扎根吉隆坡的执照咨询公司。',
     'meta.title': 'Toh’s Sign：吉隆坡商业执照咨询，始于1997年',
     'meta.description': '营业执照、招牌广告及娱乐执照，以及 MIDA、DOSH、DOE 审批，为马来西亚企业一站式全程办理。免费咨询。',
     'skip': '跳至内容',
@@ -158,6 +162,7 @@
     'team.lm': '联络经理',
     'team.join': '加入我们的团队',
 
+    'renew.badDate': '请输入 2000 年至 2099 年之间的日期。',
     'renew.title': '续期提醒',
     'renew.emptyTitle': '还没有提醒',
     'renew.emptyText': '选择执照类型和到期日，续期开始日期就会显示在这里。',
@@ -265,8 +270,12 @@
   const metaDesc = document.querySelector('meta[name="description"]');
 
   // Capture the English from the page once.
-  en['meta.title'] = document.title;
-  en['meta.description'] = metaDesc?.content || '';
+  // Each page has its own title: index uses meta.title, other pages meta.title.<page>.
+  const page = document.documentElement.dataset.page;
+  const titleKey = page ? `meta.title.${page}` : 'meta.title';
+  const descKey = page ? `meta.description.${page}` : 'meta.description';
+  en[titleKey] = document.title;
+  en[descKey] = metaDesc?.content || '';
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const k = el.dataset.i18n;
     if (!(k in en)) en[k] = el.innerHTML;
@@ -288,14 +297,15 @@
   const dicts = { en, zh };
   let current = 'en';
 
-  const t = (key, lang = current) => dicts[lang][key] ?? en[key] ?? '';
+  const known = (lang) => lang === 'en' || lang === 'zh';
+  const t = (key, lang = current) => (Object.hasOwn(dicts[lang], key) ? dicts[lang][key] : undefined) ?? (Object.hasOwn(en, key) ? en[key] : '') ?? '';
 
   function apply(lang) {
-    if (!dicts[lang]) lang = 'en';
+    if (!known(lang)) lang = 'en';
     current = lang;
     root.lang = lang === 'zh' ? 'zh-Hans' : 'en';
-    document.title = t('meta.title');
-    if (metaDesc) metaDesc.content = t('meta.description');
+    document.title = t(titleKey);
+    if (metaDesc) metaDesc.content = t(descKey);
 
     document.querySelectorAll('[data-i18n]').forEach((el) => { el.innerHTML = t(el.dataset.i18n); });
     document.querySelectorAll('[data-i18n-attr]').forEach((el) => {
@@ -329,11 +339,11 @@
     sw.hidden = false;
     sw.addEventListener('click', (e) => {
       const b = e.target.closest('[data-lang]');
-      if (b && b.dataset.lang !== current) set(b.dataset.lang);
+      if (b && known(b.dataset.lang) && b.dataset.lang !== current) set(b.dataset.lang);
     });
   }
 
   let start = new URLSearchParams(location.search).get('lang');
-  if (!dicts[start]) { try { start = localStorage.getItem(STORE); } catch (e) { start = null; } }
-  apply(dicts[start] ? start : 'en');
+  if (!known(start)) { try { start = localStorage.getItem(STORE); } catch (e) { start = null; } }
+  apply(known(start) ? start : 'en');
 })();

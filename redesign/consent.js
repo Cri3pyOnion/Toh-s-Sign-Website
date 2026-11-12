@@ -20,11 +20,21 @@
     sc.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
     document.head.append(sc);
   };
+  // Remove _ga / _ga_<id> cookies on this host and its parent domains.
+  const clearGa = () => {
+    const names = document.cookie.split(';').map((c) => c.split('=')[0].trim()).filter((n) => /^_ga(_|$)|^_gid$|^_gat/.test(n));
+    const parts = location.hostname.split('.');
+    const domains = parts.map((_, i) => parts.slice(i).join('.')).filter((d) => d.includes('.'));
+    names.forEach((n) => { document.cookie = `${n}=; Max-Age=0; path=/`; domains.forEach((d) => { document.cookie = `${n}=; Max-Age=0; path=/; domain=.${d}`; }); });
+  };
   const choose = (v) => {
     try { localStorage.setItem(KEY, v); } catch (e) { /* private mode: ask again next visit */ }
     box.hidden = true;
     if (v === 'all') loadAnalytics();
-    else if (loaded && id) window[`ga-disable-${id}`] = true;
+    else {
+      if (id) window[`ga-disable-${id}`] = true;
+      clearGa();
+    }
   };
   box.addEventListener('click', (e) => {
     const b = e.target.closest('[data-consent-choice]');
