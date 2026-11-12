@@ -246,7 +246,7 @@ if (motionOK && 'IntersectionObserver' in window && arts.length) {
   arts.forEach((svg) => {
     svg.querySelectorAll('.s').forEach((el, i) => {
       el.setAttribute('pathLength', '1');
-      el.style.setProperty('--d', `${Math.min(i * 70, 1400)}ms`);
+      el.style.setProperty('--d', `${Math.min(i * 30, 600)}ms`);
     });
   });
   document.documentElement.classList.add('art-armed');
@@ -255,9 +255,9 @@ if (motionOK && 'IntersectionObserver' in window && arts.length) {
     const svg = e.target;
     svg.classList.add('is-drawn');
     const n = svg.querySelectorAll('.s').length;
-    setTimeout(() => svg.classList.add('is-live'), Math.min(n * 70, 1400) + 1500);
+    setTimeout(() => svg.classList.add('is-live'), Math.min(n * 30, 600) + 750);
     artIO.unobserve(svg);
-  }), { rootMargin: '0px 0px -10% 0px', threshold: 0.25 });
+  }), { rootMargin: '0px 0px -5% 0px', threshold: 0.1 });
   arts.forEach((svg) => artIO.observe(svg));
 }
 
@@ -305,7 +305,7 @@ if (motionOK && 'IntersectionObserver' in window) {
     dd.replaceChildren(shown, real);
     dd._count = () => {
       const t0 = performance.now();
-      const dur = 1800;
+      const dur = 1000;
       const step = (now) => {
         const p = Math.min((now - t0) / dur, 1);
         const eased = 1 - Math.pow(2, -10 * p);
@@ -317,6 +317,6 @@ if (motionOK && 'IntersectionObserver' in window) {
   });
   const countIO = new IntersectionObserver((entries) => entries.forEach((e) => {
     if (e.isIntersecting) { e.target._count?.(); countIO.unobserve(e.target); }
-  }), { threshold: 0.6 });
+  }), { threshold: 0.4 });
   figs.forEach((dd) => countIO.observe(dd));
 }

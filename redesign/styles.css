@@ -150,11 +150,11 @@ html[data-lang-pending] body { visibility: hidden; }
 /* Load sequence: the city eases out of a slow zoom while the headline, the sentence and the
    actions rise in turn. Visible by default without script; skipped under reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
-  .js .hero-field > img { scale: 1.12; animation: hero-zoom 2200ms var(--ease-out) both; will-change: translate; }
-  .js .hero-title-main { animation: rise 1000ms var(--ease-out) 120ms both; --rise: 48px; }
-  .js .hero-title-sub { animation: rise 900ms var(--ease-out) 300ms both; }
-  .js .hero-lead { animation: rise 900ms var(--ease-out) 440ms both; }
-  .js .hero-actions { animation: rise 900ms var(--ease-out) 560ms both; }
+  .js .hero-field > img { scale: 1.12; animation: hero-zoom 1100ms var(--ease-out) both; will-change: translate; }
+  .js .hero-title-main { animation: rise 550ms var(--ease-out) 60ms both; --rise: 32px; }
+  .js .hero-title-sub { animation: rise 500ms var(--ease-out) 160ms both; }
+  .js .hero-lead { animation: rise 500ms var(--ease-out) 240ms both; }
+  .js .hero-actions { animation: rise 500ms var(--ease-out) 320ms both; }
 }
 @keyframes hero-zoom { from { scale: 1.26; opacity: 0.6; } to { scale: 1.12; opacity: 1; } }
 @keyframes rise { from { opacity: 0; transform: translateY(var(--rise, 20px)); } to { opacity: 1; transform: none; } }
@@ -245,7 +245,7 @@ html[data-lang-pending] body { visibility: hidden; }
 .why-head .art { width: min(100%, 340px); justify-self: center; }
 .why-item::before {
   content: ""; position: absolute; top: 0; left: 0; width: 40px; height: 4px; border-radius: 4px; background: var(--color-accent);
-  transform-origin: left; transition: transform 1100ms var(--ease-out); transition-delay: calc(var(--i, 0) * 90ms + 150ms);
+  transform-origin: left; transition: transform 500ms var(--ease-out); transition-delay: calc(var(--i, 0) * 45ms + 80ms);
 }
 .why-item dt { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; font-size: var(--text-xl); line-height: 1.2; }
 .why-item dd { margin: 0; max-width: 40ch; }
@@ -340,10 +340,10 @@ html[data-lang-pending] body { visibility: hidden; }
 /* Scroll reveal: main.js sets .reveal-on on <html> only when motion is allowed and IntersectionObserver
    exists, so without script or under reduced motion every element simply shows. */
 .js.reveal-on [data-reveal] {
-  transition: opacity 900ms var(--ease-out), transform 900ms var(--ease-out);
-  transition-delay: calc(var(--i, 0) * 90ms);
+  transition: opacity 450ms var(--ease-out), transform 450ms var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 45ms);
 }
-.js.reveal-on [data-reveal]:not(.is-in) { opacity: 0; transform: translateY(28px); }
+.js.reveal-on [data-reveal]:not(.is-in) { opacity: 0; transform: translateY(16px); }
 .js.reveal-on .why-item:not(.is-in)::before { transform: scaleX(0); }
 
 /* Buttons lift a touch on hover. */
@@ -359,7 +359,7 @@ html[data-lang-pending] body { visibility: hidden; }
 }
 .licenses.has-filter .license:not(.is-match) { opacity: 0.45; }
 .licenses.has-filter .license { transition: opacity var(--dur-long) var(--ease-out), background-color var(--dur-short) var(--ease-out); }
-.license.is-match .license-name::after { animation: rise 500ms var(--ease-out) both; }
+.license.is-match .license-name::after { animation: rise 300ms var(--ease-out) both; }
 
 /* Client logos come up to full strength and grow slightly on hover. */
 .logos img { opacity: 0.8; transition: opacity var(--dur-short) var(--ease-out); }
@@ -392,8 +392,8 @@ html[data-lang-pending] body { visibility: hidden; }
 
 /* The draw: outlines trace in, fills follow, the blob swells behind. */
 .art .s, .art .blob, .art .fl {
-  transition: stroke-dashoffset 1300ms var(--ease-in-out) var(--d, 0ms), fill-opacity 600ms var(--ease-out) calc(var(--d, 0ms) + 650ms),
-              scale 900ms var(--ease-out), opacity 700ms var(--ease-out) calc(var(--d, 0ms) + 400ms);
+  transition: stroke-dashoffset 650ms var(--ease-in-out) var(--d, 0ms), fill-opacity 300ms var(--ease-out) calc(var(--d, 0ms) + 300ms),
+              scale 450ms var(--ease-out), opacity 350ms var(--ease-out) calc(var(--d, 0ms) + 180ms);
   transform-box: fill-box; transform-origin: center;
 }
 .art-armed .art .s { stroke-dasharray: 1 1; }
@@ -466,7 +466,7 @@ html[data-lang-pending] body { visibility: hidden; }
 
   /* The big word arrives letter by letter; each letter lifts under the pointer. */
   .js .hero-title-main[data-letters] { animation: none; }
-  .hero-title-main .ch { display: inline-block; animation: hero-letter 900ms var(--ease-out) both; animation-delay: calc(var(--i) * 70ms + 200ms); transition: transform var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
+  .hero-title-main .ch { display: inline-block; animation: hero-letter 500ms var(--ease-out) both; animation-delay: calc(var(--i) * 35ms + 80ms); transition: transform var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out); }
   .hero-title-main .ch:hover { transform: translateY(-0.12em) rotate(-4deg); color: var(--color-accent); }
 }
 @keyframes hero-fly { from { translate: -120px 230px; rotate: -6deg; } 50% { translate: 700px 120px; rotate: 4deg; } to { translate: 1560px 30px; rotate: -4deg; } }
@@ -700,11 +700,11 @@ body { background: var(--color-paper); }
 @media (prefers-reduced-motion: no-preference) {
   .js:not(.intro-seen) .splash {
     position: fixed; inset: 0; z-index: calc(var(--z-toast) + 10); display: grid; place-items: center; pointer-events: none;
-    background: var(--color-field); animation: splash-out 500ms var(--ease-in) 1100ms forwards;
+    background: var(--color-field); animation: splash-out 250ms var(--ease-in) 500ms forwards;
   }
-  .splash-plate { display: grid; gap: var(--space-md); justify-items: center; padding: var(--space-lg) var(--space-xl); border-radius: var(--radius); background: #fff; animation: splash-in 600ms var(--ease-out) both; }
+  .splash-plate { display: grid; gap: var(--space-md); justify-items: center; padding: var(--space-lg) var(--space-xl); border-radius: var(--radius); background: #fff; animation: splash-in 300ms var(--ease-out) both; }
   .splash-plate img { width: min(70vw, 420px); height: auto; }
-  .splash-line { display: block; width: 100%; height: 4px; border-radius: 2px; background: var(--color-accent); transform-origin: left; animation: splash-line 800ms var(--ease-out) 200ms both; }
+  .splash-line { display: block; width: 100%; height: 4px; border-radius: 2px; background: var(--color-accent); transform-origin: left; animation: splash-line 400ms var(--ease-out) 80ms both; }
 }
 @keyframes splash-in { from { opacity: 0; transform: translateY(12px) scale(0.97); } }
 @keyframes splash-line { from { transform: scaleX(0); } }
