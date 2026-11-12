@@ -48,6 +48,20 @@ if (finder) {
     const needs = pick ? pick.dataset.need.split(' ') : [];
     rows.forEach((r) => r.classList.toggle('is-match', needs.includes(r.dataset.license)));
     rows[0]?.parentElement.classList.toggle('has-filter', Boolean(pick));
+    // Matched licenses move to the top of the list, the rest follow in their usual order;
+    // clearing the pick puts everything back. Each card glides from its old spot (FLIP).
+    const parent = rows[0]?.parentElement;
+    if (parent) {
+      const before = new Map(rows.map((r) => [r, r.getBoundingClientRect().top]));
+      [...rows.filter((r) => r.classList.contains('is-match')), ...rows.filter((r) => !r.classList.contains('is-match'))]
+        .forEach((r) => parent.append(r));
+      if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+        rows.forEach((r) => {
+          const dy = before.get(r) - r.getBoundingClientRect().top;
+          if (dy) r.animate([{ transform: `translateY(${dy}px)` }, { transform: 'none' }], { duration: 420, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' });
+        });
+      }
+    }
     finder.classList.toggle('has-pick', Boolean(pick));
     empty.hidden = Boolean(pick); list.hidden = !pick; note.hidden = !pick; clear.hidden = !pick;
 
