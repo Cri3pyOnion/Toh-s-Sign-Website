@@ -688,18 +688,7 @@ body { background: var(--color-paper); }
 .field textarea { min-height: 120px; resize: vertical; }
 .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 1px; border-color: var(--color-field); }
 
-/* Renewal reminder tool */
-.tool { margin-top: var(--space-2xl); padding: var(--space-xl); border-radius: var(--radius); background: var(--color-paper); display: grid; gap: var(--space-lg); border-left: 6px solid var(--color-accent); }
-.tool-text { display: grid; gap: var(--space-xs); }
-.tool-text h3 { font-size: var(--text-xl); margin: 0; }
-.tool-text p { margin: 0; max-width: 60ch; }
-.tool-form { display: grid; gap: var(--space-md); align-items: end; }
-@media (min-width: 48rem) { .tool-form { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) auto; } }
-.tool-result[hidden] { display: none; }
-.tool-result { display: grid; gap: var(--space-md); padding-top: var(--space-md); }
-.tool-answer { margin: 0; font-size: var(--text-lead); }
-.tool-actions { display: flex; flex-wrap: wrap; gap: var(--space-sm) var(--space-lg); align-items: center; }
-
+@media (min-width: 48rem) { 
 /* Enquiry form */
 .inquiry { margin-top: var(--space-md); padding: var(--space-xl); border-radius: var(--radius); background: var(--color-paper); display: grid; gap: var(--space-lg); }
 .inquiry-head { display: grid; gap: var(--space-xs); }
@@ -709,8 +698,7 @@ body { background: var(--color-paper); }
 @media (min-width: 48rem) { .inquiry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .field-wide { grid-column: 1 / -1; } }
 .inquiry-actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
 .inquiry-note { margin: 0; font-size: var(--text-sm); color: var(--color-muted); }
-@media (max-width: 40rem) { .inquiry, .tool { padding: var(--space-lg); } .inquiry-actions .btn { flex: 1 1 100%; } }
-
+@media (max-width: 40rem) { .inquiry, 
 /* Footer: brand and three link columns */
 .foot-grid { display: grid; gap: var(--space-xl) var(--space-2xl); }
 @media (min-width: 48rem) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -794,8 +782,7 @@ html[lang="zh-Hans"] [data-only="en"], html:not([lang="zh-Hans"]) [data-only="zh
 .path .path-go { flex: none; }
 
 /* 3. Tabular digits wherever numbers sit in a column or change. */
-.num, .figure-item dd, .hours, .tool-answer, .topbar-phone, .foot-contact, .group-name .num, input[type="date"] {
-  font-variant-numeric: tabular-nums lining-nums;
+.num, .figure-item dd, .hours,   font-variant-numeric: tabular-nums lining-nums;
 }
 
 /* 4. Balanced text: headings even out their lines, paragraphs avoid a lone last word. */
@@ -806,8 +793,7 @@ p, li, dd, .license-covers { text-wrap: pretty; }
 .hours th, .hours td { border-top-color: var(--hairline); }
 .foot-legal { border-top-color: var(--hairline-on-field); }
 :is(.ground-white, .ground-tint) :is(.license:not(.is-match), .why-item, .figure-item, .about-facts > div, .contact-card, .contact-side) { box-shadow: inset 0 0 0 1px var(--hairline); }
-.inquiry, .tool { box-shadow: inset 0 0 0 1px var(--hairline); }
-.client-group, .group-co { box-shadow: inset 0 0 0 1px var(--hairline-on-field); }
+.inquiry, .client-group, .group-co { box-shadow: inset 0 0 0 1px var(--hairline-on-field); }
 .person img { outline: 1px solid var(--hairline-on-field); outline-offset: -1px; }
 .chip { border-color: oklch(20.7% 0.054 264 / 0.16); }
 @media (min-width: 75.0625rem) { .submenu { box-shadow: var(--shadow-float); } }
@@ -923,7 +909,6 @@ p, li, dd, .license-covers { text-wrap: pretty; }
 @media (max-width: 47.99rem) { .sec-head > .art, .sec-head > .art-lg { width: 140px; } }
 .sec-head-text { gap: var(--space-xs); }
 .finder { margin-bottom: var(--space-lg); }
-.tool { margin-top: var(--space-lg); }
 .why-cta { margin-top: var(--space-lg); }
 .group { margin-bottom: var(--space-xl); }
 .team-sub { margin-bottom: var(--space-md); }
@@ -931,9 +916,7 @@ p, li, dd, .license-covers { text-wrap: pretty; }
 .inquiry { margin-top: var(--space-md); }
 .foot { padding-block: var(--space-2xl) var(--space-lg); }
 .foot-legal { margin-top: var(--space-xl); }
-.tool .empty { padding: var(--space-md); } .tool { gap: var(--space-md); padding: var(--space-lg) var(--space-xl); }
-@media (max-width: 40rem) { .tool { padding: var(--space-lg); } }
-
+@media (max-width: 40rem) { 
 /* =====================================================================
    Per-section tightening.
    ===================================================================== */

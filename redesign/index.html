@@ -50,11 +50,7 @@
               <li><a href="#lic-other" data-i18n="lic.other.name">Regulatory and industry compliance</a></li>
               <li><a href="#services" data-i18n="nav.allservices">All services</a></li>
             </ul></li>
-          <li class="has-sub"><button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-tools"><span data-i18n="nav.tools">Free tools</span><svg class="caret" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.8 6 8.3l3.5-3.5"/></svg></button>
-            <ul id="sub-tools" class="submenu">
-              <li><a href="#finder" data-i18n="tool.finder">License finder</a></li>
-              <li><a href="#renewal" data-i18n="tool.renewal">Renewal reminder</a></li>
-            </ul></li>
+          <li><a href="#finder" data-i18n="tool.finder">License finder</a></li>
           <li><a href="#why" data-i18n="nav.why">Why us</a></li>
           <li class="has-sub"><button type="button" class="sub-toggle" aria-expanded="false" aria-controls="sub-about"><span data-i18n="nav.about">About</span><svg class="caret" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M2.5 4.8 6 8.3l3.5-3.5"/></svg></button>
             <ul id="sub-about" class="submenu">
@@ -208,38 +204,6 @@
             <a class="license-ask" rel="noopener" target="_blank" data-wa="wa.other" data-i18n="lic.other.ask" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20agency%20approvals%20(MIDA%2C%20DOE%2C%20DOSH%2C%20KKM).">Enquire<span class="visually-hidden"> about regulatory compliance</span></a>
           </li>
         </ul>
-        <div id="renewal" class="tool" data-renewal>
-          <div class="tool-text">
-            <h3 data-i18n="renew.title">Renewal reminder</h3>
-            <p data-i18n="renew.lead">Enter your license’s expiry date and we’ll tell you when to start the renewal, with a reminder for your calendar.</p>
-          </div>
-          <form class="tool-form" data-renewal-form>
-            <label class="field"><span data-i18n="renew.license">License</span>
-              <select name="license" required>
-                <option value="business" data-i18n="lic.business.name">Business and factory license</option>
-                <option value="entertainment" data-i18n="lic.entertainment.name">Entertainment and liquor license</option>
-                <option value="advertisement" data-i18n="lic.advertisement.name">Advertisement and outdoor license</option>
-                <option value="engineering" data-i18n="lic.engineering.name">Engineering and architectural drawings</option>
-                <option value="other" data-i18n="lic.other.name">Regulatory and industry compliance</option>
-              </select></label>
-            <label class="field"><span data-i18n="renew.expiry">Expiry date</span>
-              <input type="date" name="expiry" min="2000-01-01" max="2099-12-31" required></label>
-            <button type="submit" class="btn btn-navy" data-i18n="renew.go">Plan my renewal</button>
-          </form>
-          <div class="empty" data-renewal-empty>
-            <svg class="ico empty-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4M12 13v4M10 15h4"/></svg>
-            <p class="empty-title" data-i18n="renew.emptyTitle">No reminder yet</p>
-            <p class="empty-text" data-i18n="renew.emptyText">Choose your license and its expiry date, and your renewal start date appears here.</p>
-          </div>
-          <div class="tool-result" data-renewal-result aria-live="polite" hidden>
-            <p class="tool-answer" data-renewal-answer></p>
-            <div class="tool-actions">
-              <a class="btn btn-primary" data-renewal-ics download="license-renewal.ics" href="#" data-i18n="renew.ics">Add to calendar</a>
-              <a class="btn" data-renewal-gcal href="#" rel="noopener" target="_blank" data-i18n="renew.gcal">Google Calendar</a>
-              <a class="link-quiet" data-renewal-wa href="#" rel="noopener" target="_blank" data-i18n="renew.wa">Ask us to handle it</a>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -497,7 +461,6 @@
         </ul></nav>
         <nav aria-labelledby="ft-help"><p id="ft-help" class="foot-title" data-i18n="foot.help">Tools and policies</p><ul class="foot-list">
           <li><a href="#finder" data-i18n="tool.finder">License finder</a></li>
-          <li><a href="#renewal" data-i18n="tool.renewal">Renewal reminder</a></li>
           <li><a href="privacy.html" data-i18n="foot.privacy">Privacy policy</a></li>
           <li><button type="button" class="foot-cookies" data-consent-open hidden data-i18n="consent.settings">Cookie settings</button></li>
         </ul></nav>
