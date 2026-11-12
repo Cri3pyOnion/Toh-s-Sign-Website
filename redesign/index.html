@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=41">
+  <link rel="stylesheet" href="styles.css?v=42">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -278,13 +278,10 @@
                 Taman Connaught, 56000 Cheras,<br>
                 Kuala Lumpur
               </address>
-              <table class="hours">
-                <caption class="visually-hidden">Opening hours</caption>
-                <tbody>
-                  <tr><th scope="row">Monday to Friday</th><td class="num">8:30 am to 6:00 pm</td></tr>
-                  <tr><th scope="row">Saturday and Sunday</th><td>Closed</td></tr>
-                </tbody>
-              </table>
+              <dl class="hours" aria-label="Opening hours">
+                <div><dt>Monday to Friday</dt><dd class="num">8:30 am to 6:00 pm</dd></div>
+                <div><dt>Saturday and Sunday</dt><dd>Closed</dd></div>
+              </dl>
           </div>
         </div>
       </div>
