@@ -199,37 +199,15 @@ const onScroll = () => {
 window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
 onScroll();
 
-// Line illustrations: each outline traces in as its drawing enters the screen, the fills follow,
-// then the small loops start. Without IntersectionObserver or under reduced motion they show finished.
-const arts = [...document.querySelectorAll('svg.art')];
-if (motionOK && 'IntersectionObserver' in window && arts.length) {
-  arts.forEach((svg) => {
-    svg.querySelectorAll('.s').forEach((el, i) => {
-      el.setAttribute('pathLength', '1');
-      el.style.setProperty('--d', `${Math.min(i * 30, 600)}ms`);
-    });
-  });
-  document.documentElement.classList.add('art-armed');
-  const artIO = new IntersectionObserver((entries) => entries.forEach((e) => {
-    if (!e.isIntersecting) return;
-    const svg = e.target;
-    svg.classList.add('is-drawn');
-    const n = svg.querySelectorAll('.s').length;
-    setTimeout(() => svg.classList.add('is-live'), Math.min(n * 30, 600) + 750);
-    artIO.unobserve(svg);
-  }), { rootMargin: '0px 0px -5% 0px', threshold: 0.1 });
-  arts.forEach((svg) => artIO.observe(svg));
-}
-
 if (motionOK && 'IntersectionObserver' in window) {
   // Scroll reveals, staggered within each group.
   const groups = [
-    ['.index-head', '.finder:not([hidden])'], ['.license'],
-    ['.figures h2'], ['.figure-item'],
-    ['.why-head'], ['.why-item'], ['.why-cta'],
-    ['.clients h2'], ['.logos li'],
-    ['.about-text'], ['.about-facts > div'],
-    ['.contact-main', '.contact-side'], ['.foot-logo'],
+    ['#services .sec-head', '.finder:not([hidden])'], ['.license'],
+    ['#why .sec-head'], ['.why-item'], ['#why .sec-cta'],
+    ['.clients .sec-head'], ['.client-group'],
+    ['#about .sec-head'], ['.about-text', '.about-facts > div'],
+    ['#team .sec-head'], ['.group-co'], ['.person'],
+    ['#contact .sec-head'], ['.contact-info', '.inquiry'],
   ];
   const targets = [];
   groups.forEach((sels) => {
@@ -250,7 +228,7 @@ if (motionOK && 'IntersectionObserver' in window) {
   document.documentElement.classList.add('reveal-on');
 
   // Figures count up once from zero; screen readers get the final value only.
-  const figs = [...document.querySelectorAll('.figure-item dd')];
+  const figs = [...document.querySelectorAll('.figure dd')];
   figs.forEach((dd) => {
     const m = dd.textContent.trim().match(/^([\d,]+)(.*)$/);
     if (!m) return;
@@ -265,7 +243,7 @@ if (motionOK && 'IntersectionObserver' in window) {
     dd.replaceChildren(shown, real);
     dd._count = () => {
       const t0 = performance.now();
-      const dur = 1000;
+      const dur = 1400;
       const step = (now) => {
         const p = Math.min((now - t0) / dur, 1);
         const eased = 1 - Math.pow(2, -10 * p);
