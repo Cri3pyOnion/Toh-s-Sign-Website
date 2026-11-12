@@ -816,3 +816,74 @@ html[lang="zh-Hans"] [data-only="en"], html:not([lang="zh-Hans"]) [data-only="zh
 .topbar-facts { flex-wrap: nowrap; min-width: 0; }
 .topbar-facts li, .topbar-right a { white-space: nowrap; }
 @media (max-width: 75rem) { .topbar-hours, .topbar-facts .topbar-ssm { display: none; } }
+
+/* =====================================================================
+   Craft details: nine small rules applied across the whole site.
+   ===================================================================== */
+:root {
+  --hairline: oklch(20.7% 0.054 264 / 0.08);
+  --hairline-on-field: oklch(100% 0 0 / 0.12);
+  /* Two shadows: a tight contact shadow and a soft ambient one, plus a hairline edge. */
+  --shadow-float: 0 0 0 1px var(--hairline), 0 1px 2px oklch(20% 0.05 264 / 0.08), 0 16px 40px -12px oklch(20% 0.08 258 / 0.22);
+}
+
+/* 1. Concentric radius: inner radius = outer radius - padding. */
+.submenu { --R: 16px; --p: var(--space-xs); }
+.submenu a { border-radius: calc(var(--R) - var(--p)); }
+.client-group { --R: 32px; --p: 18px; border-radius: var(--R); padding: var(--p); }
+.client-group h3 { padding: 6px 6px 0; }
+.client-group .logos li { border-radius: calc(var(--R) - var(--p)); }
+.foot-logo { border-radius: 16px; }
+
+/* 2. Optical centre: label text trimmed to its cap height so it sits in the middle of the pill,
+      not on the line box. The chevron path is drawn around its visual centre (see the markup). */
+@supports (text-box: trim-both cap alphabetic) {
+  html:not([lang="zh-Hans"]) :is(.btn, .chip, .lang button) { text-box: trim-both cap alphabetic; }
+}
+.path .path-go { flex: none; }
+
+/* 3. Tabular digits wherever numbers sit in a column or change. */
+.num, .figure-item dd, .hours, .tool-answer, .topbar-phone, .foot-contact, .group-name .num, input[type="date"] {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* 4. Balanced text: headings even out their lines, paragraphs avoid a lone last word. */
+h1, h2, h3, h4, .lead, .license-name, .consent-title, .empty-title, .paths-title, .person-name { text-wrap: balance; }
+p, li, dd, .license-covers { text-wrap: pretty; }
+
+/* 5. Hairlines: 8% ink edges and two-layer shadows instead of heavy borders. */
+.hours th, .hours td { border-top-color: var(--hairline); }
+.foot-legal { border-top-color: var(--hairline-on-field); }
+:is(.ground-white, .ground-tint) :is(.license:not(.is-match), .why-item, .figure-item, .about-facts > div, .contact-card, .contact-side) { box-shadow: inset 0 0 0 1px var(--hairline); }
+.inquiry, .tool { box-shadow: inset 0 0 0 1px var(--hairline); }
+.client-group, .group-co, .path { box-shadow: inset 0 0 0 1px var(--hairline-on-field); }
+.person img { outline: 1px solid var(--hairline-on-field); outline-offset: -1px; }
+.chip { border-color: oklch(20.7% 0.054 264 / 0.16); }
+@media (min-width: 75.0625rem) { .submenu { box-shadow: var(--shadow-float); } }
+@media (max-width: 75rem) { .js .menu { box-shadow: 0 1px 0 var(--hairline), 0 16px 32px -16px oklch(20% 0.05 264 / 0.22); } }
+.consent { box-shadow: var(--shadow-float); }
+
+/* 6. Icon strokes: every interface icon is an outline at 1.75px, whatever its size. */
+.ico, .caret { fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.ico.path-go { width: 20px; height: 20px; }
+
+/* 7. Empty states: say what will appear and how to get it. */
+.empty {
+  display: grid; justify-items: center; gap: var(--space-2xs); text-align: center;
+  padding: var(--space-xl) var(--space-lg); border-radius: 14px;
+  border: 1.5px dashed oklch(20.7% 0.054 264 / 0.18); background: var(--color-paper-2);
+}
+.empty[hidden] { display: none; }
+.empty-ico { width: 32px; height: 32px; color: var(--color-field); margin-bottom: var(--space-xs); }
+.empty-title { margin: 0; font-weight: 600; font-size: var(--text-lg); }
+.empty-text { margin: 0; max-width: 44ch; color: var(--color-muted); }
+
+/* 8. Primary action: one amber button per view. Secondary actions are outlined. */
+.mast-wa { border-color: var(--color-ink); }
+.ground-navy .btn:not(.btn-primary):not(.btn-navy) { border-color: var(--color-on-field); color: var(--color-on-field); }
+.ground-navy .btn:not(.btn-primary):not(.btn-navy):hover { background: var(--color-field-2); }
+
+/* 9. Visible focus: a 2px ring on everything you can reach with the keyboard. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.btn-primary:focus-visible { outline-color: var(--color-focus); }
+:is(.hero, .ground-navy, .topbar) :focus-visible { outline-color: var(--color-focus-on-field); }

@@ -138,6 +138,8 @@
     'team.join': '加入我们的团队',
 
     'renew.title': '续期提醒',
+    'renew.emptyTitle': '还没有提醒',
+    'renew.emptyText': '选择执照类型和到期日，续期开始日期就会显示在这里。',
     'renew.lead': '输入执照到期日，我们会告诉您何时开始办理续期，并为您生成日历提醒。',
     'renew.license': '执照',
     'renew.expiry': '到期日',

@@ -159,6 +159,7 @@ if (renewal) {
   const ics = renewal.querySelector('[data-renewal-ics]');
   const gcal = renewal.querySelector('[data-renewal-gcal]');
   const wa = renewal.querySelector('[data-renewal-wa]');
+  const empty = renewal.querySelector('[data-renewal-empty]');
   const ymd = (d) => `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`;
   const nice = (d) => d.toLocaleDateString(isZh() ? 'zh-CN' : 'en-MY', { day: 'numeric', month: 'long', year: 'numeric' });
   const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
@@ -196,6 +197,7 @@ if (renewal) {
       + `&dates=${ymd(startEv)}/${ymd(addDays(startEv, 1))}&details=` + encodeURIComponent(note);
     wa.href = 'https://wa.me/60164397178?text=' + encodeURIComponent(t('renew.waMsg', 'Hi Toh’s Sign, please help me renew my ') + name + t('renew.waMid', '. It expires on ') + nice(expiry) + '.');
     out.hidden = false;
+    if (empty) empty.hidden = true;
   };
   form.addEventListener('submit', (e) => {
     e.preventDefault();
