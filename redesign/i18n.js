@@ -52,6 +52,7 @@
     'tick.haccp': 'HACCP 及 GMP',
     'tick.trademark': '商标注册',
     'tick.import': '进出口许可证',
+    'hero.eyebrow': '执照咨询 · 吉隆坡 · 始于1997年',
     'hero.main': '执照之道',
     'hero.sub': '尽在掌握 · 一站式咨询',
     'hero.lead': '您值得信赖的执照合作伙伴。自1997年起，我们为您准备、提交并跟进申请，直至获批。',
