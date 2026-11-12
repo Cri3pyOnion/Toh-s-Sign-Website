@@ -27,7 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=26">
+  <link rel="stylesheet" href="styles.css?v=28">
 </head>
 <body>
   <div class="splash" aria-hidden="true"><div class="splash-plate"><img src="assets/images/logo.png" width="1283" height="146" alt=""><span class="splash-line"></span></div></div>
@@ -110,10 +110,10 @@
         <nav class="container hero-paths" aria-labelledby="paths-title">
           <p id="paths-title" class="paths-title" data-i18n="path.title">Start here: what are you working on?</p>
           <ul class="paths">
-            <li><a class="path" href="#services" data-path="shop"><span data-i18n="path.shop">Opening a shop or office</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
-            <li><a class="path" href="#services" data-path="restaurant"><span data-i18n="path.restaurant">Opening a restaurant or café</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
-            <li><a class="path" href="#services" data-path="signboard"><span data-i18n="path.signboard">Putting up a signboard or billboard</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
-            <li><a class="path" href="#services" data-path="renovation"><span data-i18n="path.renovation">Renovating your premises</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
+            <li><a class="path" href="#finder" data-path="shop"><span data-i18n="path.shop">Opening a shop or office</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
+            <li><a class="path" href="#finder" data-path="restaurant"><span data-i18n="path.restaurant">Opening a restaurant or café</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
+            <li><a class="path" href="#finder" data-path="signboard"><span data-i18n="path.signboard">Putting up a signboard or billboard</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
+            <li><a class="path" href="#finder" data-path="renovation"><span data-i18n="path.renovation">Renovating your premises</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
             <li><a class="path" data-wa="wa.renew" href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%20need%20help%20renewing%20my%20license." rel="noopener" target="_blank"><span data-i18n="path.renew">Renewing a license</span><svg class="ico path-go" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
           </ul>
         </nav>
@@ -152,22 +152,34 @@
         </div>
 
         <div class="finder" id="finder" data-finder hidden>
-          <p id="finder-q" class="finder-q" data-i18n="finder.q">Select your business type</p>
-          <div class="chips" role="group" aria-labelledby="finder-q">
-            <button type="button" class="chip" aria-pressed="false" data-need="business advertisement" data-i18n="chip.shop">Shop or office</button>
-            <button type="button" class="chip" aria-pressed="false" data-need="business advertisement" data-i18n="chip.restaurant">Restaurant or café</button>
-            <button type="button" class="chip" aria-pressed="false" data-need="business advertisement entertainment" data-i18n="chip.bar">Bar or club</button>
-            <button type="button" class="chip" aria-pressed="false" data-need="business other engineering" data-i18n="chip.factory">Factory</button>
-            <button type="button" class="chip" aria-pressed="false" data-need="business other" data-i18n="chip.clinic">Clinic</button>
-            <button type="button" class="chip" aria-pressed="false" data-need="advertisement engineering" data-i18n="chip.signboard">Signboard</button>
-            <button type="button" class="chip" aria-pressed="false" data-need="entertainment advertisement" data-i18n="chip.event">Event</button>
-            <button type="button" class="chip" aria-pressed="false" data-need="engineering" data-i18n="chip.renovation">Renovation</button>
-            <button type="button" class="chip" aria-pressed="false" data-need="other" data-i18n="chip.import">Import or export</button>
+          <div class="finder-pick">
+            <div class="finder-step"><span class="step-no num" aria-hidden="true">1</span><div><h3 id="finder-q" class="finder-q" data-i18n="finder.q">What are you setting up?</h3><p class="finder-sub" data-i18n="finder.sub">Pick the closest match. You can change it any time.</p></div></div>
+            <div class="picks" role="group" aria-labelledby="finder-q">
+              <button type="button" class="pick" aria-pressed="false" data-key="shop" data-need="business advertisement"><svg class="ico pick-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10.5V20h16v-9.5M3 10.5 4.6 5h14.8L21 10.5zM10 20v-5h4v5"/></svg><span class="pick-text"><span class="pick-name" data-i18n="chip.shop">Shop or office</span><span class="pick-hint" data-i18n="hint.shop">Retail, office or salon</span></span></button>
+              <button type="button" class="pick" aria-pressed="false" data-key="restaurant" data-need="business advertisement"><svg class="ico pick-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3v18M4.5 3v5a2.5 2.5 0 0 0 5 0V3M17.5 21V3c-2 1.2-3.5 4-3.5 8h3.5"/></svg><span class="pick-text"><span class="pick-name" data-i18n="chip.restaurant">Restaurant or café</span><span class="pick-hint" data-i18n="hint.restaurant">Restaurant, café or bakery</span></span></button>
+              <button type="button" class="pick" aria-pressed="false" data-key="bar" data-need="business advertisement entertainment"><svg class="ico pick-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 4h15L12 12.5zM12 12.5V20M8 20h8"/></svg><span class="pick-text"><span class="pick-name" data-i18n="chip.bar">Bar or club</span><span class="pick-hint" data-i18n="hint.bar">Sells alcohol or has live music</span></span></button>
+              <button type="button" class="pick" aria-pressed="false" data-key="factory" data-need="business other engineering"><svg class="ico pick-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 20V11l5 3v-3l5 3V5h5l1 15zM3 20h18"/></svg><span class="pick-text"><span class="pick-name" data-i18n="chip.factory">Factory</span><span class="pick-hint" data-i18n="hint.factory">Manufacturing or warehouse</span></span></button>
+              <button type="button" class="pick" aria-pressed="false" data-key="clinic" data-need="business other"><svg class="ico pick-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8.5v7M8.5 12h7"/></svg><span class="pick-text"><span class="pick-name" data-i18n="chip.clinic">Clinic</span><span class="pick-hint" data-i18n="hint.clinic">Medical, dental or wellness</span></span></button>
+              <button type="button" class="pick" aria-pressed="false" data-key="signboard" data-need="advertisement engineering"><svg class="ico pick-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="10" rx="2"/><path d="M8 14v6M16 14v6M7 9h6"/></svg><span class="pick-text"><span class="pick-name" data-i18n="chip.signboard">Signboard</span><span class="pick-hint" data-i18n="hint.signboard">New sign, billboard or LED screen</span></span></button>
+              <button type="button" class="pick" aria-pressed="false" data-key="event" data-need="entertainment advertisement"><svg class="ico pick-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4zM15 7v10"/></svg><span class="pick-text"><span class="pick-name" data-i18n="chip.event">Event</span><span class="pick-hint" data-i18n="hint.event">Concert, launch or roadshow</span></span></button>
+              <button type="button" class="pick" aria-pressed="false" data-key="renovation" data-need="engineering"><svg class="ico pick-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 20 14.5 9.5M13 5l6 6-2.5 2.5-6-6zM15.5 3.5l5 5"/></svg><span class="pick-text"><span class="pick-name" data-i18n="chip.renovation">Renovation</span><span class="pick-hint" data-i18n="hint.renovation">Extension, partition or awning</span></span></button>
+              <button type="button" class="pick" aria-pressed="false" data-key="import" data-need="other"><svg class="ico pick-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 8l9-4 9 4-9 4zM3 8v8l9 4 9-4V8M12 12v8"/></svg><span class="pick-text"><span class="pick-name" data-i18n="chip.import">Import or export</span><span class="pick-hint" data-i18n="hint.import">Permits, SSM or certifications</span></span></button>
+            </div>
           </div>
           <div class="finder-result" aria-live="polite">
-            <p class="finder-answer" data-finder-answer>Select a business type to see the licenses typically required.</p>
-            <a class="btn btn-navy finder-cta" data-finder-cta rel="noopener" target="_blank" data-i18n="finder.cta"
-               href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20to%20ask%20which%20licenses%20I%20need.">Enquire on WhatsApp</a>
+            <div class="finder-step"><span class="step-no num" aria-hidden="true">2</span><div><h3 class="finder-q" data-finder-title data-i18n="finder.resultTitle">Your license checklist</h3><p class="finder-sub" data-finder-sub data-i18n="finder.prompt">Pick what you’re setting up to see the licenses it usually needs.</p></div></div>
+            <div class="empty finder-empty" data-finder-empty>
+              <svg class="ico empty-ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4V3h6v1M8.5 10l1.5 1.5 2.5-2.5M8.5 16l1.5 1.5 2.5-2.5M14.5 11h1.5M14.5 17h1.5"/></svg>
+              <p class="empty-title" data-i18n="finder.emptyTitle">Nothing picked yet</p>
+              <p class="empty-text" data-i18n="finder.emptyText">Choose one of the options to build your checklist.</p>
+            </div>
+            <ol class="needs" data-finder-list hidden></ol>
+            <p class="finder-note" data-finder-note hidden data-i18n="finder.note">Every business is different. We confirm exactly what you need in a free consultation.</p>
+            <div class="finder-actions">
+              <a class="btn btn-primary finder-cta" data-finder-cta rel="noopener" target="_blank" data-i18n="finder.cta"
+                 href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20to%20ask%20which%20licenses%20I%20need.">Ask us on WhatsApp</a>
+              <button type="button" class="link-quiet finder-clear" data-finder-clear hidden data-i18n="finder.clear">Start over</button>
+            </div>
           </div>
         </div>
 
@@ -510,8 +522,8 @@
     </div>
   </div>
 
-  <script src="i18n.js?v=8" defer></script>
+  <script src="i18n.js?v=9" defer></script>
   <script src="consent.js?v=1" defer></script>
-  <script src="main.js?v=20" defer></script>
+  <script src="main.js?v=22" defer></script>
 </body>
 </html>

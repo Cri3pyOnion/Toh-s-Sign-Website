@@ -887,3 +887,77 @@ p, li, dd, .license-covers { text-wrap: pretty; }
 :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
 .btn-primary:focus-visible { outline-color: var(--color-focus); }
 :is(.hero, .ground-navy, .topbar) :focus-visible { outline-color: var(--color-focus-on-field); }
+
+/* =====================================================================
+   License finder: two steps. 1) pick what you're setting up, 2) your checklist.
+   Cards follow the concentric rule: radius 28, padding 16, inner tiles 12.
+   ===================================================================== */
+.finder { --R: 28px; --p: 16px; display: grid; gap: var(--space-md); align-items: start; }
+.finder-pick, .finder-result {
+  display: grid; gap: var(--space-md); align-content: start; margin: 0;
+  padding: var(--p); border-radius: var(--R); background: var(--color-paper);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.finder-result { grid-template-columns: none !important; align-items: stretch; }
+@media (min-width: 75.0625rem) {
+  .finder { grid-template-columns: minmax(0, 1.65fr) minmax(340px, 1fr); }
+  .finder-result { position: sticky; top: calc(var(--nav-h, 80px) + 16px); }
+}
+.finder-step { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-sm); align-items: start; padding: var(--space-xs) var(--space-xs) 0; }
+.step-no {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--color-accent); color: var(--color-accent-ink); font-weight: 700; font-size: var(--text-md); line-height: 1;
+}
+.finder-result .step-no { background: var(--color-paper-3); color: var(--color-ink-2); transition: background-color var(--dur-short) var(--ease-out); }
+.finder.has-pick .finder-result .step-no { background: var(--color-accent); color: var(--color-accent-ink); }
+.finder-q { margin: 0; font-size: var(--text-title); font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+.finder-sub { margin: var(--space-2xs) 0 0; color: var(--color-muted); }
+
+/* Step 1: option tiles with an icon, a name and who it is for. */
+.picks { display: grid; gap: var(--space-xs); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 48rem) { .picks { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.pick {
+  display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: var(--space-sm); align-items: center;
+  min-height: 76px; padding: var(--space-sm); border-radius: calc(var(--R) - var(--p));
+  border: 1.5px solid transparent; background: var(--color-paper-2); color: var(--color-ink);
+  font: inherit; text-align: left; cursor: pointer;
+  transition: background-color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+}
+.pick:hover { background: var(--color-paper-3); }
+.pick:active { transform: scale(0.985); }
+.pick:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.pick-ico { width: 40px; height: 40px; padding: 9px; box-sizing: border-box; border-radius: 50%; background: var(--color-paper); color: var(--color-field); }
+.pick-text { display: grid; gap: 2px; min-width: 0; }
+.pick-name { font-weight: 600; line-height: 1.25; }
+.pick-hint { font-size: var(--text-sm); line-height: 1.35; color: var(--color-muted); }
+.pick[aria-pressed="true"] { background: var(--color-field); border-color: var(--color-field); color: var(--color-on-field); }
+.pick[aria-pressed="true"] .pick-hint { color: var(--color-on-field-2); }
+.pick[aria-pressed="true"] .pick-ico { background: var(--color-accent); color: var(--color-accent-ink); }
+@media (max-width: 30rem) {
+  .finder { --p: 12px; --R: 24px; }
+  .pick { grid-template-columns: 28px minmax(0, 1fr); align-items: start; gap: var(--space-xs); min-height: 0; padding: 10px; }
+  .pick-ico { width: 28px; height: 28px; padding: 5px; }
+  .pick-name { font-size: var(--text-sm); }
+  .pick-hint { font-size: var(--text-xs); }
+}
+
+/* Step 2: the checklist. */
+.finder-empty { padding: var(--space-lg) var(--space-md); border-radius: calc(var(--R) - var(--p)); }
+.needs { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-xs); }
+.needs[hidden], .finder-note[hidden], .finder-clear[hidden] { display: none; }
+.need {
+  display: grid; grid-template-columns: 24px minmax(0, 1fr); grid-template-areas: "ico text" ". more"; gap: 2px var(--space-sm);
+  padding: var(--space-sm) var(--space-md); border-radius: calc(var(--R) - var(--p)); background: var(--color-paper-2);
+}
+.reveal-on .need { animation: rise 300ms var(--ease-out) both; }
+.need:nth-child(2) { animation-delay: 50ms; } .need:nth-child(3) { animation-delay: 100ms; }
+.need-ico { grid-area: ico; width: 24px; height: 24px; color: var(--color-success); margin-top: 1px; }
+.need-text { grid-area: text; display: grid; gap: 2px; }
+.need-name { margin: 0; font-weight: 600; line-height: 1.3; }
+.need-why { margin: 0; font-size: var(--text-sm); color: var(--color-muted); }
+.need-more { grid-area: more; justify-self: start; font-size: var(--text-sm); font-weight: 500; color: var(--color-field); text-underline-offset: 3px; min-height: 32px; display: inline-flex; align-items: center; }
+.finder-note { margin: 0; font-size: var(--text-sm); color: var(--color-muted); padding-inline: var(--space-xs); }
+.finder-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs) var(--space-lg); padding: 0 var(--space-xs) var(--space-xs); }
+.finder-clear { border: 0; background: none; padding: 0; font: inherit; color: var(--color-ink); cursor: pointer; text-decoration: underline; text-underline-offset: 0.3em; }
+@media (max-width: 40rem) { .finder-actions .btn { flex: 1 1 100%; } }
+.finder-result { scroll-margin-top: calc(var(--nav-h, 72px) + 16px); }
