@@ -961,3 +961,25 @@ p, li, dd, .license-covers { text-wrap: pretty; }
 .finder-clear { border: 0; background: none; padding: 0; font: inherit; color: var(--color-ink); cursor: pointer; text-decoration: underline; text-underline-offset: 0.3em; }
 @media (max-width: 40rem) { .finder-actions .btn { flex: 1 1 100%; } }
 .finder-result { scroll-margin-top: calc(var(--nav-h, 72px) + 16px); }
+
+/* =====================================================================
+   Tighter rhythm: less empty space between and inside sections.
+   ===================================================================== */
+:root { --sec-pad: clamp(48px, 3vw + 28px, 80px); }
+.sec-head { margin-bottom: var(--space-xl); gap: var(--space-lg); }
+.sec-head > .art, .sec-head > .art-lg { width: min(100%, 200px); }
+@media (min-width: 48rem) { .sec-head { grid-template-columns: minmax(0, 1fr) 200px; gap: var(--space-xl); } }
+@media (max-width: 47.99rem) { .sec-head > .art, .sec-head > .art-lg { width: 140px; } }
+.sec-head-text { gap: var(--space-xs); }
+.finder { margin-bottom: var(--space-lg); }
+.tool { margin-top: var(--space-lg); }
+.why-cta { margin-top: var(--space-lg); }
+.group { margin-bottom: var(--space-xl); }
+.team-sub { margin-bottom: var(--space-md); }
+.team-more { margin-top: var(--space-xl); }
+.inquiry { margin-top: var(--space-md); }
+.foot { padding-block: var(--space-2xl) var(--space-lg); }
+.foot-legal { margin-top: var(--space-xl); }
+.hero-paths { margin-top: var(--space-lg); }
+.tool .empty { padding: var(--space-md); } .tool { gap: var(--space-md); padding: var(--space-lg) var(--space-xl); }
+@media (max-width: 40rem) { .tool { padding: var(--space-lg); } }
