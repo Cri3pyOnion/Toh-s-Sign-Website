@@ -811,3 +811,8 @@ html[lang="zh-Hans"] [data-only="en"], html:not([lang="zh-Hans"]) [data-only="zh
 /* Figures: four across only when the big numbers fit; sized so 317,388+ stays inside its card. */
 @media (min-width: 40.0625rem) { .figure-item dd { font-size: clamp(2rem, 0.5rem + 2.6vw, 3.25rem); } }
 @media (min-width: 60rem) and (max-width: 80rem) { .figure-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Top bar never wraps; drop the extras before they collide */
+.topbar-facts { flex-wrap: nowrap; min-width: 0; }
+.topbar-facts li, .topbar-right a { white-space: nowrap; }
+@media (max-width: 75rem) { .topbar-hours, .topbar-facts .topbar-ssm { display: none; } }
