@@ -688,7 +688,6 @@ body { background: var(--color-paper); }
 .field textarea { min-height: 120px; resize: vertical; }
 .field input:focus-visible, .field select:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 1px; border-color: var(--color-field); }
 
-@media (min-width: 48rem) { 
 /* Enquiry form */
 .inquiry { margin-top: var(--space-md); padding: var(--space-xl); border-radius: var(--radius); background: var(--color-paper); display: grid; gap: var(--space-lg); }
 .inquiry-head { display: grid; gap: var(--space-xs); }
@@ -698,7 +697,8 @@ body { background: var(--color-paper); }
 @media (min-width: 48rem) { .inquiry-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .field-wide { grid-column: 1 / -1; } }
 .inquiry-actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
 .inquiry-note { margin: 0; font-size: var(--text-sm); color: var(--color-muted); }
-@media (max-width: 40rem) { .inquiry, 
+@media (max-width: 40rem) { .inquiry { padding: var(--space-lg); } .inquiry-actions .btn { flex: 1 1 100%; } }
+
 /* Footer: brand and three link columns */
 .foot-grid { display: grid; gap: var(--space-xl) var(--space-2xl); }
 @media (min-width: 48rem) { .foot-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -782,7 +782,8 @@ html[lang="zh-Hans"] [data-only="en"], html:not([lang="zh-Hans"]) [data-only="zh
 .path .path-go { flex: none; }
 
 /* 3. Tabular digits wherever numbers sit in a column or change. */
-.num, .figure-item dd, .hours,   font-variant-numeric: tabular-nums lining-nums;
+.num, .figure-item dd, .hours, .topbar-phone, .foot-contact, .group-name .num {
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 /* 4. Balanced text: headings even out their lines, paragraphs avoid a lone last word. */
@@ -793,7 +794,8 @@ p, li, dd, .license-covers { text-wrap: pretty; }
 .hours th, .hours td { border-top-color: var(--hairline); }
 .foot-legal { border-top-color: var(--hairline-on-field); }
 :is(.ground-white, .ground-tint) :is(.license:not(.is-match), .why-item, .figure-item, .about-facts > div, .contact-card, .contact-side) { box-shadow: inset 0 0 0 1px var(--hairline); }
-.inquiry, .client-group, .group-co { box-shadow: inset 0 0 0 1px var(--hairline-on-field); }
+.inquiry { box-shadow: inset 0 0 0 1px var(--hairline); }
+.client-group, .group-co { box-shadow: inset 0 0 0 1px var(--hairline-on-field); }
 .person img { outline: 1px solid var(--hairline-on-field); outline-offset: -1px; }
 .chip { border-color: oklch(20.7% 0.054 264 / 0.16); }
 @media (min-width: 75.0625rem) { .submenu { box-shadow: var(--shadow-float); } }
@@ -916,7 +918,7 @@ p, li, dd, .license-covers { text-wrap: pretty; }
 .inquiry { margin-top: var(--space-md); }
 .foot { padding-block: var(--space-2xl) var(--space-lg); }
 .foot-legal { margin-top: var(--space-xl); }
-@media (max-width: 40rem) { 
+
 /* =====================================================================
    Per-section tightening.
    ===================================================================== */
@@ -954,3 +956,14 @@ p, li, dd, .license-covers { text-wrap: pretty; }
 /* Contact: the office card no longer stretches past its content. */
 .contact-side { align-self: start; padding: var(--space-lg); }
 .about-facts > div, .about-facts > div:nth-child(n) { align-content: start; }
+
+/* Figures: icon on the left, number and label stacked beside it, so each card is filled edge to edge. */
+.figure-item { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "icon num" "icon label"; column-gap: var(--space-lg); row-gap: var(--space-2xs); align-content: center; align-items: center; }
+.figure-item > .icon { grid-area: icon; width: 72px; height: 72px; padding: 15px; align-self: center; }
+.figure-item dd { grid-area: num; align-self: end; }
+.figure-item dt { grid-area: label; align-self: start; }
+@media (max-width: 40rem) {
+  .figure-row { grid-template-columns: minmax(0, 1fr); }
+  .figure-item { column-gap: var(--space-md); padding: var(--space-md) var(--space-lg); }
+  .figure-item > .icon { width: 52px; height: 52px; padding: 11px; }
+}
