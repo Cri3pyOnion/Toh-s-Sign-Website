@@ -983,3 +983,41 @@ p, li, dd, .license-covers { text-wrap: pretty; }
 .hero-paths { margin-top: var(--space-lg); }
 .tool .empty { padding: var(--space-md); } .tool { gap: var(--space-md); padding: var(--space-lg) var(--space-xl); }
 @media (max-width: 40rem) { .tool { padding: var(--space-lg); } }
+
+/* =====================================================================
+   Per-section tightening.
+   ===================================================================== */
+/* Section headings: on phones the drawing sits beside the title, not under it. */
+@media (max-width: 47.99rem) {
+  .sec-head { grid-template-columns: minmax(0, 1fr) 84px; align-items: start; gap: var(--space-sm); margin-bottom: var(--space-lg); }
+  .sec-head > .art, .sec-head > .art-lg { width: 84px; justify-self: end; }
+}
+
+/* Figures: shorter cards. */
+.figure-item { padding: var(--space-lg); }
+@media (min-width: 60rem) { .figure-item, .figure-item:first-child, .figure-item:last-child { padding: var(--space-lg); } }
+
+/* Licenses: slimmer cards, smaller drawing. */
+.license { padding: var(--space-md) var(--space-lg); grid-template-columns: 72px minmax(0, 1fr); }
+.license-name { font-size: clamp(1.25rem, 1rem + 0.9vw, 1.75rem); }
+@media (min-width: 60rem) {
+  .license { grid-template-columns: 112px minmax(0, 5fr) minmax(0, 6fr) auto; padding: var(--space-sm) var(--space-xl) var(--space-sm) var(--space-md); }
+}
+
+/* Why: icon beside the title, less padding. */
+.why-item { grid-template-columns: 52px minmax(0, 1fr); column-gap: var(--space-md); row-gap: var(--space-2xs); padding: var(--space-lg); }
+.why-item > .icon { grid-row: 1 / span 2; width: 52px; height: 52px; padding: 10px; margin: 0; }
+.why-item dt { font-size: var(--text-lg); align-self: end; }
+.why-item dd { grid-column: 2; }
+
+/* About: the four statements as a 2 x 2 grid, label above text. */
+@media (min-width: 40rem) { .about-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.about-facts > div, .about-facts > div:nth-child(n) { grid-template-columns: none; padding: var(--space-md) var(--space-lg); gap: var(--space-2xs); }
+.about-facts dt { font-weight: 600; color: var(--color-field); }
+
+/* Team: closer leader cards and button. */
+.people { row-gap: var(--space-lg); }
+
+/* Contact: the office card no longer stretches past its content. */
+.contact-side { align-self: start; padding: var(--space-lg); }
+.about-facts > div, .about-facts > div:nth-child(n) { align-content: start; }
