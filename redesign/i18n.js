@@ -150,6 +150,8 @@
 
     'team.title': '集团与领导团队',
     'team.lead': '两家公司，一个团队。认识带领我们的人。',
+    'group.tagFounded': '创立于1997年',
+    'group.tagSub': '子公司',
     'group.informatic': '由 CK Toh 于1997年创办，办理营业、广告及娱乐执照。',
     'group.consultancy': '子公司，专门处理复杂事务：工程及建筑图审批、卫生部（KKM）、MOTAC、MIDA 及各类行业认证。',
     'team.leaders': '领导团队',
