@@ -122,7 +122,7 @@ h3 { letter-spacing: -0.02em; }
 
 /* ---------- Sections ---------- */
 .section { padding-block: var(--section-pad); }
-.section-tint { background: var(--color-paper-2); }
+.section-tint { background: oklch(93.5% 0.04 258); border-top: 4px solid var(--color-accent); }
 .sec-head { display: grid; grid-template-columns: 14rem minmax(0, 1fr); column-gap: var(--space-xl); row-gap: var(--space-md); margin-bottom: clamp(40px, 5vw, 72px); }
 .sec-no { grid-row: span 2; font-size: var(--text-sm); font-weight: 500; color: var(--color-muted); padding-top: 0.6em; }
 .sec-no::after { content: ""; display: inline-block; vertical-align: middle; width: 32px; height: 1px; margin-left: 12px; background: var(--color-rule-strong); }
