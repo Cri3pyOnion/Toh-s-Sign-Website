@@ -69,6 +69,7 @@ h3 { letter-spacing: -0.02em; }
 .menu > li { position: relative; }
 .menu > li > a { display: inline-flex; align-items: center; gap: 4px; min-height: 40px; padding: 0 12px; border: 0; border-radius: var(--radius-pill); background: none; color: var(--color-ink-2); font: 500 var(--text-sm) var(--font-body); text-decoration: none; cursor: pointer; transition: color var(--dur-short), background-color var(--dur-short); white-space: nowrap; }
 .menu > li > a:hover { color: var(--color-ink); background: var(--color-paper-2); }
+.menu > li > a[aria-current="page"] { color: var(--color-ink); font-weight: 600; box-shadow: inset 0 -2px 0 var(--color-accent); border-radius: 0; }
 .mast-actions { display: flex; align-items: center; gap: var(--space-sm); flex: none; }
 .menu-toggle { display: none; min-height: 38px; padding: 0 14px; border: 1px solid var(--color-rule-strong); border-radius: var(--radius-pill); background: none; color: var(--color-ink); font: 500 var(--text-sm) var(--font-body); cursor: pointer; }
 /* Language switch: EN | 中文, the current one in ink. */
@@ -243,6 +244,9 @@ html:lang(zh) body { line-height: 1.75; }
 
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: no-preference) {
+  /* Moving between pages fades instead of flashing (browsers without support just switch). */
+  @view-transition { navigation: auto; }
+  .mast { view-transition-name: mast; }
   /* Headline rises out of its line, then the rest fades in. */
   .js .hero-title .line > span { animation: rise 1000ms var(--ease-out) both; }
   .js .hero-title .line + .line > span { animation-delay: 110ms; }
