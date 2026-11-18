@@ -5,7 +5,7 @@ const menu = document.getElementById('menu');
 if (toggle && menu) {
   const setOpen = (open) => {
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? 'Close' : 'Menu';
+    toggle.textContent = open ? (toggle.dataset.close || 'Close') : (toggle.dataset.open || 'Menu');
     menu.classList.toggle('is-open', open);
   };
   toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));

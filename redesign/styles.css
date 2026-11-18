@@ -71,6 +71,12 @@ h3 { letter-spacing: -0.02em; }
 .menu > li > a:hover { color: var(--color-ink); background: var(--color-paper-2); }
 .mast-actions { display: flex; align-items: center; gap: var(--space-sm); flex: none; }
 .menu-toggle { display: none; min-height: 38px; padding: 0 14px; border: 1px solid var(--color-rule-strong); border-radius: var(--radius-pill); background: none; color: var(--color-ink); font: 500 var(--text-sm) var(--font-body); cursor: pointer; }
+/* Language switch: EN | 中文, the current one in ink. */
+.lang { display: flex; align-items: center; gap: 6px; font-size: var(--text-sm); font-weight: 500; white-space: nowrap; }
+.lang a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 4px; text-decoration: none; color: var(--color-muted); transition: color var(--dur-short); }
+.lang a:hover { color: var(--color-ink); }
+.lang a[aria-current] { color: var(--color-ink); font-weight: 600; }
+.lang span { color: var(--color-rule-strong); }
 .page-back { font-size: var(--text-sm); font-weight: 500; text-decoration: none; color: var(--color-ink-2); }
 .page-back:hover { color: var(--color-ink); }
 .mast-row-page { justify-content: space-between; }
@@ -90,6 +96,7 @@ h3 { letter-spacing: -0.02em; }
 @media (max-width: 40rem) {
   .logo img { height: auto; width: 100%; max-width: 168px; }
   .mast-wa { display: none; }
+  .lang { font-size: var(--text-xs); gap: 2px; }
   .mast-row-page { gap: var(--space-sm); }
   .mast-row-page .logo { min-width: 0; flex: 1 1 auto; }
   .mast-row-page .logo img { max-width: 132px; }
@@ -202,6 +209,13 @@ h3 { letter-spacing: -0.02em; }
 .hours div { display: flex; justify-content: space-between; gap: var(--space-md); flex-wrap: wrap; }
 .hours dt { color: var(--color-muted); font-size: var(--text-sm); }
 .hours dd { margin: 0; font-weight: 500; font-size: var(--text-sm); }
+
+/* ---------- Chinese pages ---------- */
+:lang(zh) { --font-body: "Plus Jakarta Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif; --font-display: var(--font-body); }
+html:lang(zh) body { line-height: 1.75; }
+:lang(zh) h1, :lang(zh) h2, :lang(zh) h3, :lang(zh) .hero-title-sub, :lang(zh) .license-name { letter-spacing: 0; }
+.hero-title-main:lang(zh) { letter-spacing: 0.02em; line-height: 1.05; font-weight: 600; }
+:lang(zh) .eyebrow { letter-spacing: 0.04em; }
 
 /* ---------- Footer ---------- */
 .foot { padding-block: clamp(56px, 6vw, 88px) var(--space-xl); border-top: 1px solid var(--color-rule); background: #fff; }
