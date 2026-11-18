@@ -184,3 +184,7 @@
   .pager-next { text-align: left; }
   .t-join-row { align-items: flex-start; }
 }
+
+/* ---------- Chinese ---------- */
+.t-title:lang(zh) { letter-spacing: 0.01em; line-height: 1.12; }
+:lang(zh) .spot-tab-name, :lang(zh) .spot.is-live .spot-name, :lang(zh) .pager-title, :lang(zh) .org-name, :lang(zh) .t-join h2 { letter-spacing: 0; }
