@@ -8,7 +8,7 @@
   <!-- Security: only this site and Google Fonts may load anything. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="theme-color" content="#0b1f44">
+  <meta name="theme-color" content="#ffffff">
   <!-- Temporary preview: keep search engines away. Remove when this goes live on tohssign.com. -->
   <meta name="robots" content="noindex, nofollow">
   <link rel="alternate" hreflang="en" href="team.html">
@@ -16,9 +16,9 @@
   <script src="head.js?v=1"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=46">
-  <link rel="stylesheet" href="team.css?v=3">
+  <link rel="stylesheet" href="team.css?v=4">
 </head>
 <body class="page-team">
   <a class="skip" href="#main">Skip to content</a>
@@ -48,169 +48,138 @@
   </header>
 
   <main id="main">
-    <!-- Hero: dark navy, a three-part headline, the track record and an approval seal that draws itself. -->
-    <section class="th" aria-labelledby="th-title">
-      <div class="container th-grid">
-        <div class="th-main">
-          <p class="eyebrow th-eyebrow">The people of Toh’s Sign</p>
-          <h1 id="th-title" class="th-title"><span class="line"><span>The people behind</span></span> <span class="line th-accent"><span>every approval.</span></span></h1>
-          <p class="th-lead">We are the team Malaysian businesses have called since 1997 when a license, a permit or an authority stands between them and opening day. Meet the people who carry that for you.</p>
-          <dl class="figures th-stats">
-            <div class="figure"><dd class="num">28+</dd><dt>Years of licensing consultancy</dt></div>
-            <div class="figure"><dd class="num">317,388+</dd><dt>Approved applications</dt></div>
-            <div class="figure"><dd class="num">2</dd><dt>Companies, one group</dt></div>
-          </dl>
+    <!-- Intro: headline on the left, a wall of the six portraits on the right. -->
+    <section class="tm-hero" aria-labelledby="tm-title">
+      <div class="container tm-hero-grid">
+        <div class="tm-hero-copy">
+          <p class="eyebrow tm-eyebrow">Our team · Since 1997</p>
+          <h1 id="tm-title" class="tm-title"><span class="line"><span>The team behind</span></span> <span class="line"><span class="tm-mark">every license.</span></span></h1>
+          <p class="lead tm-lead">Two companies, one team. Since 1997 we have prepared, submitted and tracked license applications for Malaysian businesses. Here is who does what.</p>
+          <p class="tm-actions"><a class="link-arrow" href="#path"><span>See how your case moves</span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 4v11M5.5 11 10 15.5 14.5 11"/></svg></a></p>
         </div>
-        <div class="th-art">
-          <svg class="seal" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
-            <g class="seal-petals"><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(0 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(15 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(30 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(45 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(60 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(75 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(90 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(105 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(120 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(135 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(150 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(165 200 200)" pathLength="1"/></g>
-            <circle class="seal-d" cx="200" cy="200" r="186" pathLength="1"/>
-            <circle class="seal-d seal-ticks" cx="200" cy="200" r="172"/>
-            <circle class="seal-d" cx="200" cy="200" r="118" pathLength="1"/>
-            <circle class="seal-d seal-accent" cx="200" cy="200" r="104" pathLength="1"/>
-            <path class="seal-d seal-accent seal-check" d="M156 202l30 30 60-64" pathLength="1"/>
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section menu: stays under the masthead and marks where you are. -->
-    <nav class="subnav" aria-label="On this page">
-      <ul class="container subnav-list">
-        <li><a href="#founder">Founder</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-        <li><a href="#structure">Structure</a></li>
-        <li><a href="#join">Careers</a></li>
-        <li><a href="#talk">Contact</a></li>
-      </ul>
-    </nav>
-
-    <!-- Founder: the story, then the company promise as a quote. -->
-    <section id="founder" class="tsec tsec-warm" aria-labelledby="f-title">
-      <div class="container">
-        <header class="thead">
-          <p class="eyebrow tkick">Founder</p>
-          <h2 id="f-title">Why Toh’s Sign exists</h2>
-          <p class="lead">Founded in 1997 by CK Toh, Toh’s Sign draws on decades of experience to resolve licensing problems quickly, so businesses keep operating smoothly.</p>
-        </header>
-        <div class="founder">
-          <figure class="founder-photo">
-            <img src="assets/team/ck-toh.jpg" width="480" height="797" alt="Portrait of CK Toh">
-            <figcaption><span class="founder-name">CK Toh</span><span class="founder-role">Founder · CEO and HR</span></figcaption>
-          </figure>
-          <div class="founder-text">
-            <p class="founder-since num">Since 1997</p>
-            <p>Over the years the work grew into two companies. Toh’s Sign Informatic handles business, advertisement and entertainment licensing. Its subsidiary, Toh’s Sign Consultancy, takes on the complex matters: engineering and building plan approvals, KKM, MOTAC, MIDA and industry certifications.</p>
-            <p>The idea has stayed the same: one team that prepares, submits and tracks your application through to approval, with a solution tailored to every client.</p>
-          </div>
-        </div>
-        <blockquote class="tquote">
-          <span class="tquote-mark" aria-hidden="true">“</span>
-          <p>We commit only to what we can deliver: direct, fast, reliable and hassle-free.</p>
-          <footer>Our promise, Toh’s Sign</footer>
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- Leadership: six cards on navy. -->
-    <section id="leadership" class="tsec tsec-navy" aria-labelledby="l-title">
-      <div class="container">
-        <header class="thead">
-          <p class="eyebrow tkick">Leadership</p>
-          <h2 id="l-title">Who leads Toh’s Sign today</h2>
-          <p class="lead">Six people, each accountable for one part of how we serve you: direction, management, accounts, administration, operations and liaison with the authorities.</p>
-        </header>
-        <ul class="leads">
-          <li class="lead-card" id="m-ck-toh">
-            <div class="lead-photo"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt="Portrait of CK Toh" loading="lazy"><span class="lead-badge">Founder · CEO</span></div>
-            <p class="lead-name">CK Toh</p>
-            <p class="lead-role">CEO and HR</p>
-          </li>
-          <li class="lead-card" id="m-may-lee">
-            <div class="lead-photo"><img src="assets/team/may-lee.jpg" width="480" height="797" alt="Portrait of May Lee" loading="lazy"><span class="lead-badge">GM</span></div>
-            <p class="lead-name">May Lee</p>
-            <p class="lead-role">General Manager</p>
-          </li>
-          <li class="lead-card" id="m-chloe">
-            <div class="lead-photo"><img src="assets/team/chloe.jpg" width="480" height="797" alt="Portrait of Chloe" loading="lazy"><span class="lead-badge">Accounts</span></div>
-            <p class="lead-name">Chloe</p>
-            <p class="lead-role">Account Manager</p>
-          </li>
-          <li class="lead-card" id="m-pecky">
-            <div class="lead-photo"><img src="assets/team/pecky.jpg" width="480" height="797" alt="Portrait of Pecky" loading="lazy"><span class="lead-badge">Admin</span></div>
-            <p class="lead-name">Pecky</p>
-            <p class="lead-role">Admin Consultant</p>
-          </li>
-          <li class="lead-card" id="m-mahe-v">
-            <div class="lead-photo"><img src="assets/team/mahe-v.jpg" width="480" height="797" alt="Portrait of Mahe.V" loading="lazy"><span class="lead-badge">Operations</span></div>
-            <p class="lead-name">Mahe.V</p>
-            <p class="lead-role">Admin Operations Manager</p>
-          </li>
-          <li class="lead-card" id="m-azir">
-            <div class="lead-photo"><img src="assets/team/azir.jpg" width="480" height="797" alt="Portrait of Azir" loading="lazy"><span class="lead-badge">Liaison</span></div>
-            <p class="lead-name">Azir</p>
-            <p class="lead-role">Liaison Manager</p>
-          </li>
+        <ul class="wall" aria-label="The team">
+            <li class="wall-tile"><a href="#p-ck-toh"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt="Portrait of CK Toh"><span class="wall-name">CK Toh</span></a></li>
+            <li class="wall-tile"><a href="#p-may-lee"><img src="assets/team/may-lee.jpg" width="480" height="797" alt="Portrait of May Lee"><span class="wall-name">May Lee</span></a></li>
+            <li class="wall-tile"><a href="#p-chloe"><img src="assets/team/chloe.jpg" width="480" height="797" alt="Portrait of Chloe"><span class="wall-name">Chloe</span></a></li>
+            <li class="wall-tile"><a href="#p-pecky"><img src="assets/team/pecky.jpg" width="480" height="797" alt="Portrait of Pecky"><span class="wall-name">Pecky</span></a></li>
+            <li class="wall-tile"><a href="#p-mahe-v"><img src="assets/team/mahe-v.jpg" width="480" height="797" alt="Portrait of Mahe.V"><span class="wall-name">Mahe.V</span></a></li>
+            <li class="wall-tile"><a href="#p-azir"><img src="assets/team/azir.jpg" width="480" height="797" alt="Portrait of Azir"><span class="wall-name">Azir</span></a></li>
         </ul>
       </div>
     </section>
 
-    <!-- Structure: the chart on the left, the group's companies on the right. -->
-    <section id="structure" class="tsec tsec-warm" aria-labelledby="s-title">
+    <!-- How your case moves: a track of steps, each with the person you will hear from.
+         Without JavaScript every step shows as a list. -->
+    <section id="path" class="tm-path section-tint" aria-labelledby="path-title">
       <div class="container">
-        <header class="thead">
-          <p class="eyebrow tkick">Structure</p>
-          <h2 id="s-title">How we are organised</h2>
-          <p class="lead">A founder who sets direction, a general manager who owns delivery, and managers who handle your case day to day. Tap a name to meet them.</p>
+        <header class="tm-head">
+          <p class="eyebrow">How your case moves</p>
+          <h2 id="path-title">A named person at every step</h2>
+          <p class="lead">From the first call to the approval letter, you always know who has your file.</p>
         </header>
-        <div class="struct">
-          <div class="chart">
-            <div class="tier"><p class="tier-label">Founder and CEO</p><ul class="tier-nodes"><li><a class="node node-top" href="#m-ck-toh"><span class="node-name">CK Toh</span><span class="node-role">CEO and HR</span></a></li></ul></div>
-            <span class="tier-link" aria-hidden="true"></span>
-            <div class="tier"><p class="tier-label">General management</p><ul class="tier-nodes"><li><a class="node" href="#m-may-lee"><span class="node-name">May Lee</span><span class="node-role">General Manager</span></a></li></ul></div>
-            <span class="tier-link" aria-hidden="true"></span>
-            <div class="tier"><p class="tier-label">Managers and consultants</p><ul class="tier-nodes"><li><a class="node" href="#m-chloe"><span class="node-name">Chloe</span><span class="node-role">Account Manager</span></a></li><li><a class="node" href="#m-pecky"><span class="node-name">Pecky</span><span class="node-role">Admin Consultant</span></a></li><li><a class="node" href="#m-mahe-v"><span class="node-name">Mahe.V</span><span class="node-role">Admin Operations Manager</span></a></li><li><a class="node" href="#m-azir"><span class="node-name">Azir</span><span class="node-role">Liaison Manager</span></a></li></ul></div>
+        <div class="path" data-path>
+          <div class="track" role="tablist" aria-label="Steps of a case" hidden>
+            <span class="track-line" aria-hidden="true"><span class="track-fill"></span></span>
+            <button class="track-node" type="button" role="tab" id="tab-0" aria-controls="step-0" aria-selected="true"><span class="track-dot num">01</span><span class="track-label">Free consultation</span></button>
+            <button class="track-node" type="button" role="tab" id="tab-1" aria-controls="step-1" aria-selected="false" tabindex="-1"><span class="track-dot num">02</span><span class="track-label">One person on your case</span></button>
+            <button class="track-node" type="button" role="tab" id="tab-2" aria-controls="step-2" aria-selected="false" tabindex="-1"><span class="track-dot num">03</span><span class="track-label">Quotes and your account</span></button>
+            <button class="track-node" type="button" role="tab" id="tab-3" aria-controls="step-3" aria-selected="false" tabindex="-1"><span class="track-dot num">04</span><span class="track-label">Documents prepared</span></button>
+            <button class="track-node" type="button" role="tab" id="tab-4" aria-controls="step-4" aria-selected="false" tabindex="-1"><span class="track-dot num">05</span><span class="track-label">Submitted and followed up</span></button>
+            <button class="track-node" type="button" role="tab" id="tab-5" aria-controls="step-5" aria-selected="false" tabindex="-1"><span class="track-dot num">06</span><span class="track-label">With the authorities</span></button>
+            <button class="track-node track-done" type="button" role="tab" id="tab-6" aria-controls="step-6" aria-selected="false" tabindex="-1"><span class="track-dot"><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg></span><span class="track-label">Approved</span></button>
           </div>
-          <aside class="group-side" aria-labelledby="gs-title">
-            <p id="gs-title" class="tier-label">The group</p>
-            <ul class="cos">
-            <li class="co"><p class="co-kind">Parent company · 1997</p><p class="co-name">Toh’s Sign Informatic Sdn Bhd</p><p class="co-reg num">713854-H</p><ul class="co-tags" aria-label="Handles"><li>Business licensing</li><li>Advertisement licensing</li><li>Entertainment licensing</li></ul></li>
-            <li class="co"><p class="co-kind">Subsidiary</p><p class="co-name">Toh’s Sign Consultancy Sdn Bhd</p><p class="co-reg num">1563660-H</p><ul class="co-tags" aria-label="Handles"><li>Engineering and building plans</li><li>KKM</li><li>MOTAC</li><li>MIDA</li><li>Industry certifications</li></ul></li>
-              <li class="co co-link"><a href="careers.html"><span class="co-name">Careers</span><span class="co-kind">Join the team →</span></a></li>
-            </ul>
-          </aside>
+          <ol class="steps">
+          <li class="step" id="step-0">
+            <div class="step-copy"><p class="step-no num">Step 01</p><h3 class="step-title">Free consultation</h3><p class="step-text">We review your case at no charge and tell you plainly whether you are eligible before you commit.</p></div>
+            <div class="step-who"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">Your contact</span><span class="step-who-name">CK Toh</span><span class="step-who-role">Founder · CEO and HR</span></p></div>
+          </li>
+          <li class="step" id="step-1">
+            <div class="step-copy"><p class="step-no num">Step 02</p><h3 class="step-title">One person on your case</h3><p class="step-text">A consultant is assigned to manage your application from first assessment to approval.</p></div>
+            <div class="step-who"><img src="assets/team/may-lee.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">Your contact</span><span class="step-who-name">May Lee</span><span class="step-who-role">General Manager</span></p></div>
+          </li>
+          <li class="step" id="step-2">
+            <div class="step-copy"><p class="step-no num">Step 03</p><h3 class="step-title">Quotes and your account</h3><p class="step-text">One point of contact for quotations, payments and updates on WhatsApp.</p></div>
+            <div class="step-who"><img src="assets/team/chloe.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">Your contact</span><span class="step-who-name">Chloe</span><span class="step-who-role">Account Manager</span></p></div>
+          </li>
+          <li class="step" id="step-3">
+            <div class="step-copy"><p class="step-no num">Step 04</p><h3 class="step-title">Documents prepared</h3><p class="step-text">Every submission is prepared for your specific license category and industry.</p></div>
+            <div class="step-who"><img src="assets/team/pecky.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">Your contact</span><span class="step-who-name">Pecky</span><span class="step-who-role">Admin Consultant</span></p></div>
+          </li>
+          <li class="step" id="step-4">
+            <div class="step-copy"><p class="step-no num">Step 05</p><h3 class="step-title">Submitted and followed up</h3><p class="step-text">Problems are flagged before submission, and your file is tracked until there is an answer.</p></div>
+            <div class="step-who"><img src="assets/team/mahe-v.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">Your contact</span><span class="step-who-name">Mahe.V</span><span class="step-who-role">Admin Operations Manager</span></p></div>
+          </li>
+          <li class="step" id="step-5">
+            <div class="step-copy"><p class="step-no num">Step 06</p><h3 class="step-title">With the authorities</h3><p class="step-text">Meetings, site inspections and queries with the council and the agencies, handled for you.</p></div>
+            <div class="step-who"><img src="assets/team/azir.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">Your contact</span><span class="step-who-name">Azir</span><span class="step-who-role">Liaison Manager</span></p></div>
+          </li>
+          <li class="step step-done" id="step-6">
+            <div class="step-copy"><p class="step-no"><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg></p><h3 class="step-title">Approved</h3><p class="step-text">After approval we keep track of renewal dates and compliance for you.</p></div>
+            <div class="step-stamp" aria-hidden="true"><span>Approved</span></div>
+          </li>
+          </ol>
+          <p class="path-controls" hidden><button class="btn btn-sm path-play" type="button" data-play="Watch a case move" data-pause="Pause" aria-pressed="false">Watch a case move</button></p>
         </div>
       </div>
     </section>
 
-    <!-- Careers band. -->
-    <section id="join" class="t-join" aria-labelledby="j-title">
+    <!-- Directory: large names; on a mouse, the portrait follows the pointer. -->
+    <section class="tm-dir" aria-labelledby="dir-title">
+      <div class="container">
+        <header class="tm-head">
+          <p class="eyebrow">The people</p>
+          <h2 id="dir-title">Who you’ll be talking to</h2>
+          <p class="lead">The six people who lead the team.</p>
+        </header>
+        <ol class="dir">
+          <li class="dir-row" id="p-ck-toh" data-photo="assets/team/ck-toh.jpg"><span class="dir-no num">01</span><span class="dir-name">CK Toh</span><span class="dir-role">Founder · CEO and HR</span><img class="dir-thumb" src="assets/team/ck-toh.jpg" width="480" height="797" alt="Portrait of CK Toh" loading="lazy"></li>
+          <li class="dir-row" id="p-may-lee" data-photo="assets/team/may-lee.jpg"><span class="dir-no num">02</span><span class="dir-name">May Lee</span><span class="dir-role">General Manager</span><img class="dir-thumb" src="assets/team/may-lee.jpg" width="480" height="797" alt="Portrait of May Lee" loading="lazy"></li>
+          <li class="dir-row" id="p-chloe" data-photo="assets/team/chloe.jpg"><span class="dir-no num">03</span><span class="dir-name">Chloe</span><span class="dir-role">Account Manager</span><img class="dir-thumb" src="assets/team/chloe.jpg" width="480" height="797" alt="Portrait of Chloe" loading="lazy"></li>
+          <li class="dir-row" id="p-pecky" data-photo="assets/team/pecky.jpg"><span class="dir-no num">04</span><span class="dir-name">Pecky</span><span class="dir-role">Admin Consultant</span><img class="dir-thumb" src="assets/team/pecky.jpg" width="480" height="797" alt="Portrait of Pecky" loading="lazy"></li>
+          <li class="dir-row" id="p-mahe-v" data-photo="assets/team/mahe-v.jpg"><span class="dir-no num">05</span><span class="dir-name">Mahe.V</span><span class="dir-role">Admin Operations Manager</span><img class="dir-thumb" src="assets/team/mahe-v.jpg" width="480" height="797" alt="Portrait of Mahe.V" loading="lazy"></li>
+          <li class="dir-row" id="p-azir" data-photo="assets/team/azir.jpg"><span class="dir-no num">06</span><span class="dir-name">Azir</span><span class="dir-role">Liaison Manager</span><img class="dir-thumb" src="assets/team/azir.jpg" width="480" height="797" alt="Portrait of Azir" loading="lazy"></li>
+        </ol>
+      </div>
+      <div class="dir-float" aria-hidden="true"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt=""></div>
+    </section>
+
+    <!-- The two companies, framed like registration certificates. -->
+    <section class="tm-group section-tint" aria-labelledby="grp-title">
+      <div class="container">
+        <header class="tm-head">
+          <p class="eyebrow">The group</p>
+          <h2 id="grp-title">Two companies, one team</h2>
+        </header>
+        <div class="co-pair">
+          <article class="co-card">
+            <div class="co-inner">
+              <header class="co-top"><img src="assets/images/mark-informatic.png" width="192" height="192" alt="" loading="lazy"><p><span class="co-kind">Parent company</span><span class="co-est">Est. 1997</span></p></header>
+              <h3 class="co-name">Toh’s Sign Informatic Sdn Bhd</h3>
+              <p class="co-reg"><span>Reg. no.</span> <span class="num">713854-H</span></p>
+              <p class="co-text">Founded in 1997 by CK Toh.</p>
+              <ul class="co-list" aria-label="Handles"><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>Business licensing</span></li><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>Advertisement licensing</span></li><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>Entertainment licensing</span></li></ul>
+            </div>
+          </article>
+          <article class="co-card">
+            <div class="co-inner">
+              <header class="co-top"><img src="assets/images/mark-consultancy.png" width="192" height="192" alt="" loading="lazy"><p><span class="co-kind">Subsidiary</span><span class="co-est">For complex matters</span></p></header>
+              <h3 class="co-name">Toh’s Sign Consultancy Sdn Bhd</h3>
+              <p class="co-reg"><span>Reg. no.</span> <span class="num">1563660-H</span></p>
+              <p class="co-text">Takes on the approvals that need specialists.</p>
+              <ul class="co-list" aria-label="Handles"><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>Engineering and building plan approvals</span></li><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>KKM and MOTAC</span></li><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>MIDA</span></li><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>Industry certifications</span></li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="t-join" aria-labelledby="j-title">
       <div class="container t-join-row">
         <div>
           <h2 id="j-title">Want to work with us?</h2>
-          <p>Our team includes consultants, liaison officers, account managers, accountants, admin and marketing staff. We develop and keep our people through expertise, collaboration and an inclusive, supportive workplace.</p>
+          <p>Our team includes consultants, liaison officers, account managers, accountants, admin and marketing staff.</p>
         </div>
         <a class="btn btn-ink" href="careers.html">See careers</a>
-      </div>
-    </section>
-
-    <!-- Closing call to action with the office. -->
-    <section id="talk" class="tsec tsec-navy talk" aria-labelledby="c-title">
-      <div class="container talk-grid">
-        <div>
-          <p class="eyebrow tkick">Start here</p>
-          <h2 id="c-title">Not sure who to ask? Start with a free consultation.</h2>
-          <p class="lead">Tell us what you need licensed. We’ll review your case at no charge and put the right person on it.</p>
-          <div class="talk-actions">
-            <a class="btn btn-primary" href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20a%20free%20licensing%20consultation." rel="noopener" target="_blank">WhatsApp a consultant</a>
-            <a class="btn btn-ghost" href="tel:+60391082871">Call 03-9108 2871</a>
-          </div>
-        </div>
-        <div class="talk-office">
-          <p class="tier-label">Office</p>
-          <address>B-2-5, B-3-5, B-4-5 &amp; B-5-5,<br>Centre Point Medan, Jln 3/144a,<br>Taman Connaught, 56000 Cheras,<br>Kuala Lumpur</address>
-          <dl class="hours" aria-label="Opening hours"><div><dt>Monday to Friday</dt><dd>8:30 am to 6:00 pm</dd></div><div><dt>Saturday and Sunday</dt><dd>Closed</dd></div></dl>
-        </div>
       </div>
     </section>
 
@@ -251,6 +220,6 @@
   </footer>
 
   <script src="main.js?v=32" defer></script>
-  <script src="team.js?v=2" defer></script>
+  <script src="team.js?v=3" defer></script>
 </body>
 </html>

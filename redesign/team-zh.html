@@ -8,7 +8,7 @@
   <!-- Security: only this site and Google Fonts may load anything. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="theme-color" content="#0b1f44">
+  <meta name="theme-color" content="#ffffff">
   <!-- Temporary preview: keep search engines away. Remove when this goes live on tohssign.com. -->
   <meta name="robots" content="noindex, nofollow">
   <link rel="alternate" hreflang="en" href="team.html">
@@ -16,9 +16,9 @@
   <script src="head.js?v=1"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=46">
-  <link rel="stylesheet" href="team.css?v=3">
+  <link rel="stylesheet" href="team.css?v=4">
 </head>
 <body class="page-team">
   <a class="skip" href="#main">跳至内容</a>
@@ -48,169 +48,138 @@
   </header>
 
   <main id="main">
-    <!-- Hero: dark navy, a three-part headline, the track record and an approval seal that draws itself. -->
-    <section class="th" aria-labelledby="th-title">
-      <div class="container th-grid">
-        <div class="th-main">
-          <p class="eyebrow th-eyebrow">Toh’s Sign 的团队</p>
-          <h1 id="th-title" class="th-title"><span class="line"><span>每一份执照</span></span> <span class="line th-accent"><span>背后的团队</span></span></h1>
-          <p class="th-lead">一个团队，一站式服务。自1997年起，我们为马来西亚企业准备、提交并跟进执照申请。认识带领我们的人。</p>
-          <dl class="figures th-stats">
-            <div class="figure"><dd class="num">28+</dd><dt>年执照咨询经验</dt></div>
-            <div class="figure"><dd class="num">317,388+</dd><dt>份获批申请</dt></div>
-            <div class="figure"><dd class="num">2</dd><dt>家公司，一个集团</dt></div>
-          </dl>
+    <!-- Intro: headline on the left, a wall of the six portraits on the right. -->
+    <section class="tm-hero" aria-labelledby="tm-title">
+      <div class="container tm-hero-grid">
+        <div class="tm-hero-copy">
+          <p class="eyebrow tm-eyebrow">我们的团队 · 始于1997年</p>
+          <h1 id="tm-title" class="tm-title"><span class="line"><span>每一份执照</span></span> <span class="line"><span class="tm-mark">背后的团队</span></span></h1>
+          <p class="lead tm-lead">一个团队，一站式服务。自1997年起，我们为马来西亚企业准备、提交并跟进执照申请。认识带领我们的人。</p>
+          <p class="tm-actions"><a class="link-arrow" href="#path"><span>看看个案如何推进</span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 4v11M5.5 11 10 15.5 14.5 11"/></svg></a></p>
         </div>
-        <div class="th-art">
-          <svg class="seal" viewBox="0 0 400 400" aria-hidden="true" focusable="false">
-            <g class="seal-petals"><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(0 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(15 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(30 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(45 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(60 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(75 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(90 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(105 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(120 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(135 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(150 200 200)" pathLength="1"/><ellipse class="seal-d" cx="200" cy="200" rx="150" ry="58" transform="rotate(165 200 200)" pathLength="1"/></g>
-            <circle class="seal-d" cx="200" cy="200" r="186" pathLength="1"/>
-            <circle class="seal-d seal-ticks" cx="200" cy="200" r="172"/>
-            <circle class="seal-d" cx="200" cy="200" r="118" pathLength="1"/>
-            <circle class="seal-d seal-accent" cx="200" cy="200" r="104" pathLength="1"/>
-            <path class="seal-d seal-accent seal-check" d="M156 202l30 30 60-64" pathLength="1"/>
-          </svg>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section menu: stays under the masthead and marks where you are. -->
-    <nav class="subnav" aria-label="本页内容">
-      <ul class="container subnav-list">
-        <li><a href="#founder">创办人</a></li>
-        <li><a href="#leadership">领导团队</a></li>
-        <li><a href="#structure">组织架构</a></li>
-        <li><a href="#join">加入我们</a></li>
-        <li><a href="#talk">联系我们</a></li>
-      </ul>
-    </nav>
-
-    <!-- Founder: the story, then the company promise as a quote. -->
-    <section id="founder" class="tsec tsec-warm" aria-labelledby="f-title">
-      <div class="container">
-        <header class="thead">
-          <p class="eyebrow tkick">创办人</p>
-          <h2 id="f-title">Toh’s Sign 的由来</h2>
-          <p class="lead">Toh’s Sign 由 CK Toh 于1997年创办，凭借数十年的经验迅速解决执照问题，让企业持续顺利运营。</p>
-        </header>
-        <div class="founder">
-          <figure class="founder-photo">
-            <img src="assets/team/ck-toh.jpg" width="480" height="797" alt="CK Toh 的照片">
-            <figcaption><span class="founder-name">CK Toh</span><span class="founder-role">创办人 · 总裁兼人力资源</span></figcaption>
-          </figure>
-          <div class="founder-text">
-            <p class="founder-since num">始于1997年</p>
-            <p>多年来，业务发展为两家公司。Toh’s Sign Informatic 办理营业、广告及娱乐执照；子公司 Toh’s Sign Consultancy 专门处理复杂事务：工程及建筑图审批、卫生部（KKM）、MOTAC、MIDA 及各类行业认证。</p>
-            <p>初心始终如一：由同一个团队为您准备、提交并跟进申请直至获批，为每位客户量身定制解决方案。</p>
-          </div>
-        </div>
-        <blockquote class="tquote">
-          <span class="tquote-mark" aria-hidden="true">“</span>
-          <p>我们只承诺能够兑现的事：直接、快速、可靠、省心。</p>
-          <footer>Toh’s Sign 的承诺</footer>
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- Leadership: six cards on navy. -->
-    <section id="leadership" class="tsec tsec-navy" aria-labelledby="l-title">
-      <div class="container">
-        <header class="thead">
-          <p class="eyebrow tkick">领导团队</p>
-          <h2 id="l-title">今天带领 Toh’s Sign 的人</h2>
-          <p class="lead">六位成员，各自负责我们服务的一部分：方向、管理、客户、行政、运营，以及与政府部门的联络。</p>
-        </header>
-        <ul class="leads">
-          <li class="lead-card" id="m-ck-toh">
-            <div class="lead-photo"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt="CK Toh 的照片" loading="lazy"><span class="lead-badge">创办人 · 总裁</span></div>
-            <p class="lead-name">CK Toh</p>
-            <p class="lead-role">总裁兼人力资源</p>
-          </li>
-          <li class="lead-card" id="m-may-lee">
-            <div class="lead-photo"><img src="assets/team/may-lee.jpg" width="480" height="797" alt="May Lee 的照片" loading="lazy"><span class="lead-badge">总经理</span></div>
-            <p class="lead-name">May Lee</p>
-            <p class="lead-role">总经理</p>
-          </li>
-          <li class="lead-card" id="m-chloe">
-            <div class="lead-photo"><img src="assets/team/chloe.jpg" width="480" height="797" alt="Chloe 的照片" loading="lazy"><span class="lead-badge">客户</span></div>
-            <p class="lead-name">Chloe</p>
-            <p class="lead-role">客户经理</p>
-          </li>
-          <li class="lead-card" id="m-pecky">
-            <div class="lead-photo"><img src="assets/team/pecky.jpg" width="480" height="797" alt="Pecky 的照片" loading="lazy"><span class="lead-badge">行政</span></div>
-            <p class="lead-name">Pecky</p>
-            <p class="lead-role">行政顾问</p>
-          </li>
-          <li class="lead-card" id="m-mahe-v">
-            <div class="lead-photo"><img src="assets/team/mahe-v.jpg" width="480" height="797" alt="Mahe.V 的照片" loading="lazy"><span class="lead-badge">运营</span></div>
-            <p class="lead-name">Mahe.V</p>
-            <p class="lead-role">行政运营经理</p>
-          </li>
-          <li class="lead-card" id="m-azir">
-            <div class="lead-photo"><img src="assets/team/azir.jpg" width="480" height="797" alt="Azir 的照片" loading="lazy"><span class="lead-badge">联络</span></div>
-            <p class="lead-name">Azir</p>
-            <p class="lead-role">联络经理</p>
-          </li>
+        <ul class="wall" aria-label="团队成员">
+            <li class="wall-tile"><a href="#p-ck-toh"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt="CK Toh 的照片"><span class="wall-name">CK Toh</span></a></li>
+            <li class="wall-tile"><a href="#p-may-lee"><img src="assets/team/may-lee.jpg" width="480" height="797" alt="May Lee 的照片"><span class="wall-name">May Lee</span></a></li>
+            <li class="wall-tile"><a href="#p-chloe"><img src="assets/team/chloe.jpg" width="480" height="797" alt="Chloe 的照片"><span class="wall-name">Chloe</span></a></li>
+            <li class="wall-tile"><a href="#p-pecky"><img src="assets/team/pecky.jpg" width="480" height="797" alt="Pecky 的照片"><span class="wall-name">Pecky</span></a></li>
+            <li class="wall-tile"><a href="#p-mahe-v"><img src="assets/team/mahe-v.jpg" width="480" height="797" alt="Mahe.V 的照片"><span class="wall-name">Mahe.V</span></a></li>
+            <li class="wall-tile"><a href="#p-azir"><img src="assets/team/azir.jpg" width="480" height="797" alt="Azir 的照片"><span class="wall-name">Azir</span></a></li>
         </ul>
       </div>
     </section>
 
-    <!-- Structure: the chart on the left, the group's companies on the right. -->
-    <section id="structure" class="tsec tsec-warm" aria-labelledby="s-title">
+    <!-- How your case moves: a track of steps, each with the person you will hear from.
+         Without JavaScript every step shows as a list. -->
+    <section id="path" class="tm-path section-tint" aria-labelledby="path-title">
       <div class="container">
-        <header class="thead">
-          <p class="eyebrow tkick">组织架构</p>
-          <h2 id="s-title">我们的组织方式</h2>
-          <p class="lead">创办人制定方向，总经理负责交付，各经理日常跟进您的个案。点击姓名认识他们。</p>
+        <header class="tm-head">
+          <p class="eyebrow">个案如何推进</p>
+          <h2 id="path-title">每一步，都有专人负责</h2>
+          <p class="lead">从第一通电话到批准信，您始终知道是谁在处理您的文件。</p>
         </header>
-        <div class="struct">
-          <div class="chart">
-            <div class="tier"><p class="tier-label">创办人兼总裁</p><ul class="tier-nodes"><li><a class="node node-top" href="#m-ck-toh"><span class="node-name">CK Toh</span><span class="node-role">总裁兼人力资源</span></a></li></ul></div>
-            <span class="tier-link" aria-hidden="true"></span>
-            <div class="tier"><p class="tier-label">总经理</p><ul class="tier-nodes"><li><a class="node" href="#m-may-lee"><span class="node-name">May Lee</span><span class="node-role">总经理</span></a></li></ul></div>
-            <span class="tier-link" aria-hidden="true"></span>
-            <div class="tier"><p class="tier-label">经理与顾问</p><ul class="tier-nodes"><li><a class="node" href="#m-chloe"><span class="node-name">Chloe</span><span class="node-role">客户经理</span></a></li><li><a class="node" href="#m-pecky"><span class="node-name">Pecky</span><span class="node-role">行政顾问</span></a></li><li><a class="node" href="#m-mahe-v"><span class="node-name">Mahe.V</span><span class="node-role">行政运营经理</span></a></li><li><a class="node" href="#m-azir"><span class="node-name">Azir</span><span class="node-role">联络经理</span></a></li></ul></div>
+        <div class="path" data-path>
+          <div class="track" role="tablist" aria-label="个案步骤" hidden>
+            <span class="track-line" aria-hidden="true"><span class="track-fill"></span></span>
+            <button class="track-node" type="button" role="tab" id="tab-0" aria-controls="step-0" aria-selected="true"><span class="track-dot num">01</span><span class="track-label">免费咨询</span></button>
+            <button class="track-node" type="button" role="tab" id="tab-1" aria-controls="step-1" aria-selected="false" tabindex="-1"><span class="track-dot num">02</span><span class="track-label">专人负责</span></button>
+            <button class="track-node" type="button" role="tab" id="tab-2" aria-controls="step-2" aria-selected="false" tabindex="-1"><span class="track-dot num">03</span><span class="track-label">报价与账户</span></button>
+            <button class="track-node" type="button" role="tab" id="tab-3" aria-controls="step-3" aria-selected="false" tabindex="-1"><span class="track-dot num">04</span><span class="track-label">准备文件</span></button>
+            <button class="track-node" type="button" role="tab" id="tab-4" aria-controls="step-4" aria-selected="false" tabindex="-1"><span class="track-dot num">05</span><span class="track-label">提交与跟进</span></button>
+            <button class="track-node" type="button" role="tab" id="tab-5" aria-controls="step-5" aria-selected="false" tabindex="-1"><span class="track-dot num">06</span><span class="track-label">对接政府部门</span></button>
+            <button class="track-node track-done" type="button" role="tab" id="tab-6" aria-controls="step-6" aria-selected="false" tabindex="-1"><span class="track-dot"><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg></span><span class="track-label">获批</span></button>
           </div>
-          <aside class="group-side" aria-labelledby="gs-title">
-            <p id="gs-title" class="tier-label">集团</p>
-            <ul class="cos">
-            <li class="co"><p class="co-kind">母公司 · 1997年</p><p class="co-name">Toh’s Sign Informatic Sdn Bhd</p><p class="co-reg num">713854-H</p><ul class="co-tags" aria-label="业务范围"><li>营业执照</li><li>广告执照</li><li>娱乐执照</li></ul></li>
-            <li class="co"><p class="co-kind">子公司</p><p class="co-name">Toh’s Sign Consultancy Sdn Bhd</p><p class="co-reg num">1563660-H</p><ul class="co-tags" aria-label="业务范围"><li>工程及建筑图审批</li><li>卫生部（KKM）</li><li>MOTAC</li><li>MIDA</li><li>行业认证</li></ul></li>
-              <li class="co co-link"><a href="careers-zh.html"><span class="co-name">加入我们</span><span class="co-kind">查看招聘 →</span></a></li>
-            </ul>
-          </aside>
+          <ol class="steps">
+          <li class="step" id="step-0">
+            <div class="step-copy"><p class="step-no num">步骤 01</p><h3 class="step-title">免费咨询</h3><p class="step-text">我们免费评估您的个案，在您决定之前坦白告诉您是否符合申请资格。</p></div>
+            <div class="step-who"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">您的联系人</span><span class="step-who-name">CK Toh</span><span class="step-who-role">创办人 · 总裁兼人力资源</span></p></div>
+          </li>
+          <li class="step" id="step-1">
+            <div class="step-copy"><p class="step-no num">步骤 02</p><h3 class="step-title">专人负责</h3><p class="step-text">由一位顾问从初步评估到获批，全程负责您的申请。</p></div>
+            <div class="step-who"><img src="assets/team/may-lee.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">您的联系人</span><span class="step-who-name">May Lee</span><span class="step-who-role">总经理</span></p></div>
+          </li>
+          <li class="step" id="step-2">
+            <div class="step-copy"><p class="step-no num">步骤 03</p><h3 class="step-title">报价与账户</h3><p class="step-text">报价、付款和 WhatsApp 进度更新，都有固定的联系人。</p></div>
+            <div class="step-who"><img src="assets/team/chloe.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">您的联系人</span><span class="step-who-name">Chloe</span><span class="step-who-role">客户经理</span></p></div>
+          </li>
+          <li class="step" id="step-3">
+            <div class="step-copy"><p class="step-no num">步骤 04</p><h3 class="step-title">准备文件</h3><p class="step-text">每份文件都按您的执照类别和行业专门准备。</p></div>
+            <div class="step-who"><img src="assets/team/pecky.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">您的联系人</span><span class="step-who-name">Pecky</span><span class="step-who-role">行政顾问</span></p></div>
+          </li>
+          <li class="step" id="step-4">
+            <div class="step-copy"><p class="step-no num">步骤 05</p><h3 class="step-title">提交与跟进</h3><p class="step-text">提交前提早指出问题，提交后持续跟进直到有结果。</p></div>
+            <div class="step-who"><img src="assets/team/mahe-v.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">您的联系人</span><span class="step-who-name">Mahe.V</span><span class="step-who-role">行政运营经理</span></p></div>
+          </li>
+          <li class="step" id="step-5">
+            <div class="step-copy"><p class="step-no num">步骤 06</p><h3 class="step-title">对接政府部门</h3><p class="step-text">与市政局及各机构的会面、现场检查和查询，由我们替您处理。</p></div>
+            <div class="step-who"><img src="assets/team/azir.jpg" width="480" height="797" alt="" loading="lazy"><p><span class="step-who-label">您的联系人</span><span class="step-who-name">Azir</span><span class="step-who-role">联络经理</span></p></div>
+          </li>
+          <li class="step step-done" id="step-6">
+            <div class="step-copy"><p class="step-no"><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg></p><h3 class="step-title">获批</h3><p class="step-text">获批后，我们会为您跟进续期日期和合规事项。</p></div>
+            <div class="step-stamp" aria-hidden="true"><span>获批</span></div>
+          </li>
+          </ol>
+          <p class="path-controls" hidden><button class="btn btn-sm path-play" type="button" data-play="看看个案如何推进" data-pause="暂停" aria-pressed="false">看看个案如何推进</button></p>
         </div>
       </div>
     </section>
 
-    <!-- Careers band. -->
-    <section id="join" class="t-join" aria-labelledby="j-title">
+    <!-- Directory: large names; on a mouse, the portrait follows the pointer. -->
+    <section class="tm-dir" aria-labelledby="dir-title">
+      <div class="container">
+        <header class="tm-head">
+          <p class="eyebrow">团队成员</p>
+          <h2 id="dir-title">您会接触到的人</h2>
+          <p class="lead">带领团队的六位成员。</p>
+        </header>
+        <ol class="dir">
+          <li class="dir-row" id="p-ck-toh" data-photo="assets/team/ck-toh.jpg"><span class="dir-no num">01</span><span class="dir-name">CK Toh</span><span class="dir-role">创办人 · 总裁兼人力资源</span><img class="dir-thumb" src="assets/team/ck-toh.jpg" width="480" height="797" alt="CK Toh 的照片" loading="lazy"></li>
+          <li class="dir-row" id="p-may-lee" data-photo="assets/team/may-lee.jpg"><span class="dir-no num">02</span><span class="dir-name">May Lee</span><span class="dir-role">总经理</span><img class="dir-thumb" src="assets/team/may-lee.jpg" width="480" height="797" alt="May Lee 的照片" loading="lazy"></li>
+          <li class="dir-row" id="p-chloe" data-photo="assets/team/chloe.jpg"><span class="dir-no num">03</span><span class="dir-name">Chloe</span><span class="dir-role">客户经理</span><img class="dir-thumb" src="assets/team/chloe.jpg" width="480" height="797" alt="Chloe 的照片" loading="lazy"></li>
+          <li class="dir-row" id="p-pecky" data-photo="assets/team/pecky.jpg"><span class="dir-no num">04</span><span class="dir-name">Pecky</span><span class="dir-role">行政顾问</span><img class="dir-thumb" src="assets/team/pecky.jpg" width="480" height="797" alt="Pecky 的照片" loading="lazy"></li>
+          <li class="dir-row" id="p-mahe-v" data-photo="assets/team/mahe-v.jpg"><span class="dir-no num">05</span><span class="dir-name">Mahe.V</span><span class="dir-role">行政运营经理</span><img class="dir-thumb" src="assets/team/mahe-v.jpg" width="480" height="797" alt="Mahe.V 的照片" loading="lazy"></li>
+          <li class="dir-row" id="p-azir" data-photo="assets/team/azir.jpg"><span class="dir-no num">06</span><span class="dir-name">Azir</span><span class="dir-role">联络经理</span><img class="dir-thumb" src="assets/team/azir.jpg" width="480" height="797" alt="Azir 的照片" loading="lazy"></li>
+        </ol>
+      </div>
+      <div class="dir-float" aria-hidden="true"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt=""></div>
+    </section>
+
+    <!-- The two companies, framed like registration certificates. -->
+    <section class="tm-group section-tint" aria-labelledby="grp-title">
+      <div class="container">
+        <header class="tm-head">
+          <p class="eyebrow">集团</p>
+          <h2 id="grp-title">两家公司，一个团队</h2>
+        </header>
+        <div class="co-pair">
+          <article class="co-card">
+            <div class="co-inner">
+              <header class="co-top"><img src="assets/images/mark-informatic.png" width="192" height="192" alt="" loading="lazy"><p><span class="co-kind">母公司</span><span class="co-est">创立于1997年</span></p></header>
+              <h3 class="co-name">Toh’s Sign Informatic Sdn Bhd</h3>
+              <p class="co-reg"><span>注册号</span> <span class="num">713854-H</span></p>
+              <p class="co-text">由 CK Toh 于1997年创办。</p>
+              <ul class="co-list" aria-label="业务范围"><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>营业执照</span></li><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>广告执照</span></li><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>娱乐执照</span></li></ul>
+            </div>
+          </article>
+          <article class="co-card">
+            <div class="co-inner">
+              <header class="co-top"><img src="assets/images/mark-consultancy.png" width="192" height="192" alt="" loading="lazy"><p><span class="co-kind">子公司</span><span class="co-est">专门处理复杂事务</span></p></header>
+              <h3 class="co-name">Toh’s Sign Consultancy Sdn Bhd</h3>
+              <p class="co-reg"><span>注册号</span> <span class="num">1563660-H</span></p>
+              <p class="co-text">负责需要专业人员的审批。</p>
+              <ul class="co-list" aria-label="业务范围"><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>工程及建筑图审批</span></li><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>卫生部（KKM）及 MOTAC</span></li><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>MIDA</span></li><li><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4.5 10.5 8.5 14.5 15.5 6"/></svg><span>行业认证</span></li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="t-join" aria-labelledby="j-title">
       <div class="container t-join-row">
         <div>
           <h2 id="j-title">想加入我们吗？</h2>
-          <p>我们的团队由顾问、联络专员、客户经理、会计、行政及市场营销人员组成。我们以专业能力、团队协作和包容互助的工作环境培养和留住人才。</p>
+          <p>我们的团队由顾问、联络专员、客户经理、会计、行政及市场营销人员组成。</p>
         </div>
         <a class="btn btn-ink" href="careers-zh.html">查看招聘</a>
-      </div>
-    </section>
-
-    <!-- Closing call to action with the office. -->
-    <section id="talk" class="tsec tsec-navy talk" aria-labelledby="c-title">
-      <div class="container talk-grid">
-        <div>
-          <p class="eyebrow tkick">从这里开始</p>
-          <h2 id="c-title">不知道该问谁？先预约免费咨询。</h2>
-          <p class="lead">告诉我们您需要办理什么执照。我们会免费评估您的个案，并安排合适的人负责。</p>
-          <div class="talk-actions">
-            <a class="btn btn-primary" href="https://wa.me/60164397178?text=%E6%82%A8%E5%A5%BD%20Toh%E2%80%99s%20Sign%EF%BC%8C%E6%88%91%E6%83%B3%E9%A2%84%E7%BA%A6%E5%85%8D%E8%B4%B9%E7%9A%84%E6%89%A7%E7%85%A7%E5%92%A8%E8%AF%A2%E3%80%82" rel="noopener" target="_blank">WhatsApp 联系顾问</a>
-            <a class="btn btn-ghost" href="tel:+60391082871">致电 03-9108 2871</a>
-          </div>
-        </div>
-        <div class="talk-office">
-          <p class="tier-label">办公室</p>
-          <address>B-2-5, B-3-5, B-4-5 &amp; B-5-5,<br>Centre Point Medan, Jln 3/144a,<br>Taman Connaught, 56000 Cheras,<br>Kuala Lumpur</address>
-          <dl class="hours" aria-label="营业时间"><div><dt>星期一至星期五</dt><dd>上午 8:30 至下午 6:00</dd></div><div><dt>星期六及星期日</dt><dd>休息</dd></div></dl>
-        </div>
       </div>
     </section>
 
@@ -251,6 +220,6 @@
   </footer>
 
   <script src="main.js?v=32" defer></script>
-  <script src="team.js?v=2" defer></script>
+  <script src="team.js?v=3" defer></script>
 </body>
 </html>
