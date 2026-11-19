@@ -1,7 +1,7 @@
 /* Our team page, on top of styles.css. Its own design:
  * a white intro with a wall of the six portraits, a "how your case moves" track with a named person
- * at each step and an approval stamp at the end, a directory of large names where the portrait follows
- * the mouse, and the two companies framed like registration certificates.
+ * at each step and an approval stamp at the end, a plain grid of the members, and the two companies
+ * framed like registration certificates.
  * All motion is transform, opacity or background-size, and off under reduced motion. */
 
 /* ---------- Shared ---------- */
@@ -79,28 +79,15 @@
 .path-play { background: #fff; }
 .path-play[aria-pressed="true"] { background: var(--color-ink); border-color: var(--color-ink); color: #fff; }
 
-/* ---------- Directory ---------- */
-.tm-dir { padding-block: clamp(72px, 9vw, 136px); }
-.dir { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-rule-strong); }
-.dir-row { display: grid; grid-template-columns: 4rem minmax(0, 1fr) auto 64px; align-items: center; gap: var(--space-lg); padding-block: clamp(16px, 2vw, 28px); border-bottom: 1px solid var(--color-rule-strong); scroll-margin-top: calc(var(--nav-h) + 24px); }
-.dir-no { font-size: var(--text-sm); color: var(--color-muted); transition: color var(--dur-short); }
-.dir-name { font-size: clamp(2rem, 4.4vw, 4.25rem); font-weight: 500; line-height: 1; letter-spacing: -0.045em; color: var(--color-ink); transition: transform var(--dur-long) var(--ease-out), color var(--dur-short); }
-.dir-role { font-size: var(--text-sm); color: var(--color-muted); text-align: right; }
-.dir-thumb { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; object-position: 50% 15%; }
-.dir-row:target .dir-name { color: var(--color-brand); }
-.dir-row:target .dir-no { color: var(--color-accent-2); }
-.dir-float { display: none; }
-
-/* With a mouse: names slide and the portrait follows the pointer instead of the small thumbnails. */
-.dir-live .dir-row { grid-template-columns: 4rem minmax(0, 1fr) auto; cursor: default; }
-.dir-live .dir-thumb { display: none; }
-.dir-live .dir-row:hover .dir-name { transform: translateX(20px); color: var(--color-brand); }
-.dir-live .dir-row:hover .dir-no { color: var(--color-accent-2); }
-.dir-live .dir-float { display: block; position: fixed; left: 0; top: 0; z-index: var(--z-raised); width: 200px; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r); pointer-events: none; opacity: 0; box-shadow: 0 30px 50px -20px oklch(20% 0.05 264 / 0.45); transition: opacity 250ms var(--ease-out); }
-.dir-live .dir-float.is-on { opacity: 1; }
-.dir-float img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; }
-.dir-float.is-swap img { animation: swap 380ms var(--ease-out); }
-@keyframes swap { from { transform: scale(1.12); opacity: 0.4; } }
+/* ---------- Members ---------- */
+.tm-members { padding-block: clamp(72px, 9vw, 136px); }
+.members { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--space-xl) var(--space-md); list-style: none; margin: 0; padding: 0; }
+.member { scroll-margin-top: calc(var(--nav-h) + 24px); }
+.member-photo { aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r); background: var(--color-paper-3); }
+.member-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; transition: transform 800ms var(--ease-out); }
+.member:hover .member-photo img { transform: scale(1.03); }
+.member-name { margin-top: var(--space-sm); font-size: var(--text-md); font-weight: 600; letter-spacing: -0.02em; }
+.member-role { margin-top: 2px; font-size: var(--text-sm); color: var(--color-muted); }
 
 /* ---------- The group ---------- */
 .tm-group { padding-block: clamp(72px, 9vw, 136px); }
@@ -159,10 +146,13 @@
 
 /* ---------- Chinese ---------- */
 .tm-title:lang(zh) { letter-spacing: 0.01em; line-height: 1.15; font-weight: 600; }
-:lang(zh) .step-title, :lang(zh) .dir-name, :lang(zh) .co-name, :lang(zh) .pager-title, :lang(zh) .t-join h2 { letter-spacing: 0; }
+:lang(zh) .step-title, :lang(zh) .member-name, :lang(zh) .co-name, :lang(zh) .pager-title, :lang(zh) .t-join h2 { letter-spacing: 0; }
 :lang(zh) .step-stamp span { letter-spacing: 0.3em; }
 
 /* ---------- Responsive ---------- */
+@media (max-width: 75rem) {
+  .members { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 48rem; }
+}
 @media (max-width: 64rem) {
   .tm-hero-grid { grid-template-columns: minmax(0, 1fr); }
   .wall { max-width: 36rem; }
@@ -182,11 +172,9 @@
   .path.is-live .step-who { border-radius: var(--r); padding: var(--space-sm); width: 100%; }
   .path.is-live .step-who img { width: 56px; height: 56px; }
   .path-controls { justify-content: flex-start; }
-  .dir-row { grid-template-columns: 2rem minmax(0, 1fr) 52px; row-gap: 4px; }
-  .dir-no { grid-row: 1 / span 2; align-self: start; padding-top: 0.5em; }
-  .dir-name { grid-column: 2; }
-  .dir-role { grid-column: 2; grid-row: 2; text-align: left; }
-  .dir-thumb { grid-column: 3; grid-row: 1 / span 2; width: 52px; height: 52px; }
+  .members { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-lg) var(--space-sm); }
+  .member-name { font-size: var(--text-md); margin-top: var(--space-sm); }
+  .member-role { font-size: var(--text-xs); }
   .pager { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .pager-next { text-align: left; }
   .t-join-row { align-items: flex-start; }

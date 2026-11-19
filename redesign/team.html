@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=46">
-  <link rel="stylesheet" href="team.css?v=4">
+  <link rel="stylesheet" href="team.css?v=5">
 </head>
 <body class="page-team">
   <a class="skip" href="#main">Skip to content</a>
@@ -123,24 +123,22 @@
       </div>
     </section>
 
-    <!-- Directory: large names; on a mouse, the portrait follows the pointer. -->
-    <section class="tm-dir" aria-labelledby="dir-title">
+    <!-- Members: a plain grid of portraits with name and role. -->
+    <section class="tm-members" aria-labelledby="mem-title">
       <div class="container">
         <header class="tm-head">
-          <p class="eyebrow">The people</p>
-          <h2 id="dir-title">Who you’ll be talking to</h2>
-          <p class="lead">The six people who lead the team.</p>
+          <p class="eyebrow">Our people</p>
+          <h2 id="mem-title">Members of Toh’s Sign</h2>
         </header>
-        <ol class="dir">
-          <li class="dir-row" id="p-ck-toh" data-photo="assets/team/ck-toh.jpg"><span class="dir-no num">01</span><span class="dir-name">CK Toh</span><span class="dir-role">Founder · CEO and HR</span><img class="dir-thumb" src="assets/team/ck-toh.jpg" width="480" height="797" alt="Portrait of CK Toh" loading="lazy"></li>
-          <li class="dir-row" id="p-may-lee" data-photo="assets/team/may-lee.jpg"><span class="dir-no num">02</span><span class="dir-name">May Lee</span><span class="dir-role">General Manager</span><img class="dir-thumb" src="assets/team/may-lee.jpg" width="480" height="797" alt="Portrait of May Lee" loading="lazy"></li>
-          <li class="dir-row" id="p-chloe" data-photo="assets/team/chloe.jpg"><span class="dir-no num">03</span><span class="dir-name">Chloe</span><span class="dir-role">Account Manager</span><img class="dir-thumb" src="assets/team/chloe.jpg" width="480" height="797" alt="Portrait of Chloe" loading="lazy"></li>
-          <li class="dir-row" id="p-pecky" data-photo="assets/team/pecky.jpg"><span class="dir-no num">04</span><span class="dir-name">Pecky</span><span class="dir-role">Admin Consultant</span><img class="dir-thumb" src="assets/team/pecky.jpg" width="480" height="797" alt="Portrait of Pecky" loading="lazy"></li>
-          <li class="dir-row" id="p-mahe-v" data-photo="assets/team/mahe-v.jpg"><span class="dir-no num">05</span><span class="dir-name">Mahe.V</span><span class="dir-role">Admin Operations Manager</span><img class="dir-thumb" src="assets/team/mahe-v.jpg" width="480" height="797" alt="Portrait of Mahe.V" loading="lazy"></li>
-          <li class="dir-row" id="p-azir" data-photo="assets/team/azir.jpg"><span class="dir-no num">06</span><span class="dir-name">Azir</span><span class="dir-role">Liaison Manager</span><img class="dir-thumb" src="assets/team/azir.jpg" width="480" height="797" alt="Portrait of Azir" loading="lazy"></li>
-        </ol>
+        <ul class="members">
+          <li class="member" id="p-ck-toh"><div class="member-photo"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt="Portrait of CK Toh" loading="lazy"></div><p class="member-name">CK Toh</p><p class="member-role">Founder · CEO and HR</p></li>
+          <li class="member" id="p-may-lee"><div class="member-photo"><img src="assets/team/may-lee.jpg" width="480" height="797" alt="Portrait of May Lee" loading="lazy"></div><p class="member-name">May Lee</p><p class="member-role">General Manager</p></li>
+          <li class="member" id="p-chloe"><div class="member-photo"><img src="assets/team/chloe.jpg" width="480" height="797" alt="Portrait of Chloe" loading="lazy"></div><p class="member-name">Chloe</p><p class="member-role">Account Manager</p></li>
+          <li class="member" id="p-pecky"><div class="member-photo"><img src="assets/team/pecky.jpg" width="480" height="797" alt="Portrait of Pecky" loading="lazy"></div><p class="member-name">Pecky</p><p class="member-role">Admin Consultant</p></li>
+          <li class="member" id="p-mahe-v"><div class="member-photo"><img src="assets/team/mahe-v.jpg" width="480" height="797" alt="Portrait of Mahe.V" loading="lazy"></div><p class="member-name">Mahe.V</p><p class="member-role">Admin Operations Manager</p></li>
+          <li class="member" id="p-azir"><div class="member-photo"><img src="assets/team/azir.jpg" width="480" height="797" alt="Portrait of Azir" loading="lazy"></div><p class="member-name">Azir</p><p class="member-role">Liaison Manager</p></li>
+        </ul>
       </div>
-      <div class="dir-float" aria-hidden="true"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt=""></div>
     </section>
 
     <!-- The two companies, framed like registration certificates. -->
@@ -220,6 +218,6 @@
   </footer>
 
   <script src="main.js?v=32" defer></script>
-  <script src="team.js?v=3" defer></script>
+  <script src="team.js?v=4" defer></script>
 </body>
 </html>

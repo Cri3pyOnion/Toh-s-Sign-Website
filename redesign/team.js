@@ -1,4 +1,4 @@
-// Our team page. Without this script every step shows as a list and every name has its photo.
+// Our team page. Without this script every step shows as a list.
 // Wrapped in a block so its names don't clash with main.js.
 {
   const motionOK = window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
@@ -82,42 +82,6 @@
     path.classList.add('is-first');
   }
 
-  // ---------- Directory: the portrait follows the mouse ----------
-  const dir = document.querySelector('.tm-dir');
-  const float = dir?.querySelector('.dir-float');
-  if (dir && float && finePointer && motionOK) {
-    dir.classList.add('dir-live');
-    const img = float.querySelector('img');
-    let x = 0, y = 0, tx = 0, ty = 0, raf = null, last = null;
-    const loop = () => {
-      x += (tx - x) * 0.18;
-      y += (ty - y) * 0.18;
-      const tilt = Math.max(-8, Math.min(8, (tx - x) * 0.08));
-      float.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) rotate(${tilt.toFixed(2)}deg)`;
-      raf = Math.abs(tx - x) + Math.abs(ty - y) > 0.5 ? requestAnimationFrame(loop) : null;
-    };
-    dir.querySelectorAll('.dir-row').forEach((row) => {
-      row.addEventListener('pointerenter', (e) => {
-        if (last !== row) {
-          img.src = row.dataset.photo;
-          float.classList.remove('is-swap');
-          void float.offsetWidth;
-          float.classList.add('is-swap');
-          last = row;
-        }
-        if (!float.classList.contains('is-on')) { x = tx = e.clientX + 32; y = ty = e.clientY - 120; }
-        float.classList.add('is-on');
-      });
-      row.addEventListener('pointerleave', () => float.classList.remove('is-on'));
-    });
-    dir.addEventListener('pointermove', (e) => {
-      tx = e.clientX + 32;
-      ty = e.clientY - 120;
-      if (!raf) raf = requestAnimationFrame(loop);
-    });
-    window.addEventListener('scroll', () => float.classList.remove('is-on'), { passive: true });
-  }
-
   // ---------- Certificates tilt a little toward the mouse ----------
   if (finePointer && motionOK) {
     document.querySelectorAll('.co-card').forEach((card) => {
@@ -134,7 +98,7 @@
 
   // ---------- Scroll reveals ----------
   if (motionOK && 'IntersectionObserver' in window) {
-    const groups = [['.tm-head'], ['.path'], ['.dir-row'], ['.co-card'], ['.t-join-row'], ['.pager-link']];
+    const groups = [['.tm-head'], ['.path'], ['.member'], ['.co-card'], ['.t-join-row'], ['.pager-link']];
     const targets = [];
     groups.forEach((sels) => {
       document.querySelectorAll(sels.join(',')).forEach((el, i) => {
