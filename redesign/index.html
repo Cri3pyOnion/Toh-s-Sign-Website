@@ -8,7 +8,7 @@
   <!-- Security: only this site and Google Fonts may load anything. -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#080808">
   <!-- Temporary preview: keep search engines away. Remove when this goes live on tohssign.com. -->
   <meta name="robots" content="noindex, nofollow">
   <link rel="alternate" hreflang="en" href="./">
@@ -16,312 +16,283 @@
   <script src="head.js?v=1"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=46">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Geist+Mono:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="v4.css?v=1">
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <!-- Masthead: logo left, section links, then the one action. -->
+  <!-- The Toh’s Sign mark, redrawn once as two interlocking hooks and two diamonds, reused everywhere. -->
+  <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#F8FAFC"/>
+        <stop offset="1" stop-color="#94A3B8"/>
+      </linearGradient>
+      <symbol id="mark" viewBox="0 0 100 100">
+        <g fill="url(#silver)">
+          <path d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/>
+          <path d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/>
+          <g transform="rotate(180 50 50)">
+            <path d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/>
+            <path d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/>
+          </g>
+        </g>
+      </symbol>
+      <symbol id="mark-line" viewBox="0 0 100 100">
+        <g fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round">
+          <path d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/>
+          <path d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/>
+          <g transform="rotate(180 50 50)">
+            <path d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/>
+            <path d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/>
+          </g>
+        </g>
+      </symbol>
+      <symbol id="arrow" viewBox="0 0 20 20"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    </defs>
+  </svg>
+
   <header class="mast">
-    <div class="container mast-row">
-      <a class="logo" href="./" aria-label="Toh’s Sign, home">
-        <img src="assets/images/logo.png" width="1283" height="146"
-             alt="Toh’s Sign Informatic Sdn Bhd and Toh’s Sign Consultancy Sdn Bhd">
-      </a>
-      <nav class="mast-nav" aria-label="Main">
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" data-open="Menu" data-close="Close">Menu</button>
-        <ul id="menu" class="menu">
-          <li><a href="#services">Services</a></li>
-          <li><a href="#why">Why us</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="team.html">Our team</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="mast-actions">
-        <nav class="lang" aria-label="Language 语言"><a href="./" lang="en" hreflang="en" aria-current="page">EN</a><span aria-hidden="true">|</span><a href="zh.html" lang="zh-Hans" hreflang="zh-Hans">中文</a></nav>
-        <a class="btn btn-sm btn-ink mast-wa" href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20a%20free%20licensing%20consultation." rel="noopener" target="_blank">WhatsApp us</a>
-      </div>
-    </div>
-    <span class="mast-progress" aria-hidden="true"></span>
+    <a class="brand" href="./" aria-label="Toh’s Sign, home">
+      <svg class="brand-mark" aria-hidden="true"><use href="#mark"/></svg>
+      <span>Toh’s Sign</span>
+    </a>
+    <nav class="mast-nav" aria-label="Main">
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#promise">Promise</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="zh.html" lang="zh-Hans" hreflang="zh-Hans">中文</a></li>
+      </ul>
+      <a class="btn-solid" href="#consult">Consult</a>
+    </nav>
+    <a class="mast-mobile" href="#consult">Consult</a>
   </header>
 
   <main id="main">
-    <!-- Hero: the original's large "Licensing" headline. -->
+    <!-- Hero: the mark drawn large behind a massive italic headline. -->
     <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-main">
-          <p class="eyebrow hero-eyebrow">Licensing consultancy · Kuala Lumpur · Since 1997</p>
-          <h1 id="hero-title" class="hero-title"><span class="line"><span class="hero-title-main">Licensing</span></span> <span class="line"><span class="hero-title-sub">One-Stop Consultancy</span></span></h1>
-          <p class="lead hero-lead">Your trusted licensing partner since 1997. We prepare, submit and track your application through to approval.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary"
-               href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20a%20free%20licensing%20consultation."
-               rel="noopener" target="_blank">Get a free consultation</a>
-            <a class="link-arrow" href="#services"><span>View our services</span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Track record: four figures on hairlines, counting up once. -->
-      <div class="container">
-        <h2 class="visually-hidden">Our track record</h2>
-        <dl class="figures">
-          <div class="figure"><dd class="num">28+</dd><dt>Years of licensing consultancy</dt></div>
-          <div class="figure"><dd class="num">317,388+</dd><dt>Approved applications</dt></div>
-          <div class="figure"><dd class="num">200+</dd><dt>Brand partnerships</dt></div>
-          <div class="figure"><dd class="num">89%</dd><dt>Approval rate</dt></div>
+      <div class="hero-frame">
+        <svg class="hero-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <g class="draw" fill="none" stroke="url(#silver)" stroke-width=".35" stroke-linejoin="round">
+            <path pathLength="1" d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/>
+            <path pathLength="1" d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/>
+            <g transform="rotate(180 50 50)">
+              <path pathLength="1" d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/>
+              <path pathLength="1" d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/>
+            </g>
+          </g>
+        </svg>
+        <p class="label rise">Licensing consultancy <span>/</span> Kuala Lumpur</p>
+        <h1 id="hero-title" class="hero-title rise">Every license,<br><em class="silver">one sign-off.</em></h1>
+        <p class="hero-lead rise">Business, signboard, entertainment and agency approvals, prepared, submitted and tracked through to approval by one dedicated consultant.</p>
+        <dl class="meta rise">
+          <div><dt>Est.</dt><dd>1997</dd></div>
+          <div><dt>Scope</dt><dd>18 license and approval types</dd></div>
+          <div><dt>Office</dt><dd>Cheras, Kuala Lumpur</dd></div>
         </dl>
       </div>
+
+      <!-- Consultation capture: opens WhatsApp with the business type filled in. -->
+      <form id="consult" class="capture glass rise" novalidate>
+        <label class="visually-hidden" for="biz">What license does your business need?</label>
+        <input id="biz" name="biz" type="text" autocomplete="off" placeholder="What license do you need?">
+        <button class="btn-silver" type="submit">Free consult</button>
+      </form>
+      <p class="capture-note label">Opens WhatsApp <span>/</span> 016-439 7178 <span>/</span> No charge</p>
     </section>
 
-    <!-- Scope: every license and approval as one quiet line. -->
-    <section class="scope" aria-labelledby="scope-title">
-      <div class="container scope-row">
-        <h2 id="scope-title" class="eyebrow">Licenses and approvals we handle</h2>
-        <ul class="scope-list"><li>Business license</li><li>Factory license</li><li>Liquor license</li><li>Entertainment license</li><li>Signboard license</li><li>Billboards and LED screens</li><li>Building plan approval</li><li>Renovation permits</li><li>MIDA</li><li>MITI</li><li>KKM</li><li>DOE</li><li>DOSH</li><li>SSM registration</li><li>HALAL certification</li><li>HACCP and GMP</li><li>Trademark registration</li><li>Import and export permits</li></ul>
+    <!-- On record: a live counter since founding, then the four figures. -->
+    <section class="record" aria-labelledby="record-title">
+      <p id="record-title" class="label center">On record since 1 January 1997</p>
+      <div class="clock" aria-hidden="true">
+        <div><span class="label">Years</span><b data-unit="y">28</b></div>
+        <i>/</i>
+        <div><span class="label">Days</span><b data-unit="d">000</b></div>
+        <i>/</i>
+        <div><span class="label">Hours</span><b data-unit="h">00</b></div>
+      </div>
+      <dl class="figures">
+        <div><dt>Approved applications</dt><dd>317,388+</dd></div>
+        <div><dt>Brand partnerships</dt><dd>200+</dd></div>
+        <div><dt>Approval rate</dt><dd>89%</dd></div>
+        <div><dt>License and approval types</dt><dd>18</dd></div>
+      </dl>
+    </section>
+
+    <!-- Services bento: five licenses and the agency registry, each card indexed with the mark. -->
+    <section id="services" class="block" aria-labelledby="services-title">
+      <header class="block-head">
+        <p class="label"><svg class="idx-mark" aria-hidden="true"><use href="#mark"/></svg>01 <span>/</span> Services</p>
+        <h2 id="services-title">Licenses we <em class="silver">handle</em></h2>
+      </header>
+      <div class="bento">
+        <article class="card" id="lic-business">
+          <p class="label">01 <span>/</span> Business</p>
+          <h3>Business &amp; factory</h3>
+          <p class="card-body">Shop units, offices, retail stores and industrial factory operations.</p>
+          <a class="card-link" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20business%20license.">Enquire<span class="visually-hidden"> about a business license</span><svg aria-hidden="true"><use href="#arrow"/></svg></a>
+        </article>
+        <article class="card" id="lic-entertainment">
+          <p class="label">02 <span>/</span> Entertainment</p>
+          <h3>Entertainment &amp; liquor</h3>
+          <p class="card-body">Liquor sales, live music, public entertainment and event proposals.</p>
+          <a class="card-link" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20an%20entertainment%20license.">Enquire<span class="visually-hidden"> about an entertainment license</span><svg aria-hidden="true"><use href="#arrow"/></svg></a>
+        </article>
+        <article class="card" id="lic-advertisement">
+          <p class="label">03 <span>/</span> Outdoor</p>
+          <h3>Signboards &amp; billboards</h3>
+          <p class="card-body">Signboards, billboards, LED screens, pylon signs and road closures.</p>
+          <a class="card-link" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20an%20advertisement%20license.">Enquire<span class="visually-hidden"> about an advertisement license</span><svg aria-hidden="true"><use href="#arrow"/></svg></a>
+        </article>
+        <article class="card" id="lic-engineering">
+          <p class="label">04 <span>/</span> Drawings</p>
+          <h3>Engineering plans</h3>
+          <p class="card-body">Renovations, mezzanines, awnings, ramps and exhausts; structure drawings for signs and screens; land title conversion.</p>
+          <a class="card-link" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20engineering%20drawing%20approval.">Enquire<span class="visually-hidden"> about engineering drawings</span><svg aria-hidden="true"><use href="#arrow"/></svg></a>
+        </article>
+        <article class="card card-wide" id="lic-other">
+          <p class="label">05 <span>/</span> Compliance</p>
+          <h3>Regulatory &amp; industry</h3>
+          <p class="card-body">SSM registration; MITI, MIDA, KKM, DOE and DOSH approvals; import and export permits; trademarks; HALAL, HACCP, GMP and MESTI certification.</p>
+          <a class="card-link" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20agency%20approvals%20(MIDA%2C%20DOE%2C%20DOSH%2C%20KKM).">Enquire<span class="visually-hidden"> about regulatory compliance</span><svg aria-hidden="true"><use href="#arrow"/></svg></a>
+        </article>
+        <article class="card card-wide registry">
+          <p class="label">06 <span>/</span> Agencies</p>
+          <h3>We file with</h3>
+          <ul class="badges">
+            <li><svg aria-hidden="true"><use href="#mark"/></svg><span>MIDA</span></li>
+            <li><svg aria-hidden="true"><use href="#mark"/></svg><span>DOSH</span></li>
+            <li><svg aria-hidden="true"><use href="#mark"/></svg><span>DOE</span></li>
+            <li><svg aria-hidden="true"><use href="#mark"/></svg><span>KKM</span></li>
+            <li><svg aria-hidden="true"><use href="#mark"/></svg><span>MITI</span></li>
+            <li><svg aria-hidden="true"><use href="#mark"/></svg><span>SSM</span></li>
+            <li><svg aria-hidden="true"><use href="#mark"/></svg><span>MOTAC</span></li>
+            <li><svg aria-hidden="true"><use href="#mark"/></svg><span>DBKL</span></li>
+          </ul>
+          <svg class="card-ghost" aria-hidden="true"><use href="#mark"/></svg>
+        </article>
       </div>
     </section>
 
-    <!-- Services: the five licenses as numbered rows. -->
-    <section id="services" class="section" aria-labelledby="services-title">
-      <div class="container">
-        <header class="sec-head">
-          <p class="sec-no num" aria-hidden="true">01</p>
-          <h2 id="services-title">Licenses we handle</h2>
-          <p class="lead">One dedicated consultant manages your application from first assessment to approval.</p>
-        </header>
-
-        <ol class="licenses">
-          <li class="license" id="lic-business" data-license="business">
-            <span class="license-no num" aria-hidden="true">01</span>
-            <h3 class="license-name">Business and factory license</h3>
-            <p class="license-covers">For shop units, offices, retail stores and industrial factory operations.</p>
-            <a class="license-ask" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20a%20business%20license."><span>Enquire<span class="visually-hidden"> about a business license</span></span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a>
-          </li>
-          <li class="license" id="lic-entertainment" data-license="entertainment">
-            <span class="license-no num" aria-hidden="true">02</span>
-            <h3 class="license-name">Entertainment and liquor license</h3>
-            <p class="license-covers">For liquor sales, live music, public entertainment and event proposals.</p>
-            <a class="license-ask" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20an%20entertainment%20license."><span>Enquire<span class="visually-hidden"> about an entertainment license</span></span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a>
-          </li>
-          <li class="license" id="lic-advertisement" data-license="advertisement">
-            <span class="license-no num" aria-hidden="true">03</span>
-            <h3 class="license-name">Advertisement and outdoor license</h3>
-            <p class="license-covers">For signboards, billboards, LED screens, pylon signs and road closures.</p>
-            <a class="license-ask" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20an%20advertisement%20license."><span>Enquire<span class="visually-hidden"> about an advertisement license</span></span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a>
-          </li>
-          <li class="license" id="lic-engineering" data-license="engineering">
-            <span class="license-no num" aria-hidden="true">04</span>
-            <h3 class="license-name">Engineering and architectural drawings</h3>
-            <p class="license-covers">Plans for renovations, extensions, mezzanine floors, partitions, awnings, ramps and exhaust systems; structure drawings for signboards, billboards and LED screens; and land title conversion.</p>
-            <a class="license-ask" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20engineering%20drawing%20approval."><span>Enquire<span class="visually-hidden"> about engineering drawings</span></span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a>
-          </li>
-          <li class="license" id="lic-other" data-license="other">
-            <span class="license-no num" aria-hidden="true">05</span>
-            <h3 class="license-name">Regulatory and industry compliance</h3>
-            <p class="license-covers">SSM company registration; MITI, MIDA, MOH (KKM), DOE and DOSH approvals; import and export permits; trademark registration; and HALAL, HACCP, GMP and MESTI certification.</p>
-            <a class="license-ask" rel="noopener" target="_blank" href="https://wa.me/60164397178?text=Hi%2C%20I%E2%80%99d%20like%20to%20ask%20about%20agency%20approvals%20(MIDA%2C%20DOE%2C%20DOSH%2C%20KKM)."><span>Enquire<span class="visually-hidden"> about regulatory compliance</span></span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a>
-          </li>
+    <!-- Promise: the mark splits into its two halves, one per column of commitments. -->
+    <section id="promise" class="block" aria-labelledby="promise-title">
+      <header class="block-head">
+        <p class="label"><svg class="idx-mark" aria-hidden="true"><use href="#mark"/></svg>02 <span>/</span> Promise</p>
+        <h2 id="promise-title">Two halves, <em class="silver">one fit.</em></h2>
+        <p class="block-lead">The mark is two pieces that only lock together one way. So is a good application: your business on one side, the authority’s requirements on the other.</p>
+      </header>
+      <div class="split">
+        <div class="split-mark" aria-hidden="true">
+          <svg viewBox="0 0 100 100" class="halves">
+            <g class="half half-a" fill="url(#silver)">
+              <path d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/>
+              <path d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/>
+            </g>
+            <g class="half half-b" fill="url(#silver)">
+              <g transform="rotate(180 50 50)">
+                <path d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/>
+                <path d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <ol class="promises">
+          <li><span class="label">01</span><h3>A free first consultation</h3><p>We review your case at no charge and tell you plainly whether you are eligible.</p></li>
+          <li><span class="label">02</span><h3>We check before we file</h3><p>Approval chances are assessed before anything is submitted.</p></li>
+          <li><span class="label">03</span><h3>One consultant, start to finish</h3><p>The same person handles your case and updates you on WhatsApp.</p></li>
+          <li><span class="label">04</span><h3>Documents made for your license</h3><p>Every submission is prepared for your category and industry.</p></li>
+          <li><span class="label">05</span><h3>Problems flagged early</h3><p>Roadblocks are raised before submission, not after a rejection.</p></li>
+          <li><span class="label">06</span><h3>We remember your renewals</h3><p>After approval we track renewal dates and compliance for you.</p></li>
         </ol>
       </div>
     </section>
 
-    <!-- Why us: six commitments, numbered, on hairlines. -->
-    <section id="why" class="section section-tint" aria-labelledby="why-title">
-      <div class="container">
-        <header class="sec-head">
-          <p class="sec-no num" aria-hidden="true">02</p>
-          <h2 id="why-title">Our promise to every client</h2>
-          <p class="lead">A transparent, low-risk process from assessment to renewal.</p>
-        </header>
-        <dl class="why-grid">
-          <div class="why-item"><dt><span class="why-no num" aria-hidden="true">01</span><span>A free first consultation</span></dt><dd>We review your case at no charge and tell you plainly whether you are eligible before you commit.</dd></div>
-          <div class="why-item"><dt><span class="why-no num" aria-hidden="true">02</span><span>We check before we file</span></dt><dd>Approval chances are assessed before anything is submitted, so your application is compliant from day one.</dd></div>
-          <div class="why-item"><dt><span class="why-no num" aria-hidden="true">03</span><span>One consultant, start to finish</span></dt><dd>The same person handles your case end to end and keeps you updated on WhatsApp.</dd></div>
-          <div class="why-item"><dt><span class="why-no num" aria-hidden="true">04</span><span>Documents made for your license</span></dt><dd>Every submission is prepared for your specific license category and industry.</dd></div>
-          <div class="why-item"><dt><span class="why-no num" aria-hidden="true">05</span><span>Problems flagged early</span></dt><dd>We point out roadblocks before submission, so you avoid rejections and resubmissions.</dd></div>
-          <div class="why-item"><dt><span class="why-no num" aria-hidden="true">06</span><span>We remember your renewals</span></dt><dd>After approval we keep track of renewal dates and compliance for you.</dd></div>
-        </dl>
-        <p class="sec-cta"><a class="btn"
-           href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20a%20free%20feasibility%20check%20for%20my%20license."
-           rel="noopener" target="_blank">Request a feasibility assessment</a></p>
+    <!-- Clients: monochrome logo wall. -->
+    <section class="clients" aria-labelledby="clients-title">
+      <h2 id="clients-title" class="clients-title">Trusted by <em class="silver">200+ brands</em></h2>
+      <ul class="logos">
+        <li><img src="assets/clients/dior.jpg" width="382" height="108" alt="Dior" loading="lazy"></li>
+        <li><img src="assets/clients/chanel.jpg" width="378" height="242" alt="Chanel" loading="lazy"></li>
+        <li><img src="assets/clients/tiffany.jpg" width="358" height="45" alt="Tiffany &amp; Co." loading="lazy"></li>
+        <li><img src="assets/clients/chow-tai-fook.jpg" width="331" height="190" alt="Chow Tai Fook" loading="lazy"></li>
+        <li><img src="assets/clients/muji.jpg" width="362" height="243" alt="Muji" loading="lazy"></li>
+        <li><img src="assets/clients/hm.jpg" width="385" height="255" alt="H&amp;M" loading="lazy"></li>
+        <li><img src="assets/clients/adidas.jpg" width="344" height="229" alt="adidas" loading="lazy"></li>
+        <li><img src="assets/clients/haidilao.jpg" width="346" height="336" alt="Haidilao Hot Pot" loading="lazy"></li>
+        <li><img src="assets/clients/zus-coffee.jpg" width="207" height="332" alt="ZUS Coffee" loading="lazy"></li>
+        <li><img src="assets/clients/hsbc.jpg" width="336" height="214" alt="HSBC" loading="lazy"></li>
+        <li><img src="assets/clients/alliance-bank.jpg" width="268" height="318" alt="Alliance Bank" loading="lazy"></li>
+        <li><img src="assets/clients/top-glove.jpg" width="396" height="128" alt="Top Glove" loading="lazy"></li>
+      </ul>
+    </section>
+
+    <!-- About: founder line as an editorial quote, the two companies as the mark's two halves. -->
+    <section id="about" class="block" aria-labelledby="about-title">
+      <header class="block-head">
+        <p class="label"><svg class="idx-mark" aria-hidden="true"><use href="#mark"/></svg>03 <span>/</span> About</p>
+        <h2 id="about-title" class="visually-hidden">About Toh’s Sign</h2>
+      </header>
+      <figure class="quote">
+        <blockquote><p><em>“We commit only to what we can deliver: direct, fast, reliable and hassle-free.”</em></p></blockquote>
+        <figcaption class="label">The Toh’s Sign promise <span>/</span> since 1997, founded by CK Toh</figcaption>
+      </figure>
+      <div class="companies">
+        <article class="company glass">
+          <svg class="company-half" viewBox="0 0 100 100" aria-hidden="true"><g fill="url(#silver)"><path d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/><path d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/></g><g fill="none" stroke="rgba(255,255,255,.18)" stroke-width=".6" transform="rotate(180 50 50)"><path d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/><path d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/></g></svg>
+          <p class="label">Founded 1997 <span>/</span> 713854-H</p>
+          <h3>Toh’s Sign Informatic Sdn Bhd</h3>
+          <p>Business, advertisement and entertainment licensing.</p>
+        </article>
+        <article class="company glass">
+          <svg class="company-half" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="rgba(255,255,255,.18)" stroke-width=".6"><path d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/><path d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/></g><g fill="url(#silver)" transform="rotate(180 50 50)"><path d="M20 44 L42 22 H64 Q74 22 74 32 V40 H62 V34 H47 L28.5 52.5 Z"/><path d="M10 43.5 L16.5 50 L10 56.5 L3.5 50 Z"/></g></svg>
+          <p class="label">Subsidiary <span>/</span> 1563660-H</p>
+          <h3>Toh’s Sign Consultancy Sdn Bhd</h3>
+          <p>Engineering and building plan approvals, KKM, MOTAC, MIDA and industry certifications.</p>
+        </article>
       </div>
     </section>
 
-    <!-- Clients: the brands' logos in grey, in colour on hover. -->
-    <section class="section clients" aria-labelledby="clients-title">
-      <div class="container">
-        <header class="sec-head">
-          <p class="sec-no num" aria-hidden="true">03</p>
-          <h2 id="clients-title">Selected clients</h2>
-          <p class="lead">More than 200 brands in retail, food, finance and manufacturing trust us with their licenses.</p>
-        </header>
-        <div class="client-groups">
-          <section class="client-group" aria-labelledby="cg-luxury">
-            <h3 id="cg-luxury" class="eyebrow">Luxury and jewellery</h3>
-            <ul class="logos">
-              <li><img src="assets/clients/dior.jpg" width="382" height="108" alt="Dior" loading="lazy"></li>
-              <li><img src="assets/clients/chanel.jpg" width="378" height="242" alt="Chanel" loading="lazy"></li>
-              <li><img src="assets/clients/tiffany.jpg" width="358" height="45" alt="Tiffany &amp; Co." loading="lazy"></li>
-              <li><img src="assets/clients/chow-tai-fook.jpg" width="331" height="190" alt="Chow Tai Fook" loading="lazy"></li>
-            </ul>
-          </section>
-          <section class="client-group" aria-labelledby="cg-retail">
-            <h3 id="cg-retail" class="eyebrow">Retail and lifestyle</h3>
-            <ul class="logos">
-              <li><img src="assets/clients/muji.jpg" width="362" height="243" alt="Muji" loading="lazy"></li>
-              <li><img src="assets/clients/hm.jpg" width="385" height="255" alt="H&amp;M" loading="lazy"></li>
-              <li><img src="assets/clients/adidas.jpg" width="344" height="229" alt="adidas" loading="lazy"></li>
-            </ul>
-          </section>
-          <section class="client-group" aria-labelledby="cg-food">
-            <h3 id="cg-food" class="eyebrow">Food and beverage</h3>
-            <ul class="logos">
-              <li><img src="assets/clients/haidilao.jpg" width="346" height="336" alt="Haidilao Hot Pot" loading="lazy"></li>
-              <li><img src="assets/clients/zus-coffee.jpg" width="207" height="332" alt="ZUS Coffee" loading="lazy"></li>
-            </ul>
-          </section>
-          <section class="client-group" aria-labelledby="cg-finance">
-            <h3 id="cg-finance" class="eyebrow">Banking and manufacturing</h3>
-            <ul class="logos">
-              <li><img src="assets/clients/hsbc.jpg" width="336" height="214" alt="HSBC" loading="lazy"></li>
-              <li><img src="assets/clients/alliance-bank.jpg" width="268" height="318" alt="Alliance Bank" loading="lazy"></li>
-              <li><img src="assets/clients/top-glove.jpg" width="396" height="128" alt="Top Glove" loading="lazy"></li>
-            </ul>
-          </section>
-        </div>
+    <!-- Final call: the full mark, filled, above the last headline. -->
+    <section id="contact" class="final" aria-labelledby="contact-title">
+      <svg class="final-mark" aria-hidden="true"><use href="#mark"/></svg>
+      <h2 id="contact-title">Your first consultation<br><em class="silver">is on us.</em></h2>
+      <div class="final-actions">
+        <a class="btn-silver" href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20a%20free%20licensing%20consultation." rel="noopener" target="_blank">WhatsApp us</a>
+        <a class="btn-ghost" href="tel:+60391082871">03-9108 2871</a>
       </div>
-    </section>
-
-    <!-- About: the story beside vision, mission, promise and social responsibility. -->
-    <section id="about" class="section section-tint" aria-labelledby="about-title">
-      <div class="container">
-        <header class="sec-head">
-          <p class="sec-no num" aria-hidden="true">04</p>
-          <h2 id="about-title">About Toh’s Sign</h2>
-          <p class="lead">Founded in 1997 by CK Toh, Toh’s Sign draws on decades of experience to resolve licensing problems quickly, so businesses keep operating smoothly.</p>
-        </header>
-        <div class="about-grid">
-          <div class="about-text">
-            <p>Our subsidiary, Toh’s Sign Consultancy Sdn Bhd, handles complex matters, including engineering and building plan approvals, the Ministry of Health (KKM), the Ministry of Tourism, Arts and Culture (MOTAC), the Malaysian Investment Development Authority (MIDA) and industry certifications, with a solution tailored to every client.</p>
-            <p>We believe exceptional teams create extraordinary results. We develop and keep our people through expertise, collaboration and an inclusive, supportive workplace.</p>
-          </div>
-          <dl class="about-facts">
-            <div><dt>Vision</dt><dd>To be Malaysia’s leading one-stop licensing consultancy.</dd></div>
-            <div><dt>Mission</dt><dd>One-stop solutions from consultation to license delivery, with responsive, customer-focused, high-quality service.</dd></div>
-            <div><dt>Promise</dt><dd>We commit only to what we can deliver: direct, fast, reliable and hassle-free.</dd></div>
-            <div><dt>Social responsibility</dt><dd>We help businesses operate compliantly, care for our community and invest in our people, with integrity at every step.</dd></div>
-          </dl>
-        </div>
-      </div>
-    </section>
-
-    <!-- Group and leadership: the two companies, then the six people who lead them. -->
-    <section id="team" class="section" aria-labelledby="team-title">
-      <div class="container">
-        <header class="sec-head">
-          <p class="sec-no num" aria-hidden="true">05</p>
-          <h2 id="team-title">Group and leadership</h2>
-          <p class="lead">Two companies, one team. Meet the people who lead it.</p>
-        </header>
-        <ul class="group">
-          <li class="group-co">
-            <img class="group-mark" src="assets/images/mark-informatic.png" width="192" height="192" alt="" loading="lazy">
-            <div>
-              <p class="eyebrow">Founded 1997</p>
-              <p class="group-name">Toh’s Sign Informatic Sdn Bhd <span class="group-reg num">713854-H</span></p>
-              <p class="group-role">Founded in 1997 by CK Toh. Business, advertisement and entertainment licensing.</p>
-            </div>
-          </li>
-          <li class="group-co">
-            <img class="group-mark" src="assets/images/mark-consultancy.png" width="192" height="192" alt="" loading="lazy">
-            <div>
-              <p class="eyebrow">Subsidiary</p>
-              <p class="group-name">Toh’s Sign Consultancy Sdn Bhd <span class="group-reg num">1563660-H</span></p>
-              <p class="group-role">Subsidiary for complex matters: engineering and building plan approvals, KKM, MOTAC, MIDA and industry certifications.</p>
-            </div>
-          </li>
-        </ul>
-        <h3 class="eyebrow team-sub">Leadership</h3>
-        <ul class="people">
-          <li class="person"><div class="person-photo"><img src="assets/team/ck-toh.jpg" width="480" height="797" alt="CK Toh" loading="lazy"></div><p class="person-name">CK Toh</p><p class="person-role">CEO and HR</p></li>
-          <li class="person"><div class="person-photo"><img src="assets/team/may-lee.jpg" width="480" height="797" alt="May Lee" loading="lazy"></div><p class="person-name">May Lee</p><p class="person-role">General Manager</p></li>
-          <li class="person"><div class="person-photo"><img src="assets/team/chloe.jpg" width="480" height="797" alt="Chloe" loading="lazy"></div><p class="person-name">Chloe</p><p class="person-role">Account Manager</p></li>
-          <li class="person"><div class="person-photo"><img src="assets/team/pecky.jpg" width="480" height="797" alt="Pecky" loading="lazy"></div><p class="person-name">Pecky</p><p class="person-role">Admin Consultant</p></li>
-          <li class="person"><div class="person-photo"><img src="assets/team/mahe-v.jpg" width="480" height="797" alt="Mahe.V" loading="lazy"></div><p class="person-name">Mahe.V</p><p class="person-role">Admin Operations Manager</p></li>
-          <li class="person"><div class="person-photo"><img src="assets/team/azir.jpg" width="480" height="797" alt="Azir" loading="lazy"></div><p class="person-name">Azir</p><p class="person-role">Liaison Manager</p></li>
-        </ul>
-        <p class="sec-cta"><a class="link-arrow" href="careers.html"><span>Join our team</span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></p>
-      </div>
-    </section>
-
-    <!-- Contact: ways to reach us and the office on the left, the office and hours on the right. -->
-    <section id="contact" class="section section-tint" aria-labelledby="contact-title">
-      <div class="container">
-        <header class="sec-head">
-          <p class="sec-no num" aria-hidden="true">06</p>
-          <h2 id="contact-title">Contact us</h2>
-          <p class="lead">Your first consultation is free of charge.</p>
-        </header>
-        <div class="contact-grid">
-          <div class="contact-info">
-            <ul class="contact-lines">
-              <li><a class="contact-line" href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20a%20free%20licensing%20consultation." rel="noopener" target="_blank"><span class="contact-label">WhatsApp</span><span class="contact-value num">016-439 7178</span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
-              <li><a class="contact-line" href="tel:+60391082871"><span class="contact-label">Call</span><span class="contact-value num">03-9108 2871</span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
-              <li><a class="contact-line" href="mailto:info@tohssign.my"><span class="contact-label">Email</span><span class="contact-value">info@tohssign.my</span><svg class="ico" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg></a></li>
-            </ul>
-          </div>
-          <div class="office">
-              <h3 class="eyebrow">Visit our office</h3>
-              <address>
-                B-2-5, B-3-5, B-4-5 &amp; B-5-5,<br>
-                Centre Point Medan, Jln 3/144a,<br>
-                Taman Connaught, 56000 Cheras,<br>
-                Kuala Lumpur
-              </address>
-              <dl class="hours" aria-label="Opening hours">
-                <div><dt>Monday to Friday</dt><dd class="num">8:30 am to 6:00 pm</dd></div>
-                <div><dt>Saturday and Sunday</dt><dd>Closed</dd></div>
-              </dl>
-          </div>
-        </div>
-      </div>
+      <dl class="final-meta">
+        <div><dt class="label">Email</dt><dd><a href="mailto:info@tohssign.my">info@tohssign.my</a></dd></div>
+        <div><dt class="label">Office</dt><dd>B-2-5, Centre Point Medan, Jln 3/144a, Taman Connaught, 56000 Cheras, Kuala Lumpur</dd></div>
+        <div><dt class="label">Hours</dt><dd>Mon to Fri, 8:30 am to 6:00 pm</dd></div>
+      </dl>
     </section>
   </main>
 
   <footer class="foot">
-    <div class="container">
-      <div class="foot-grid">
-        <div class="foot-brand">
-          <img class="foot-logo" src="assets/images/logo.png" width="1283" height="146" alt="Toh’s Sign" loading="lazy">
-          <p>Business licensing consultancy in Kuala Lumpur since 1997.</p>
-          <p class="foot-contact"><a class="num" href="tel:+60391082871">03-9108 2871</a> · <a href="mailto:info@tohssign.my">info@tohssign.my</a></p>
-        </div>
-        <nav aria-labelledby="ft-services"><p id="ft-services" class="foot-title">Services</p><ul class="foot-list">
-          <li><a href="#lic-business">Business and factory license</a></li>
-          <li><a href="#lic-entertainment">Entertainment and liquor license</a></li>
-          <li><a href="#lic-advertisement">Advertisement and outdoor license</a></li>
-          <li><a href="#lic-engineering">Engineering and architectural drawings</a></li>
-          <li><a href="#lic-other">Regulatory and industry compliance</a></li>
-        </ul></nav>
-        <nav aria-labelledby="ft-company"><p id="ft-company" class="foot-title">Company</p><ul class="foot-list">
-          <li><a href="#about">About Toh’s Sign</a></li>
-          <li><a href="team.html">Our team</a></li>
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="https://www.facebook.com/tohssignlicense.my" rel="noopener" target="_blank">Facebook</a></li>
-        </ul></nav>
-        <nav aria-labelledby="ft-help"><p id="ft-help" class="foot-title">Policies</p><ul class="foot-list">
-          <li><a href="privacy.html">Privacy policy</a></li>
-        </ul></nav>
-      </div>
-      <p class="foot-legal">© 2026 Toh’s Sign Informatic Sdn Bhd (713854-H) · Toh’s Sign Consultancy Sdn Bhd (1563660-H)</p>
+    <div class="foot-row">
+      <a class="brand" href="./"><svg class="brand-mark" aria-hidden="true"><use href="#mark"/></svg><span>Toh’s Sign</span></a>
+      <ul class="foot-links">
+        <li><a href="team.html">Team</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="https://www.facebook.com/tohssignlicense.my" rel="noopener" target="_blank">Facebook</a></li>
+      </ul>
     </div>
+    <p class="foot-legal label">© 2026 Toh’s Sign Informatic Sdn Bhd (713854-H) <span>/</span> Toh’s Sign Consultancy Sdn Bhd (1563660-H)</p>
   </footer>
 
+  <!-- Phone: pill nav that appears once the hero is passed. -->
+  <nav class="pill" aria-label="Quick">
+    <a href="#services"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M3 3h6v6H3zM11 3h6v6h-6zM3 11h6v6H3zM11 11h6v6h-6z" fill="none" stroke="currentColor"/></svg><span>Services</span></a>
+    <a href="#promise"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M4 10.5 8 14.5 16 5.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><span>Promise</span></a>
+    <a class="pill-main" href="https://wa.me/60164397178?text=Hi%20Toh%E2%80%99s%20Sign%2C%20I%E2%80%99d%20like%20a%20free%20licensing%20consultation." rel="noopener" target="_blank" aria-label="WhatsApp us"><svg aria-hidden="true" viewBox="0 0 100 100"><use href="#mark"/></svg></a>
+    <a href="#about"><svg aria-hidden="true" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" fill="none" stroke="currentColor"/><path d="M10 9v5M10 6v.5" stroke="currentColor" stroke-width="1.4"/></svg><span>About</span></a>
+    <a href="#contact"><svg aria-hidden="true" viewBox="0 0 20 20"><path d="M3 5h14v10H3zM3 5l7 6 7-6" fill="none" stroke="currentColor"/></svg><span>Contact</span></a>
+  </nav>
 
-  <script src="main.js?v=32" defer></script>
+  <script src="v4.js?v=1" defer></script>
 </body>
 </html>

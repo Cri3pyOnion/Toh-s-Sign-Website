@@ -30,6 +30,16 @@
         "8083"
       ],
       "port": 8083
+    },
+    {
+      "name": "redesign-v4",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "tools/serve.py",
+        "redesign",
+        "8084"
+      ],
+      "port": 8084
     }
   ]
 }
